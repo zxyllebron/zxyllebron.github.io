@@ -377,7 +377,7 @@ const projectVideos = {
  ]
 };
 
-const primaryProjectIds=['uav','navigation','aloha'];
+const primaryProjectIds=['biomechanics','navigation','aloha'];
 const selectedPaperIds=new Set(papers.map(p=>p.id));
 projects.forEach(p=>{p.links=p.links.filter(([id])=>selectedPaperIds.has(id))});
 Object.assign(projects.find(p=>p.id==='aloha'),{
@@ -408,6 +408,50 @@ projectMedia.aloha=[
  ...projectMedia.aloha.filter(m=>m.src.endsWith('aloha-doc-01-04.webp'))
 ];
 projectMediaNotes.aloha='Summer practice, July 2024. Documentary frames are cropped to the active picture, excluding subtitles in the letterbox.';
+
+
+// Core experience follows the latest supplied CV. The later UAV cohort is separate.
+const laterPlatformMedia=projectMedia.uav;
+const laterPlatformVideos=projectVideos.uav;
+projectMedia.platform2025=laterPlatformMedia;
+projectVideos.platform2025=laterPlatformVideos;
+projectMedia.uav=[];
+delete projectVideos.uav;
+projects.push(
+ {id:'platform2025',name:'Reconfigurable land–air platform',org:'Beijing Jiaotong University',date:'2025–2026',title:'Reconfigurable land–air platform: 2025 project cohort',summary:'Led the 2025 university innovation project on a reconfigurable land–air platform.',detail:'Part of the 2025 university innovation project cohort, completed in 2026. Materials document mechanical assembly, control implementation and flow-field analysis; the prototype photograph is from April 2026.',steps:['Mechanical design','Platform integration','Control implementation'],links:[],context:'Additional university innovation project · team lead'},
+ {id:'thermoelectric',name:'Thermoelectric autonomous vehicle',org:'Beijing Jiaotong University',date:'NOV 2024 — APR 2025',title:'Thermoelectric autonomous vehicle design',summary:'Designed cam and gear transmission mechanisms in SolidWorks and integrated line-following hardware for a thermally powered vehicle.',detail:'My work included mechanical assembly, calibration and system-level debugging. The engineering competition certificate is available in Honors & awards.',steps:['SolidWorks','Cam & gear design','Assembly','System debugging'],links:[],context:'University engineering project'}
+);
+Object.assign(projectRecency,{platform2025:202604,thermoelectric:202504,uav:202408});
+Object.assign(projects.find(p=>p.id==='deployment'),{
+ summary:'Developing robot motion control, policy inference and humanoid control SDKs.',
+ contribution:'FK/IK and trajectory execution; PyTorch/TensorRT inference; 30+ C++/Python SDK interfaces.',
+ detail:'Work includes forward and inverse kinematics for a 7-DoF arm, standard motion paths and taught-waypoint execution; mixed-precision policy-inference evaluation; encoder-state, PVT, dynamics and diagnostic SDK interfaces; and camera–joint-state pairing experiments.',
+ steps:['C++ / Python','FK / IK','PyTorch · TensorRT','Robot SDKs']
+});
+Object.assign(projects.find(p=>p.id==='learning'),{
+ name:'Learning-based robotic manipulation',
+ summary:'Developed a Python/PyTorch pipeline for simulated grasping, placement and object handoff, with MATLAB/Simulink dynamics and DINOv2/OpenCV visual features.',
+ detail:'Explored PPO and SAC policy optimisation for simulated manipulation tasks. The project connects robot dynamics, object-level visual representations and learning-based control.',
+ steps:['Python · PyTorch','MATLAB / Simulink','DINOv2 · OpenCV','PPO / SAC']
+});
+Object.assign(projects.find(p=>p.id==='navigation'),{
+ detail:'Integrated colour, ultrasonic and other sensors with STM32 state-machine and PID control logic, and tested the embedded functions with host-computer perception/navigation modules. Iterated sensing thresholds and controller gains through track tests.',
+ steps:['STM32','Sensor integration','FSM','PID control']
+});
+Object.assign(projects.find(p=>p.id==='uav'),{
+ name:'Reconfigurable land–air amphibious UAV',date:'MAR — AUG 2024',context:'University engineering project · flight control',
+ summary:'Developed and debugged attitude stabilisation, takeoff/landing control and ground–flight mode switching for a land–air UAV.',
+ detail:'Refined PID control through whole-platform tests and coordinated hub motors, four independently actuated servos and brushless propulsion.',
+ contribution:undefined,steps:['Flight control','PID tuning','Mode switching','Motor coordination']
+});
+Object.assign(projects.find(p=>p.id==='biomechanics'),{
+ name:'Human biomechanics & embodied simulation',
+ summary:'Built OpenSim musculoskeletal models and analysed human-motion data for joint forces, loads and kinematic profiles.',
+ contribution:'Model construction, motion-data processing and joint-level biomechanical analysis.',
+ detail:'Established a simulation workflow for whole-body motion and joint biomechanics, translating the analysis into references for human-motion understanding and embodied simulation.',
+ steps:['OpenSim','Motion data','Joint biomechanics','MATLAB']
+});
+projectMedia.aloha.unshift({src:'assets/projects/aloha-hardware-clear.webp',thumb:'assets/projects/aloha-hardware-clear-thumb.webp',caption:'Bimanual teleoperation hardware during the summer robotics practice.',kind:'Original practice photograph · hardware detail',width:1440,height:700});
 
 let activeMedia = null;
 
@@ -445,23 +489,23 @@ function render(){
  <main id="main" class="page-width">
  <section id="about" class="profile">
  <div class="profile-copy"><h1>Xiongyule Zhou</h1><p class="profile-role">Mechatronics Engineering · Beijing Jiaotong University<br>B.Eng., expected 2027 <span class="profile-credentials">GPA 3.67/4.0 · IELTS 7.5</span></p>
- <p class="profile-intro">I work on <strong>robot learning, visual manipulation and reliable robot systems</strong>. Currently, I am an embodied AI software engineering intern at <a href="#project-deployment">Anyverse Technology</a>, developing simulation, learning pipelines and humanoid control interfaces.</p>
+ <p class="profile-intro">I work on <strong>robot learning, visual manipulation and reliable robot systems</strong>. Currently, I am an embodied AI software engineering intern at <a href="#project-deployment">Anyverse Technology</a>, working on robot motion control, policy inference and humanoid control SDKs.</p>
  <div class="profile-links"><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">Curriculum vitae</a><span>/</span><a href="mailto:jensenzhou47@gmail.com">Email</a><span>/</span><a href="#selected">Selected research</a></div></div>
- <figure class="profile-photo" data-photo-slot><img src="${escapeHTML(profile.photo||'assets/portrait-placeholder.svg')}" alt="Portrait of Xiongyule Zhou" width="240" height="300" fetchpriority="high" decoding="async"><figcaption>Xiongyule Zhou</figcaption></figure></section>
+ <figure class="profile-photo" data-photo-slot><img src="${escapeHTML(profile.photo||'assets/portrait-placeholder.svg')}" alt="Portrait of Xiongyule Zhou" width="240" height="300" fetchpriority="high" decoding="async"></figure></section>
  <section id="projects" class="academic-section projects-first">${heading('Selected engineering projects')}<div class="current-engineering">${projectHTML(projects.find(p=>p.id==='deployment'))}</div>
  <div class="featured-projects">${primary.map(projectHTML).join('')}</div>
  <details class="supporting-projects"><summary>More projects & coursework</summary><div class="projects-list">${supporting.map(projectHTML).join('')}</div></details></section>
  <section id="selected" class="academic-section"><span id="library" class="anchor-target" aria-hidden="true"></span>${heading('Selected research manuscripts')}<div class="selected-list">${papers.map(selectedPaperHTML).join('')}</div><details class="manuscript-status"><summary>Manuscript status</summary><p>These are draft retrospective studies. Original PDFs are unchanged; author metadata remains pending final confirmation. Project connections are thematic.</p></details></section>
  <section id="experience" class="academic-section">${heading('Education & experience')}<div class="timeline">${experienceHTML()}</div></section>
   <section id="awards" class="academic-section">${heading('Honors & awards')}${awardRows()}</section>
- <section id="skills" class="academic-section supplementary"><div>${heading(t(['Methods & tools','方法与工具']))}<p><strong>${t(['Programming:','编程：'])}</strong> Python · C / C++ · MATLAB</p><p><strong>${t(['Robotics:','机器人：'])}</strong> ROS / ROS 2 · MoveIt 2 · STM32 · PID</p><p><strong>${t(['Learning & perception:','学习与感知：'])}</strong> PyTorch · OpenCV · DINOv2 · RealSense · Open3D</p><p><strong>${t(['Simulation:','仿真：'])}</strong> Isaac Sim / Lab · MuJoCo · Simulink · OpenSim · SolidWorks</p></div><div>${heading(t(['Beyond research','科研之外']))}<p>${t(['I captain the School of Mechanical Engineering basketball team and helped lead the team to a top-four university finish. I also worked on campus photography and video production as a deputy director at the University Arts Center.','担任机械工程学院篮球队队长，组织训练与赛事，带队获校级比赛四强。曾任校团委文化艺术中心副部长，参与校园摄影与视频制作。'])}</p></div></section>
+ <section id="skills" class="academic-section supplementary"><div>${heading(t(['Methods & tools','方法与工具']))}<p><strong>${t(['Programming:','编程：'])}</strong> Python · C / C++ · MATLAB</p><p><strong>${t(['Robotics:','机器人：'])}</strong> ROS / ROS 2 · STM32 · PID · FK / IK</p><p><strong>${t(['Learning & perception:','学习与感知：'])}</strong> PyTorch · TensorRT · OpenCV · DINOv2</p><p><strong>${t(['Simulation:','仿真：'])}</strong> Isaac Sim / Lab · MuJoCo · Simulink · OpenSim · SolidWorks</p></div><div>${heading(t(['Beyond research','科研之外']))}<p>${t(['I captain the School of Mechanical Engineering basketball team and helped lead the team to a top-four university finish. I also worked on campus photography and video production as a deputy director at the University Arts Center.','担任机械工程学院篮球队队长，组织训练与赛事，带队获校级比赛四强。曾任校团委文化艺术中心副部长，参与校园摄影与视频制作。'])}</p></div></section>
 
  <footer id="contact"><p><a href="mailto:jensenzhou47@gmail.com">jensenzhou47@gmail.com</a><span> · </span><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">CV</a><span> · </span><a href="#about">Back to top</a></p><p>© 2026 Xiongyule Zhou · Updated October 2026</p></footer></main>`;
 }
 
 function experienceHTML(){
  const items=[
- [['AUG 2026 — NOW','2026.08 — 至今'],'Anyverse Technology',['Software Engineer Intern · Embodied AI','具身智能软件工程实习生'],['Robot SDK interfaces, Isaac simulation, PyTorch–MuJoCo workflows and ROS 2 / MoveIt 2 manipulation.','机器人SDK接口、Isaac仿真、PyTorch–MuJoCo学习流程及ROS 2 / MoveIt 2操作。']],
+ [['AUG 2026 — PRESENT','2026.08 — 至今'],'Anyverse Technology',['Software Engineer Intern · Embodied AI','具身智能软件工程实习生'],['C++ robot motion control, mixed-precision policy inference, humanoid SDK interfaces and camera–joint data pairing.','C++机器人运动控制、混合精度策略推理、人形机器人SDK接口及图像—关节数据配对。']],
  [['JAN — MAR 2026','2026.01 — 03'],'Chongqing Xingshijie Co., Ltd.',['Human Biomechanics & Embodied Simulation Intern','人体生物力学与具身仿真实习生'],['OpenSim musculoskeletal models, human-motion datasets and joint-level load analysis for motion understanding and embodied simulation.','使用OpenSim建立肌肉骨骼模型，分析人体动作数据与关节载荷，服务运动理解和具身仿真。']],
  [['JUL — AUG 2024','2024.07 — 08'],'Csoft',['Robot Learning and Manipulation Intern','机器人学习与操作实习生'],['ROS / ALOHA bimanual teleoperation, calibration, demonstration execution and real-robot integration.','ROS / ALOHA双臂遥操作、标定、示教执行及实机集成。']],
  [['2023 — 2027','2023 — 2027'],['Beijing Jiaotong University','北京交通大学'],['B.Eng. in Mechatronics Engineering · expected 2027','机械电子工程 · 工学学士，预计2027年毕业'],['Coursework includes artificial intelligence, robotics, control theory, embedded systems and signals and systems.','相关课程包括人工智能、机器人技术、控制理论、嵌入式系统及信号与系统。']]
