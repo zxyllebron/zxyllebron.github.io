@@ -1,16 +1,15 @@
 'use strict';
 const papers = window.PORTFOLIO.papers;
 const lang = 'en';
-let activeFilter = 'all', searchQuery = '';
 const profile = window.PROFILE || { photo: '' };
 const t = value => Array.isArray(value) ? value[lang === 'zh' ? 1 : 0] : value;
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const title = p => lang === 'zh' ? p.zh : p.title;
 const kind = p => p.type === 'review' ? t(['Critical review','批判性综述']) : t(['Empirical / methods','实证 / 方法研究']);
 const label = {
- projects:['Projects','项目'],selected:['Selected research','代表研究'],library:['Manuscript library','论文稿件目录'],experience:['Experience','经历'],awards:['Recognition','奖项'],
+ projects:['Projects','项目'],selected:['Selected research','代表研究'],experience:['Experience','经历'],awards:['Recognition','奖项'],
  read:['Research notes ↗','研究解读 ↗'],pdf:['Read PDF ↗','阅读PDF ↗'],related:['Related manuscripts','关联论文'],
- status:['Unpublished manuscript · 2026','未发表稿件 · 2026'],all:['All 22','全部22篇'],research:['Empirical / methods','实证 / 方法'],review:['Reviews','综述'],learning:['Learning','学习'],perception:['Perception','感知'],systems:['Systems','系统']
+ status:['Unpublished manuscript · 2026','未发表稿件 · 2026']
 };
 const projects = [
  {id:'deployment',name:['Robot systems','机器人系统'],short:['Deployment & feedback','部署与反馈'],org:'Anyverse Technology',date:['AUG 2026 — PRESENT','2026.08 — 至今'],title:['Connecting robot learning to real control','连接机器人学习与真实控制'],summary:['At Anyverse Technology, I develop Isaac Sim / Isaac Lab workflows and a PyTorch–MuJoCo learning pipeline, while extending a humanoid robot control SDK and ROS 2 / MoveIt 2 manipulation workflows.','在Anyverse Technology实习期间，开发Isaac Sim / Isaac Lab仿真与PyTorch–MuJoCo学习流程，同时扩展人形机器人控制SDK及ROS 2 / MoveIt 2操作流程。'],detail:['The engineering work spans encoder-state access, PVT trajectory execution, dynamics interfaces, motion planning, trajectory optimization and closed-loop execution. The related manuscripts examine how deployment measurements support claims about fidelity, timing and monitoring.','工程工作覆盖编码器状态读取、PVT轨迹执行、动力学接口、运动规划、轨迹优化及闭环执行。关联稿件进一步讨论部署测量如何支持关于数值一致性、计时和监测的结论。'],steps:['Isaac Sim / Lab','PyTorch · MuJoCo','C++ / Python SDK','ROS 2 · MoveIt 2'],links:[['r01',['Calibration','多相机标定']],['r02',['Policy inference','策略推理']],['r05',['Feedback contracts','反馈证据契约']],['r07',['Perception pipeline','感知流水线']]],context:['Software engineering internship','具身智能软件工程实习']},
@@ -377,24 +376,53 @@ const projectVideos = {
   {src:'assets/projects/scara-motion.mp4',poster:'assets/projects/robot-sim-140.webp',title:'SCARA motion simulation',caption:'Original course-presentation demonstration · 21 seconds'}
  ]
 };
+
+const primaryProjectIds=['uav','navigation','aloha'];
+const selectedPaperIds=new Set(papers.map(p=>p.id));
+projects.forEach(p=>{p.links=p.links.filter(([id])=>selectedPaperIds.has(id))});
+Object.assign(projects.find(p=>p.id==='aloha'),{
+ name:'Bimanual teleoperation',context:'Robot manipulation intern',
+ summary:'Integrated ROS/Ubuntu teleoperation, joint feedback and calibration for an ALOHA bimanual setup.',
+ contribution:'Robot integration, demonstration execution and hardware–software debugging.'
+});
+Object.assign(projects.find(p=>p.id==='navigation'),{
+ name:'Autonomous mobile robot',context:'Embedded control · team project',
+ summary:'Developed STM32 sensor acquisition, state-machine logic and PID motor control, then tuned the vehicle through track tests.',
+ contribution:'Embedded control, sensor integration and track-test iteration.'
+});
+Object.assign(projects.find(p=>p.id==='uav'),{
+ name:'Reconfigurable land–air UAV',context:'2025 project lead · 2024 project member',
+ date:'2025–2026 · 2025 PROJECT COHORT',
+ summary:'Led the 2025 land–air platform project, connecting mechanical design, sensing and ground–flight control.',
+ contribution:'Project coordination and integration across mechanical and control systems.'
+});
+const projectRecency={deployment:999999,uav:202604,biomechanics:202603,learning:202602,'robotics-course':202500,butterfly:202500,navigation:202508,aloha:202408};
+Object.assign(projects.find(p=>p.id==='deployment'),{
+ name:'Robot systems & humanoid control SDK',
+ summary:'Developing humanoid control interfaces and simulation-to-control workflows.',
+ contribution:'Encoder-state APIs, PVT trajectory execution, dynamics interfaces and controller diagnostics.'
+});
+projectMedia.aloha=[
+ {src:'assets/projects/aloha-xiongyule-confirmed.webp',thumb:'assets/projects/aloha-xiongyule-confirmed-thumb.webp',caption:'Xiongyule practising with the bimanual teleoperation setup.',kind:'Personal practice · video frame',width:384,height:306},
+ {src:'assets/projects/aloha-xiongyule-practice.webp',thumb:'assets/projects/aloha-xiongyule-practice-thumb.webp',caption:'Hands-on practice at the bimanual robot workstation.',kind:'Practice documentary frame',width:720,height:408},
+ ...projectMedia.aloha.filter(m=>m.src.endsWith('aloha-doc-01-04.webp'))
+];
+projectMediaNotes.aloha='Summer practice, July 2024. Documentary frames are cropped to the active picture, excluding subtitles in the letterbox.';
+
 let activeMedia = null;
 
 function heading(text,link=''){
  return `<div class="section-heading"><h2>${text}</h2>${link}</div>`;
 }
 function selectedPaperHTML(p){
- return `<article class="selected-paper" id="selected-${p.id}">
- <a class="paper-figure" href="${p.pdf}" target="_blank" rel="noopener" aria-label="${escapeHTML(t(['Read PDF: ','阅读PDF：'])+title(p))}"><img src="assets/${p.id}-figure.png" alt="${escapeHTML(t(['Figure from the manuscript: ','论文原图：'])+p.title)}" width="640" height="320" loading="lazy"></a>
- <div class="paper-description"><h3><button class="title-button" data-paper="${p.id}">${escapeHTML(title(p))}</button></h3>
- <p class="paper-meta">${kind(p)} · 2026${p.status?` · ${t(['Under Review record: 15 Oct 2026','在审记录：2026.10.15'])}`:` · ${t(['Unpublished manuscript','未发表稿件'])}`}</p>
- <p class="paper-summary">${t(p.summary)}</p>
- <div class="paper-links"><a href="${p.pdf}" target="_blank" rel="noopener">[PDF]</a><button data-paper="${p.id}">[${t(['Research note','研究解读'])}]</button>${p.tables?`<a href="${p.tables}" target="_blank" rel="noopener">[${t(['Tables I–III','主表I–III'])}]</a>`:''}<a href="#project-${p.project}">[${t(['Related project','关联项目'])}]</a></div></div></article>`;
+ return `<article class="selected-paper" id="selected-${p.id}"><a class="paper-figure" href="${p.pdf}" target="_blank" rel="noopener" aria-label="Read PDF: ${escapeHTML(p.title)}"><img src="assets/${p.id}-figure.png" alt="Figure from ${escapeHTML(p.title)}" width="640" height="320" loading="lazy" decoding="async"></a><div class="paper-description"><h3><button class="title-button" data-paper="${p.id}">${escapeHTML(p.title)}</button></h3><p class="paper-meta">Unpublished manuscript · ${p.year}</p><p class="paper-summary">${escapeHTML(p.display_summary)}</p><div class="paper-links"><a href="${p.pdf}" target="_blank" rel="noopener">[PDF]</a><button data-paper="${p.id}">[Research note]</button><a href="#project-${p.project}">[Project connection]</a></div></div></article>`;
 }
+
 function projectHTML(p){
  const media=projectMedia[p.id]||[], cover=media[0];
  const videos=projectVideos[p.id]||[];
- const coverHTML=cover?`<figure class="project-cover"><button class="project-image-button" data-project-media="${p.id}" data-media-index="0" aria-label="View photographs and figures: ${escapeHTML(t(p.name))}" aria-haspopup="dialog"><img src="${cover.thumb}" alt="${escapeHTML(cover.caption)}" width="540" height="360" loading="lazy" decoding="async"></button><figcaption>${escapeHTML(cover.kind)}</figcaption></figure>`:'';
- return `<article class="project-item" id="project-${p.id}"><div class="project-layout ${cover?'has-media':''}">${coverHTML}<div class="project-copy"><div class="project-heading"><h3>${t(p.name)}</h3><span class="date">${t(p.date)}</span></div><p class="project-affiliation">${t(p.org)} · ${t(p.context)}</p><p class="project-summary">${t(p.summary)}</p><details><summary>${media.length?`Details & gallery (${media.length} images${videos.length?`, ${videos.length} ${videos.length===1?'video':'videos'}`:''})`:t(['Details & related research','项目细节与关联研究'])}</summary><div class="project-details"><p>${t(p.detail)}</p><p class="methods">${p.steps.join(' · ')}</p>${p.links.length?`<div class="paper-links">${p.links.map(([id,name])=>`<button data-paper="${id}">[${t(name)}]</button>`).join('')}</div>`:''}</div>${media.length?`<div class="project-gallery" aria-label="${escapeHTML(t(p.name))} image gallery">${media.map((m,i)=>`<figure><button class="project-image-button" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="540" height="360" loading="lazy" decoding="async"></button><figcaption>${escapeHTML(m.caption)}</figcaption></figure>`).join('')}</div><p class="gallery-note">${escapeHTML(projectMediaNotes[p.id])}</p>`:''}${videos.length?`<div class="project-videos">${videos.map(v=>`<figure><video controls playsinline preload="none" poster="${v.poster}" aria-label="${v.title}"><source src="${v.src}" type="video/mp4">Your browser does not support embedded video. <a href="${v.src}">Download the demonstration</a>.</video><figcaption><strong>${v.title}</strong><br>${v.caption}</figcaption></figure>`).join('')}</div>`:''}</details></div></div></article>`;
+ const coverHTML=cover?`<figure class="project-cover"><button class="project-image-button" data-project-media="${p.id}" data-media-index="0" aria-label="View photographs and figures: ${escapeHTML(t(p.name))}" aria-haspopup="dialog"><img src="${cover.thumb}" alt="${escapeHTML(cover.caption)}" width="540" height="360" loading="lazy" decoding="async"></button></figure>`:'';
+ return `<article class="project-item" id="project-${p.id}"><div class="project-layout ${cover?'has-media':''}">${coverHTML}<div class="project-copy"><div class="project-heading"><h3>${t(p.name)}</h3><span class="date">${t(p.date)}</span></div><p class="project-affiliation">${t(p.org)} · ${t(p.context)}</p><p class="project-summary">${t(p.summary)}</p>${p.contribution?`<p class="project-contribution"><strong>My work:</strong> ${escapeHTML(p.contribution)}</p>`:''}<details><summary>${media.length?`Details & gallery (${media.length} images${videos.length?`, ${videos.length} ${videos.length===1?'video':'videos'}`:''})`:t(['Details & related research','项目细节与关联研究'])}</summary><div class="project-details"><p>${t(p.detail)}</p><p class="methods">${p.steps.join(' · ')}</p>${p.links.length?`<div class="paper-links">${p.links.map(([id,name])=>`<button data-paper="${id}">[${t(name)}]</button>`).join('')}</div>`:''}</div>${media.length?`<div class="project-gallery" aria-label="${escapeHTML(t(p.name))} image gallery">${media.map((m,i)=>`<figure><button class="project-image-button" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="540" height="360" loading="lazy" decoding="async"></button></figure>`).join('')}</div>`:''}${videos.length?`<div class="project-videos">${videos.map(v=>`<figure><video controls playsinline preload="none" poster="${v.poster}" aria-label="${v.title}"><source src="${v.src}" type="video/mp4">Your browser does not support embedded video. <a href="${v.src}">Download the demonstration</a>.</video><figcaption>${v.title}</figcaption></figure>`).join('')}</div>`:''}</details></div></div></article>`;
 }
 function openProjectMedia(id,index=0){
  const media=projectMedia[id], project=projects.find(p=>p.id===id);
@@ -402,58 +430,35 @@ function openProjectMedia(id,index=0){
  index=(Number(index)+media.length)%media.length;
  activeMedia={id,index};
  const item=media[index],dialog=document.getElementById('paper-dialog');
- dialog.innerHTML=`<div class="dialog-body media-dialog"><button class="close-dialog" data-close aria-label="Close project image">×</button><p class="eyebrow">${escapeHTML(item.kind)} · ${index+1} / ${media.length}</p><h2 id="dialog-title">${escapeHTML(t(project.name))}</h2><figure class="media-figure"><img src="${item.src}" alt="${escapeHTML(item.caption)}" width="${item.width}" height="${item.height}"><figcaption>${escapeHTML(item.caption)}</figcaption></figure><div class="media-navigation"><button class="button outline" data-media-step="-1" aria-label="Previous project image">← Previous</button><a href="${item.src}" target="_blank" rel="noopener">Open image ↗</a><button class="button outline" data-media-step="1" aria-label="Next project image">Next →</button></div><p class="gallery-note">${escapeHTML(projectMediaNotes[id])}</p></div>`;
+ dialog.innerHTML=`<div class="dialog-body media-dialog"><button class="close-dialog" data-close aria-label="Close project image">×</button><p class="eyebrow">${escapeHTML(item.kind)} · ${index+1} / ${media.length}</p><h2 id="dialog-title">${escapeHTML(t(project.name))}</h2><figure class="media-figure"><img src="${item.src}" alt="${escapeHTML(item.caption)}" width="${item.width}" height="${item.height}"><figcaption>${escapeHTML(item.caption)}</figcaption></figure><div class="media-navigation"><button class="button outline" data-media-step="-1" aria-label="Previous project image">← Previous</button><a href="${item.src}" target="_blank" rel="noopener">Open image ↗</a><button class="button outline" data-media-step="1" aria-label="Next project image">Next →</button></div></div>`;
  if(!dialog.open){dialog.showModal();document.body.style.overflow='hidden'}
  else dialog.querySelector('[data-media-step="1"]').focus({preventScroll:true});
 }
 
 function render(){
- document.documentElement.lang=lang==='zh'?'zh-CN':'en';
- document.title=lang==='zh'?'周熊予乐 | 机器人与学习':'Xiongyule Zhou | Robotics & Learning';
+ document.documentElement.lang='en';
+ document.title='Xiongyule Zhou | Robotics & Learning';
+ const primary=primaryProjectIds.map(id=>projects.find(p=>p.id===id));
+ const supporting=projects.filter(p=>!primaryProjectIds.includes(p.id)&&p.id!=='deployment').sort((a,b)=>projectRecency[b.id]-projectRecency[a.id]);
  document.getElementById('site').innerHTML=`
- <header class="header"><div class="page-width header-inner"><a class="brand" href="#about">${t(['Xiongyule Zhou','周熊予乐'])}</a><nav aria-label="${t(['Main navigation','主导航'])}"><a href="#selected">${t(['Research','研究'])}</a><a href="#projects">${t(label.projects)}</a><a href="#experience">${t(label.experience)}</a><a href="#awards">${t(['Honors','荣誉'])}</a></nav></div></header>
+ <header class="header"><div class="page-width header-inner"><a class="brand" href="#about">Xiongyule Zhou</a><nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#selected">Research</a><a href="#experience">Experience</a><a href="#awards">Honors</a></nav></div></header>
  <main id="main" class="page-width">
  <section id="about" class="profile">
- <div class="profile-copy"><h1>Xiongyule Zhou</h1>
- <p class="profile-role">${t(['Undergraduate in Mechatronics Engineering','机械电子工程专业本科生'])}<br>${t(['Beijing Jiaotong University · B.Eng., expected 2027','北京交通大学 · 预计2027年获工学学士学位'])}</p>
- <p>${t(['I am interested in <strong>robot learning, visual manipulation, and reliable robot systems</strong>. My work connects learning algorithms with the sensing, data and control interfaces needed to use them on physical robots.','我关注<strong>机器人学习、视觉操作与可靠机器人系统</strong>，希望连接学习算法与真实机器人中的感知、数据和控制接口。'])}</p>
- <p>${t(['I am currently an embodied AI software engineering intern at Anyverse Technology, working on simulation, robot-learning pipelines and humanoid control interfaces. Previously, I worked on ALOHA bimanual teleoperation at Csoft and human biomechanics simulation at Chongqing Xingshijie.','目前在Anyverse Technology担任具身智能软件工程实习生，参与仿真、机器人学习流程及人形机器人控制接口开发。此前曾在Csoft参与ALOHA双臂遥操作，在Chongqing Xingshijie开展人体生物力学仿真。'])}</p>
- <p class="contact-email"><a href="mailto:jensenzhou47@gmail.com">jensenzhou47@gmail.com</a></p>
- <div class="profile-links"><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">${t(['Curriculum vitae','个人简历'])}</a><span>/</span><a href="#selected">${t(['Selected research','代表研究'])}</a><span>/</span><a href="#library">${t(['All manuscripts','全部稿件'])}</a></div></div>
- <figure class="profile-photo ${profile.photo?'':'is-placeholder'}" data-photo-slot><img src="${escapeHTML(profile.photo||'assets/portrait-placeholder.svg')}" alt="${escapeHTML(profile.photo?t(['Portrait of Xiongyule Zhou','周熊予乐个人照片']):t(['Space reserved for a personal portrait','首页个人照片预留位置']))}" width="240" height="300"><figcaption>${profile.photo?t(['Xiongyule Zhou','周熊予乐']):t(['Personal photo to be added','个人照片预留'])}</figcaption></figure>
- </section>
- <section id="research" class="research-intro">
- ${heading(t(['Research interests','研究兴趣']))}
- <p>${t(['My interests center on learning-based manipulation under practical constraints: what demonstrations preserve, how observations remain usable, and how policies interact with real control systems.','我的研究兴趣集中于实际约束下的学习型机器人操作：示教数据保留了什么、感知观测何时可用，以及策略如何与真实控制系统协作。'])}</p>
- <div class="research-topics"><a href="#library" data-topic-filter="learning">${t(['Robot learning & manipulation','机器人学习与操作'])}</a><span>·</span><a href="#library" data-topic-filter="perception">${t(['Perception & observation quality','感知与观测质量'])}</a><span>·</span><a href="#library" data-topic-filter="systems">${t(['Reliable robot systems','可靠机器人系统'])}</a></div>
- </section>
- <section id="selected" class="academic-section">
- ${heading(t(['Selected research manuscripts','代表研究稿件']),`<a class="section-link" href="#library">${t(['All 22 manuscripts →','全部22篇稿件 →'])}</a>`)}
- <p class="section-intro">${t(['Selected archival studies and critical reviews, with connections to my engineering projects.','精选历史档案研究与批判性综述，并与工程项目建立联系。'])}</p>
- <div class="selected-list">${papers.filter(p=>p.featured).map(selectedPaperHTML).join('')}</div>
- <p class="evidence-note">${t(['These are research manuscripts. Status is stated for each item; unpublished work is not listed as an accepted or published paper.','以下均为研究稿件，各条目注明状态；未发表工作不作为已录用或已发表论文列示。'])}</p>
- </section>
- <section id="projects" class="academic-section">
- ${heading(t(['Research & engineering projects','科研与工程项目']))}
- <div class="projects-list">${projects.map(projectHTML).join('')}</div>
- <p class="evidence-note">${t(['Project roles and dates follow the supplied CV and project records. Related papers indicate thematic connections; experimental provenance is specified in each manuscript.','项目职责与日期依据简历及项目记录。关联论文表示主题联系，具体实验来源以各稿件说明为准。'])}</p>
- </section>
- <section id="library" class="academic-section library">
- ${heading(t(['All research manuscripts','全部研究稿件']))}
- <p class="section-intro">${t(['10 empirical or methods studies and 12 reviews. Filter by type or topic, or search by keyword.','10篇实证或方法研究，12篇综述。可按类型、主题筛选，支持中英文搜索。'])}</p>
- <div class="library-tools"><div class="filters" role="group" aria-label="${t(['Filter manuscripts','筛选论文'])}">${['all','research','review','learning','perception','systems'].map(f=>`<button class="filter" data-filter="${f}" aria-pressed="${f===activeFilter}">${t(label[f])}</button>`).join('')}</div><div class="search-wrap"><label class="sr-only" for="paper-search">${t(['Search manuscripts','搜索论文'])}</label><input type="search" id="paper-search" class="search" placeholder="${t(['Search manuscripts…','搜索论文…'])}" value="${escapeHTML(searchQuery)}"></div></div>
- <div class="result-count" id="result-count" aria-live="polite"></div><div id="library-results"></div>
- <details class="status-details"><summary>${t(['About manuscript status','稿件状态说明'])}</summary><p>${t(['S02 has a local IEEE Access Under Review record dated 15 October 2026; no new live status check is claimed. The ten empirical/methods PDFs retain author fields pending final confirmation. Original PDF contents are unchanged.','S02有2026年10月15日IEEE Access在审的本地记录，未重新实时查验投稿系统。10篇实证或方法稿件作者字段仍待最终确认，原始PDF内容保持不变。'])}</p></details>
- </section>
- <section id="experience" class="academic-section">${heading(t(['Education & experience','教育与经历']))}<div class="experience-grid"><div class="timeline">${experienceHTML()}</div></div></section>
- <section id="awards" class="academic-section">${heading(t(['Selected honors & awards','奖项与荣誉']))}
- <article class="award-row"><span class="date">2025.03</span><div><h3>${t(['Second Prize, Beijing College Students Engineering Practice and Innovation Competition','北京市大学生工程实践与创新能力大赛二等奖'])}</h3><p>${t(['Thermoelectric vehicle event · 2024 Beijing competition / selection for the 2025 national competition.','温差电动车赛项 · 2024年北京市赛事暨2025年全国赛事选拔赛。'])} <a href="assets/engineering-award.jpg" target="_blank" rel="noopener">[${t(['Certificate','证书'])}]</a></p><p>${t(['Designed cam and gear mechanisms in SolidWorks, integrated line-following hardware and worked on assembly, calibration and whole-vehicle debugging.','使用SolidWorks设计凸轮与齿轮机构，集成循迹硬件，并完成装配、标定和整车调试。'])}</p></div></article>
- ${awardRows()}</section>
+ <div class="profile-copy"><h1>Xiongyule Zhou</h1><p class="profile-role">Mechatronics Engineering · Beijing Jiaotong University<br>B.Eng., expected 2027 <span class="profile-credentials">GPA 3.67/4.0 · IELTS 7.5</span></p>
+ <p class="profile-intro">I work on <strong>robot learning, visual manipulation and reliable robot systems</strong>. Currently, I am an embodied AI software engineering intern at <a href="#project-deployment">Anyverse Technology</a>, developing simulation, learning pipelines and humanoid control interfaces.</p>
+ <div class="profile-links"><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">Curriculum vitae</a><span>/</span><a href="mailto:jensenzhou47@gmail.com">Email</a><span>/</span><a href="#selected">Selected research</a></div></div>
+ <figure class="profile-photo" data-photo-slot><img src="${escapeHTML(profile.photo||'assets/portrait-placeholder.svg')}" alt="Portrait of Xiongyule Zhou" width="240" height="300" fetchpriority="high" decoding="async"><figcaption>Xiongyule Zhou</figcaption></figure></section>
+ <section id="projects" class="academic-section projects-first">${heading('Selected engineering projects')}<div class="current-engineering">${projectHTML(projects.find(p=>p.id==='deployment'))}</div>
+ <div class="featured-projects">${primary.map(projectHTML).join('')}</div>
+ <details class="supporting-projects"><summary>More projects & coursework</summary><div class="projects-list">${supporting.map(projectHTML).join('')}</div></details></section>
+ <section id="selected" class="academic-section"><span id="library" class="anchor-target" aria-hidden="true"></span>${heading('Selected research manuscripts')}<div class="selected-list">${papers.map(selectedPaperHTML).join('')}</div><details class="manuscript-status"><summary>Manuscript status</summary><p>These are draft retrospective studies. Original PDFs are unchanged; author metadata remains pending final confirmation. Project connections are thematic.</p></details></section>
+ <section id="experience" class="academic-section">${heading('Education & experience')}<div class="timeline">${experienceHTML()}</div></section>
+  <section id="awards" class="academic-section">${heading('Honors & awards')}${awardRows()}</section>
  <section id="skills" class="academic-section supplementary"><div>${heading(t(['Methods & tools','方法与工具']))}<p><strong>${t(['Programming:','编程：'])}</strong> Python · C / C++ · MATLAB</p><p><strong>${t(['Robotics:','机器人：'])}</strong> ROS / ROS 2 · MoveIt 2 · STM32 · PID</p><p><strong>${t(['Learning & perception:','学习与感知：'])}</strong> PyTorch · OpenCV · DINOv2 · RealSense · Open3D</p><p><strong>${t(['Simulation:','仿真：'])}</strong> Isaac Sim / Lab · MuJoCo · Simulink · OpenSim · SolidWorks</p></div><div>${heading(t(['Beyond research','科研之外']))}<p>${t(['I captain the School of Mechanical Engineering basketball team and helped lead the team to a top-four university finish. I also worked on campus photography and video production as a deputy director at the University Arts Center.','担任机械工程学院篮球队队长，组织训练与赛事，带队获校级比赛四强。曾任校团委文化艺术中心副部长，参与校园摄影与视频制作。'])}</p></div></section>
- <footer id="contact"><p><a href="mailto:jensenzhou47@gmail.com">jensenzhou47@gmail.com</a><span> · </span><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">CV</a><span> · </span><a href="#about">${t(['Back to top','回到顶部'])}</a></p><p>© 2026 ${t(['Xiongyule Zhou','周熊予乐'])} · ${t(['Updated 26 October 2026','更新于2026年10月26日'])}</p></footer>
- </main>`;
- renderLibrary();bind();
+
+ <footer id="contact"><p><a href="mailto:jensenzhou47@gmail.com">jensenzhou47@gmail.com</a><span> · </span><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">CV</a><span> · </span><a href="#about">Back to top</a></p><p>© 2026 Xiongyule Zhou · Updated October 2026</p></footer></main>`;
 }
+
 function experienceHTML(){
  const items=[
  [['AUG 2026 — NOW','2026.08 — 至今'],'Anyverse Technology',['Software Engineer Intern · Embodied AI','具身智能软件工程实习生'],['Robot SDK interfaces, Isaac simulation, PyTorch–MuJoCo workflows and ROS 2 / MoveIt 2 manipulation.','机器人SDK接口、Isaac仿真、PyTorch–MuJoCo学习流程及ROS 2 / MoveIt 2操作。']],
@@ -462,21 +467,19 @@ function experienceHTML(){
  [['2023 — 2027','2023 — 2027'],['Beijing Jiaotong University','北京交通大学'],['B.Eng. in Mechatronics Engineering · expected 2027','机械电子工程 · 工学学士，预计2027年毕业'],['Coursework includes artificial intelligence, robotics, control theory, embedded systems and signals and systems.','相关课程包括人工智能、机器人技术、控制理论、嵌入式系统及信号与系统。']]
  ];return items.map(x=>`<article class="experience-item"><div class="date">${t(x[0])}</div><div><h3>${t(x[1])}</h3><div class="role">${t(x[2])}</div><p>${t(x[3])}</p></div></article>`).join('');
 }
-function awardRows(){return [
- ['2024–25<br>2025–26',['Academic Excellence Scholarship','三等学习优秀奖学金'],['Third class · Beijing Jiaotong University','北京交通大学']],
- ['2024–25<br>2025–26',['Scholarship for Outstanding Social Work','三等社会工作优秀奖学金'],['Third class · Beijing Jiaotong University','北京交通大学']],
- ['2023–24',['Sports Activity Scholarship','二类体育活动优秀奖学金'],['Second class · Beijing Jiaotong University','北京交通大学']],
- ['2023–26',['Outstanding Communist Youth League Member','校级优秀共青团员'],['Three academic years · Beijing Jiaotong University','连续三个学年 · 北京交通大学']],
- ['2025',['Mechanical Innovation Competition · Third Prize','大学生机械创新大赛三等奖'],['Beijing Jiaotong University','北京交通大学']],
-    ['2025',['Vocabulary Competition · Campus First Prize','“词达人杯”英语词汇能力大赛校选拔赛一等奖'],['Beijing Jiaotong University','北京交通大学']]
- ].map(x=>`<article class="award-row"><span class="date">${x[0]}</span><div><h3>${t(x[1])}</h3><p>${t(x[2])}</p></div></article>`).join('')}
-function renderLibrary(){
- const q=searchQuery.toLocaleLowerCase().trim();
- const matches=papers.filter(p=>(activeFilter==='all'||p.type===activeFilter||p.topics.includes(activeFilter))&&(!q||[p.id,p.title,p.zh,...p.summary,...p.topics].join(' ').toLocaleLowerCase().includes(q)));
- document.getElementById('result-count').textContent=t([`${String(matches.length).padStart(2,'0')} / 22 MANUSCRIPTS`,`${matches.length} / 22 篇稿件`]);
- document.getElementById('library-results').innerHTML=matches.length?matches.map(p=>`<article class="library-row"><span class="row-id">${p.id.toUpperCase()}</span><div><h3><button class="title-button" data-paper="${p.id}">${escapeHTML(title(p))}</button></h3><div class="row-meta">${p.topics.map(x=>t(label[x])).join(' · ')} · ${p.pages}${t([' pages','页'])}${p.status?' · '+t(['Under Review record: 15 Oct 2026','在审记录：2026.10.15']):' · '+t(['Unpublished','未发表'])}</div></div><span class="row-type">${kind(p)}</span><a class="row-pdf" href="${p.pdf}" target="_blank" rel="noopener" aria-label="${escapeHTML(t(['Read PDF: ','阅读PDF：'])+title(p))}">PDF ↗</a></article>`).join(''):`<p class="empty">${t(['No manuscripts match. Try another keyword or choose All 22.','未找到匹配稿件，请更换关键词或选择“全部22篇”。'])}</p>`;
- document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===activeFilter)));
+function awardRows(){
+ const awards=[
+ {year:2026,order:1,date:'2025–26<br>2024–25',name:'Academic Excellence Scholarship',detail:'Third class · Beijing Jiaotong University'},
+ {year:2026,order:2,date:'2025–26<br>2024–25',name:'Scholarship for Outstanding Social Work',detail:'Third class · Beijing Jiaotong University'},
+ {year:2026,order:3,date:'2025–26<br>2024–25<br>2023–24',name:'Outstanding Communist Youth League Member',detail:'Three academic years · Beijing Jiaotong University'},
+ {year:2025,order:1,date:'2025',name:'Mechanical Innovation Competition · Third Prize',detail:'Beijing Jiaotong University'},
+ {year:2025,order:2,date:'2025',name:'Vocabulary Competition · Campus First Prize',detail:'Beijing Jiaotong University'},
+ {year:2025,order:3,date:'MAR 2025',name:'Second Prize, Beijing College Students Engineering Practice and Innovation Competition',detail:'Thermoelectric vehicle event',certificate:'assets/engineering-award.jpg'},
+ {year:2024,order:1,date:'2023–24',name:'Sports Activity Scholarship',detail:'Second class · Beijing Jiaotong University'}
+ ];
+ return awards.sort((a,b)=>b.year-a.year||a.order-b.order).map(a=>`<article class="award-row"><span class="date">${a.date}</span><div><h3>${a.name}</h3><p>${a.detail}${a.certificate?` <a href="${a.certificate}" target="_blank" rel="noopener">[Certificate]</a>`:''}</p></div></article>`).join('');
 }
+
 function openPaper(id){
  activeMedia=null;
  const p=papers.find(x=>x.id===id);if(!p)return;
@@ -492,16 +495,11 @@ async function copyReference(id){
  try{await navigator.clipboard.writeText(reference);toast(t(['Reference copied','引用已复制']))}catch{const input=document.createElement('textarea');input.value=reference;input.style.position='fixed';input.style.opacity='0';document.getElementById('paper-dialog').append(input);input.select();const ok=document.execCommand('copy');input.remove();toast(ok?t(['Reference copied','引用已复制']):t(['Copy is unavailable in this browser','当前浏览器无法自动复制']))}
 }
 
-function bind(){
- document.getElementById('paper-search').oninput=e=>{searchQuery=e.target.value;renderLibrary()};
-}
 document.addEventListener('click',e=>{
- const b=e.target.closest('[data-paper],[data-filter],[data-close],[data-reference],[data-topic-filter],[data-project-media],[data-media-step]');if(!b)return;
+ const b=e.target.closest('[data-paper],[data-close],[data-reference],[data-project-media],[data-media-step]');if(!b)return;
  if(b.dataset.projectMedia)openProjectMedia(b.dataset.projectMedia,b.dataset.mediaIndex);
  if(b.dataset.mediaStep&&activeMedia)openProjectMedia(activeMedia.id,activeMedia.index+Number(b.dataset.mediaStep));
  if(b.dataset.paper)openPaper(b.dataset.paper);
- if(b.dataset.filter){activeFilter=b.dataset.filter;renderLibrary()}
- if(b.dataset.topicFilter){activeFilter=b.dataset.topicFilter;searchQuery='';document.getElementById('paper-search').value='';renderLibrary()}
  if(b.hasAttribute('data-close'))document.getElementById('paper-dialog').close();
  if(b.dataset.reference)copyReference(b.dataset.reference);
 });
@@ -509,4 +507,5 @@ const dialog=document.getElementById('paper-dialog');
 dialog.addEventListener('close',()=>{document.body.style.overflow='';activeMedia=null});
 dialog.addEventListener('keydown',e=>{if(activeMedia&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){e.preventDefault();openProjectMedia(activeMedia.id,activeMedia.index+(e.key==='ArrowRight'?1:-1))}});
 dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
+document.addEventListener('toggle',e=>{if(e.target.matches?.('details')&&!e.target.open)e.target.querySelectorAll('video').forEach(v=>v.pause())},true);
 render();
