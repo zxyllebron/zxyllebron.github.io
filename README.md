@@ -30,7 +30,7 @@ Clone this repository, run `python -m http.server 8765` in its root, and open ht
 
 The current site retains thirteen projects and supporting coursework entries. Experience follows the supplied CV, with the published PDF an exact copy of the 26 October 2026 updated source. The March–August 2024 UAV project is separate from the 2025–2026 innovation project. Keep supplementary projects and coursework labelled with their actual context.
 
-The thermoelectric-vehicle competition project now displays seven original design records: whole-vehicle CAD assembly, steering cam, cam-design worksheet, micrometer adjustment component, steering fork, thermoelectric cooling-kit assembly and transmission gear. The CAD images are extracted embedded views, not prototype photographs. Eight additional original figures support the land–air, mobile-robot, biomechanics, robotics-course and butterfly projects. Original model files and detailed provenance are retained privately.
+The thermoelectric-vehicle competition project now displays seven original design records: whole-vehicle CAD assembly, steering cam, cam-design worksheet, micrometer adjustment component, steering fork, thermoelectric cooling-kit assembly and transmission gear, alongside the original March 2025 competition award certificate. The CAD images are extracted embedded views, not prototype photographs. Eight additional original figures support the land–air, mobile-robot, biomechanics, robotics-course and butterfly projects. Original model files and detailed provenance are retained privately.
 
 Preserve the existing static architecture, public hosting, restrained white palette, small portrait and CV-aligned responsibilities. Sort dates newest first within their section; do not invent months for year-only records. Keep the three selected research PDFs marked as unpublished manuscripts.
 
@@ -39,3 +39,5 @@ Original project reports, source code, original media, provenance and cross-comp
 ## Image presentation
 
 All project covers, previews and gallery tiles share a 4:3 frame, consistent spacing and neutral white/light-grey surfaces. Photo thumbnails receive a restrained CSS saturation/contrast adjustment; plots, CAD, source image files and full-size images retain their original data and pixels. Low-clarity duplicate ALOHA frames and redundant mobile-robot screenshots are kept in the archive rather than repeated in the displayed gallery. The butterfly cover shows the assembled prototype.
+
+A recursive review of the available research-materials folder did not establish an additional team-owned thermoelectric prototype or competition-scene photograph. Vehicle photographs in the organiser briefing are reference examples and are not presented as personal project evidence.

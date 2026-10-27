@@ -1099,6 +1099,14 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original SolidWorks component view",
         "width": 640,
         "height": 480
+      },
+      {
+        "src": "assets/engineering-award.jpg",
+        "thumb": "assets/engineering-award.jpg",
+        "caption": "Original award certificate naming the team, the thermoelectric-vehicle event and Second Prize. Issued in March 2025 by the Beijing Municipal Education Commission.",
+        "kind": "Competition award certificate",
+        "width": 1664,
+        "height": 1152
       }
     ],
     "b1k": [
