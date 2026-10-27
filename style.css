@@ -66,7 +66,15 @@ dialog:has(.media-dialog){width:min(1040px,calc(100% - 32px))}.media-dialog h2{f
 .case-study-section p,.case-study-section li{font-size:13px;line-height:1.9;color:#5d6973}
 .case-study-section p{margin:0 0 13px}.case-study-section ul{padding-left:19px;margin:0}.case-study-section li{padding-left:2px;margin-bottom:13px}
 .internship-project .project-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.internship-project .project-gallery img{height:115px}
-.earlier-projects-title{font-size:16px;font-weight:500;margin:29px 0 20px;color:var(--ink)}
+.project-preview-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:8px}
+.internship-project .project-preview-strip .project-image-button img{height:48px}
+.projects-list>.project-item:not(.internship-project){padding:25px 0}
+.projects-list>.project-item:not(.internship-project) .project-layout.has-media{grid-template-columns:220px minmax(0,1fr);gap:30px}
+.projects-list>.project-item:not(.internship-project) .project-heading{display:block}
+.projects-list>.project-item:not(.internship-project) .project-heading h3{font-size:18px;line-height:1.45;margin-bottom:5px}
+.projects-list>.project-item:not(.internship-project) .project-heading .date{text-align:left;display:block;max-width:none;font-size:10px;margin-bottom:6px}
 @media(max-width:860px){.internship-project .project-layout.has-media{grid-template-columns:170px minmax(0,1fr);gap:23px}.internship-project .project-cover img{height:125px}.project-metrics{gap:11px}.project-metrics dt{font-size:17px}}
 @media(max-width:650px){.internship-project{padding:22px 0}.internship-project .project-layout.has-media{display:block}.internship-project .project-cover{max-width:340px;margin:0 0 17px}.internship-project .project-cover img{height:160px}.internship-project .project-heading h3{font-size:18px}.internship-project .project-heading .date{font-size:10px}.internship-project .project-summary{font-size:13px}.project-metrics{gap:10px;margin:15px 0}.project-metrics dt{font-size:17px}.project-metrics dd{font-size:10px}.internship-project .project-copy details[open]{margin-left:0}.internship-project .project-copy details[open]>summary{margin-left:0}.internship-project .project-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.internship-project .project-gallery img{height:105px}.case-study-section p,.case-study-section li{font-size:13px}}
 @media print{.internship-project .project-layout.has-media{grid-template-columns:135px minmax(0,1fr)}.internship-project .project-cover img{height:100px}.project-metrics{break-inside:avoid}}
+@media(max-width:860px){.projects-list>.project-item:not(.internship-project) .project-layout.has-media{grid-template-columns:170px minmax(0,1fr);gap:23px}}
+@media(max-width:650px){.projects-list>.project-item:not(.internship-project) .project-layout.has-media{grid-template-columns:90px minmax(0,1fr);gap:15px}.projects-list>.project-item:not(.internship-project) .project-heading h3{font-size:16px}.internship-project .project-preview-strip .project-image-button img{height:55px}}

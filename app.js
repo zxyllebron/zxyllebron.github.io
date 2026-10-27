@@ -377,7 +377,6 @@ const projectVideos = {
  ]
 };
 
-const primaryProjectIds=['biomechanics','navigation','aloha'];
 const selectedPaperIds=new Set(papers.map(p=>p.id));
 projects.forEach(p=>{p.links=p.links.filter(([id])=>selectedPaperIds.has(id))});
 Object.assign(projects.find(p=>p.id==='aloha'),{
@@ -477,10 +476,11 @@ function caseStudyHTML(p){
 function projectHTML(p){
  const media=projectMedia[p.id]||[], cover=media[0];
  const videos=projectVideos[p.id]||[];
- const coverHTML=cover?`<figure class="project-cover"><button class="project-image-button" data-project-media="${p.id}" data-media-index="0" aria-label="View photographs and figures: ${escapeHTML(t(p.name))}" aria-haspopup="dialog"><img src="${cover.thumb}" alt="${escapeHTML(cover.caption)}" width="540" height="360" loading="lazy" decoding="async"></button></figure>`:'';
+ const previews=p.caseStudy?`<div class="project-preview-strip" aria-label="More images for ${escapeHTML(t(p.name))}">${media.slice(1,4).map((m,i)=>`<button class="project-image-button" data-project-media="${p.id}" data-media-index="${i+1}" aria-label="Preview image ${i+2}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="180" height="120" loading="lazy" decoding="async"></button>`).join('')}</div>`:'';
+ const coverHTML=cover?`<figure class="project-cover"><button class="project-image-button" data-project-media="${p.id}" data-media-index="0" aria-label="View photographs and figures: ${escapeHTML(t(p.name))}" aria-haspopup="dialog"><img src="${cover.thumb}" alt="${escapeHTML(cover.caption)}" width="540" height="360" loading="lazy" decoding="async"></button>${previews}</figure>`:'';
  const metrics=p.metrics?`<dl class="project-metrics">${p.metrics.map(m=>`<div><dt>${escapeHTML(m.value)}</dt><dd>${escapeHTML(m.label)}</dd></div>`).join('')}</dl>`:'';
  const detail=p.caseStudy?caseStudyHTML(p):`<p>${t(p.detail)}</p>`;
- const summary=p.caseStudy?'My contributions, results & images':media.length?`Details & gallery (${media.length} images${videos.length?`, ${videos.length} ${videos.length===1?'video':'videos'}`:''})`:t(['Details & related research','项目细节与关联研究']);
+ const summary=p.caseStudy?`My contributions, results & ${media.length} images`:media.length?`Details & gallery (${media.length} images${videos.length?`, ${videos.length} ${videos.length===1?'video':'videos'}`:''})`:t(['Details & related research','项目细节与关联研究']);
  return `<article class="project-item${p.caseStudy?' internship-project':''}" id="project-${p.id}">
  <div class="project-layout ${cover?'has-media':''}">${coverHTML}<div class="project-copy">
  <div class="project-heading"><h3>${t(p.name)}</h3><span class="date">${t(p.date)}</span></div>
@@ -506,8 +506,7 @@ function openProjectMedia(id,index=0){
 function render(){
  document.documentElement.lang='en';
  document.title='Xiongyule Zhou | Robotics & Learning';
- const primary=primaryProjectIds.map(id=>projects.find(p=>p.id===id));
- const supporting=projects.filter(p=>!primaryProjectIds.includes(p.id)&&!internshipProjectIds.includes(p.id)).sort((a,b)=>projectRecency[b.id]-projectRecency[a.id]);
+ const orderedProjects=[...internshipProjectIds.map(id=>projects.find(p=>p.id===id)),...projects.filter(p=>!internshipProjectIds.includes(p.id)).sort((a,b)=>projectRecency[b.id]-projectRecency[a.id])];
  document.getElementById('site').innerHTML=`
  <header class="header"><div class="page-width header-inner"><a class="brand" href="#about">Xiongyule Zhou</a><nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#selected">Research</a><a href="#experience">Experience</a><a href="#awards">Honors</a></nav></div></header>
  <main id="main" class="page-width">
@@ -517,9 +516,7 @@ function render(){
  <div class="profile-links"><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">Curriculum vitae</a><span>/</span><a href="mailto:jensenzhou47@gmail.com">Email</a><span>/</span><a href="#selected">Selected research</a></div></div>
  <figure class="profile-photo" data-photo-slot><img src="${escapeHTML(profile.photo||'assets/portrait-placeholder.svg')}" alt="Portrait of Xiongyule Zhou" width="240" height="300" fetchpriority="high" decoding="async"></figure></section>
  <section id="projects" class="academic-section projects-first">${heading('Selected engineering projects')}<p class="internship-intro">My current work at Anyverse connects robot-policy inference, visual–proprioceptive data and real-arm execution.</p>
- <div id="internship-projects" class="internship-projects">${internshipProjectIds.map(id=>projectHTML(projects.find(p=>p.id===id))).join('')}</div>
- <h3 class="earlier-projects-title">Earlier projects</h3><div class="featured-projects">${primary.map(projectHTML).join('')}</div>
- <details class="supporting-projects"><summary>More projects & coursework</summary><div class="projects-list">${supporting.map(projectHTML).join('')}</div></details></section>
+ <div id="internship-projects" class="internship-projects projects-list">${orderedProjects.map(projectHTML).join('')}</div></section>
  <section id="selected" class="academic-section"><span id="library" class="anchor-target" aria-hidden="true"></span>${heading('Selected research manuscripts')}<div class="selected-list">${papers.map(selectedPaperHTML).join('')}</div><details class="manuscript-status"><summary>Manuscript status</summary><p>These are draft retrospective studies. Original PDFs are unchanged; author metadata remains pending final confirmation. Project connections are thematic.</p></details></section>
  <section id="experience" class="academic-section">${heading('Education & experience')}<div class="timeline">${experienceHTML()}</div></section>
   <section id="awards" class="academic-section">${heading('Honors & awards')}${awardRows()}</section>
