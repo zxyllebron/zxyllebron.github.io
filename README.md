@@ -8,7 +8,7 @@ The site is publicly accessible without sign-in.
 
 ## Application-focused presentation
 
-The homepage foregrounds three photographed engineering projects, makes individual contributions explicit, and presents three selected retrospective manuscripts: R09 (demonstration data), R02 (policy inference) and R05 (feedback monitoring). The full manuscript-library interface is removed. Earlier original PDFs remain as unchanged historical assets; their links are not promoted in the current page. Supporting coursework and project galleries remain in a native disclosure.
+The homepage presents engineering projects in one chronological list, with individual contributions, results and expandable image galleries. Three selected retrospective manuscripts are displayed. Earlier original PDFs remain as unchanged historical assets; their links are not promoted in the current page.
 
 The ALOHA cover is a clear hardware photograph. The participant-confirmed personal video frames appear only in the detail gallery. Captions remain in the image viewer. The original portrait is retained, with a compressed WebP used for delivery.
 
@@ -20,14 +20,17 @@ Clone this repository, run `python -m http.server 8765` in its root, and open ht
 
 | File or folder | Purpose |
 | --- | --- |
-| `app.js` | Profile, projects, experience, honors and interactions |
+| `app.js` | Profile, project rendering, experience, honors and interactions |
+| `projects.js` | Current project catalogue, case studies and image-gallery records |
 | `content.js` | Three selected manuscript records |
 | `profile.js` | Portrait setting |
 | `style.css` | Existing academic layout and responsive styles |
 | `assets/` | Portrait, published CV, project photos and videos |
 | `papers/` | Original manuscript PDFs, including unpromoted earlier files |
 
-The current site retains ten projects and supporting coursework entries. Experience follows the supplied CV, with the published PDF an exact copy of the 26 October 2026 updated source. The March–August 2024 UAV project is separate from the 2025–2026 innovation project. Keep supplementary projects and coursework labelled with their actual context.
+The current site retains thirteen projects and supporting coursework entries. Experience follows the supplied CV, with the published PDF an exact copy of the 26 October 2026 updated source. The March–August 2024 UAV project is separate from the 2025–2026 innovation project. Keep supplementary projects and coursework labelled with their actual context.
+
+The thermoelectric-vehicle competition project now displays seven original design records: whole-vehicle CAD assembly, steering cam, cam-design worksheet, micrometer adjustment component, steering fork, thermoelectric cooling-kit assembly and transmission gear. The CAD images are extracted embedded views, not prototype photographs. Eight additional original figures support the land–air, mobile-robot, biomechanics, robotics-course and butterfly projects. Original model files and detailed provenance are retained privately.
 
 Preserve the existing static architecture, public hosting, restrained white palette, small portrait and CV-aligned responsibilities. Sort dates newest first within their section; do not invent months for year-only records. Keep the three selected research PDFs marked as unpublished manuscripts.
 

@@ -436,40 +436,43 @@ window.PROJECT_CATALOGUE = {
     },
     {
       "id": "thermoelectric",
-      "name": "Thermoelectric autonomous vehicle",
+      "name": "Thermoelectric vehicle · cam steering",
       "org": "Beijing Jiaotong University",
       "date": "NOV 2024 — APR 2025",
-      "title": "Thermoelectric autonomous vehicle design",
-      "summary": "Designed cam and gear transmission mechanisms in SolidWorks and integrated line-following hardware for a thermally powered vehicle.",
+      "title": "Cam-steered thermoelectric competition vehicle",
+      "summary": "Designed cam-based mechanical steering and gear transmission in SolidWorks for a thermoelectric competition vehicle, then assembled and calibrated the integrated system.",
       "steps": [
         "SolidWorks",
-        "Cam & gear design",
-        "Assembly",
-        "System debugging"
+        "Cam-based steering",
+        "Gear transmission",
+        "Thermoelectric integration",
+        "Assembly & calibration"
       ],
       "links": [],
-      "context": "University engineering project",
-      "contribution": "SolidWorks cam and gear design, mechanical assembly, calibration and system debugging.",
+      "context": "Engineering Practice & Innovation Competition · mechanical design",
+      "contribution": "Cam profile and steering mechanism; gear transmission; mechanical assembly, calibration and whole-vehicle debugging.",
       "result": "Completed an integrated competition vehicle; the project received a Beijing engineering-practice competition second prize in March 2025.",
       "caseStudy": [
         {
           "heading": "Overview",
           "paragraphs": [
-            "This university engineering project connected thermal energy conversion, mechanical transmission and autonomous vehicle integration. My responsibilities centred on the SolidWorks mechanism design and on making the assembled vehicle operate consistently."
+            "This project was the thermoelectric-vehicle entry in the Beijing engineering-practice and innovation competition. Ethanol heating and thermoelectric conversion powered the vehicle, while a profiled cam mechanically encoded the steering motion.",
+            "The retained materials include the SolidWorks vehicle assembly, individual steering and transmission parts, a cam-design worksheet, the project defence document and the competition certificate."
           ]
         },
         {
           "heading": "My contribution",
           "bullets": [
-            "I designed cam and gear transmission mechanisms and checked how their interfaces fit within the vehicle assembly.",
-            "I integrated line-following hardware, completed mechanical assembly and calibration, and debugged interactions between the transmission and vehicle motion."
+            "Designed the cam and gear mechanisms in SolidWorks, checking their fit and mechanical interfaces in the whole-vehicle assembly.",
+            "Worked on the cam steering and fine-adjustment mechanism, then completed assembly, calibration and system-level debugging.",
+            "Integrated the path-following hardware and adjusted the assembled vehicle through testing; steering was implemented mechanically rather than by sensor-based electronic steering."
           ]
         },
         {
-          "heading": "Results & validation",
+          "heading": "Results & project images",
           "paragraphs": [
-            "The retained competition certificate records a second prize in the thermoelectric-vehicle event of the Beijing College Students Engineering Practice and Innovation Competition in March 2025. The functional schematic summarises the engineering responsibilities.",
-            "The completed outcome combines mechanism design, assembly and whole-vehicle calibration. The schematic presents these functions in English; the original competition record is retained under Honors & awards."
+            "The project received a second prize in the thermoelectric-vehicle event of the Beijing College Students Engineering Practice and Innovation Competition in March 2025. The certificate remains linked under Honors & awards.",
+            "The gallery shows original embedded CAD views and the cam-design worksheet from the competition archive. These are design records, not prototype photographs; standard component views are included to explain the vehicle integration."
           ]
         }
       ]
@@ -716,6 +719,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "Figure from archived measurements",
         "width": 1800,
         "height": 846
+      },
+      {
+        "src": "assets/projects/car-053.webp",
+        "thumb": "assets/projects/car-053-thumb.webp",
+        "caption": "Circuit documentation from the STM32 autonomous-vehicle team report.",
+        "kind": "Original team-project circuit diagram",
+        "width": 937,
+        "height": 833
+      },
+      {
+        "src": "assets/projects/car-037.webp",
+        "thumb": "assets/projects/car-037-thumb.webp",
+        "caption": "Program and implementation screenshot from the STM32 vehicle project presentation.",
+        "kind": "Original project implementation screenshot",
+        "width": 1290,
+        "height": 759
       }
     ],
     "uav": [
@@ -760,6 +779,14 @@ window.PROJECT_CATALOGUE = {
         "kind": "Report figure",
         "width": 1785,
         "height": 1140
+      },
+      {
+        "src": "assets/projects/opensim-027.webp",
+        "thumb": "assets/projects/opensim-027-thumb.webp",
+        "caption": "MATLAB analysis and console output retained in the biomechanics project report.",
+        "kind": "Original project analysis screenshot",
+        "width": 1440,
+        "height": 927
       }
     ],
     "robotics-course": [
@@ -786,6 +813,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "Course simulation",
         "width": 1925,
         "height": 949
+      },
+      {
+        "src": "assets/projects/robot-sim-073.webp",
+        "thumb": "assets/projects/robot-sim-073-thumb.webp",
+        "caption": "Joint position, velocity and acceleration profiles from the robotics coursework report.",
+        "kind": "Original coursework trajectory figure",
+        "width": 1067,
+        "height": 842
+      },
+      {
+        "src": "assets/projects/robot-sim-113.webp",
+        "thumb": "assets/projects/robot-sim-113-thumb.webp",
+        "caption": "SCARA workspace and trajectory-planning visualisation from the course project presentation.",
+        "kind": "Original coursework workspace figure",
+        "width": 568,
+        "height": 424
       }
     ],
     "butterfly": [
@@ -820,6 +863,14 @@ window.PROJECT_CATALOGUE = {
         "kind": "Prototype photograph",
         "width": 955,
         "height": 716
+      },
+      {
+        "src": "assets/projects/butterfly-011.webp",
+        "thumb": "assets/projects/butterfly-011-thumb.webp",
+        "caption": "Wing stress and displacement analysis reproduced from the team innovation-project presentation.",
+        "kind": "Original team-project simulation figure",
+        "width": 1116,
+        "height": 399
       }
     ],
     "platform2025": [
@@ -838,6 +889,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "CAD screenshot",
         "width": 1270,
         "height": 1200
+      },
+      {
+        "src": "assets/projects/uav-052.webp",
+        "thumb": "assets/projects/uav-052-thumb.webp",
+        "caption": "CAD assembly of the ring-wheel land–air platform from the 2025 project-cohort materials.",
+        "kind": "Original project CAD view",
+        "width": 1440,
+        "height": 801
+      },
+      {
+        "src": "assets/projects/uav-068.webp",
+        "thumb": "assets/projects/uav-068-thumb.webp",
+        "caption": "Flow-field visualisation from the land–air platform completion report.",
+        "kind": "Original project simulation figure",
+        "width": 651,
+        "height": 606
       }
     ],
     "policy-inference": [
@@ -1010,12 +1077,60 @@ window.PROJECT_CATALOGUE = {
     ],
     "thermoelectric": [
       {
-        "src": "assets/projects/refresh/thermal-vehicle-system.svg",
-        "thumb": "assets/projects/refresh/thermal-vehicle-system.svg",
-        "width": 1000,
-        "height": 650,
-        "kind": "Project architecture schematic",
-        "caption": "Functional schematic reconstructed from the vehicle project description. It illustrates the design responsibilities; it is not a photograph, dimensional drawing or measured efficiency result."
+        "src": "assets/projects/thermoelectric/vehicle-assembly.webp",
+        "thumb": "assets/projects/thermoelectric/vehicle-assembly-thumb.webp",
+        "caption": "Whole-vehicle CAD assembly from the thermoelectric competition project archive, showing the enclosed chassis, steering and transmission hardware, and heat-sink arrangement. This is an original embedded SolidWorks view, not a prototype photograph.",
+        "kind": "Original SolidWorks assembly / part view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/thermoelectric/steering-cam.webp",
+        "thumb": "assets/projects/thermoelectric/steering-cam-thumb.webp",
+        "caption": "Profiled steering cam from the competition model archive. The cam contour provides the mechanical steering schedule; this is the CAD file’s original embedded view.",
+        "kind": "Original SolidWorks assembly / part view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/thermoelectric/cam-profile-design.webp",
+        "thumb": "assets/projects/thermoelectric/cam-profile-design-thumb.webp",
+        "caption": "Original cam-design worksheet: prescribed vehicle path, displacement/angle relationships and the resulting cam contour. Labels and values are retained from the source design sheet.",
+        "kind": "Original cam-design worksheet",
+        "width": 1867,
+        "height": 983
+      },
+      {
+        "src": "assets/projects/thermoelectric/steering-adjustment.webp",
+        "thumb": "assets/projects/thermoelectric/steering-adjustment-thumb.webp",
+        "caption": "Micrometer component retained in the vehicle assembly archive for steering-angle fine adjustment. This is a component reference view, not a claim that the standard micrometer was manufactured by the team.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/thermoelectric/steering-fork.webp",
+        "thumb": "assets/projects/thermoelectric/steering-fork-thumb.webp",
+        "caption": "Front-fork component from the competition vehicle model archive, illustrating the mechanical steering interface.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/thermoelectric/thermoelectric-module.webp",
+        "thumb": "assets/projects/thermoelectric/thermoelectric-module-thumb.webp",
+        "caption": "Heat-source and thermoelectric cooling-kit assembly from the vehicle archive, with its paired heat sinks. This is an embedded CAD view.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/thermoelectric/transmission-gear.webp",
+        "thumb": "assets/projects/thermoelectric/transmission-gear-thumb.webp",
+        "caption": "Module-0.5 transmission gear from the competition assembly archive. This is the original part preview.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
       }
     ],
     "b1k": [
