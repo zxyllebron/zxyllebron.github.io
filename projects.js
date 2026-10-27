@@ -824,12 +824,12 @@ window.PROJECT_CATALOGUE = {
     ],
     "platform2025": [
       {
-        "src": "assets/projects/refresh/land-air-prototype-clean.webp",
-        "thumb": "assets/projects/refresh/land-air-prototype-clean-thumb.webp",
-        "caption": "April 2026 photograph of the 2025-cohort land–air prototype. The bottom phone-watermark band was removed for presentation; the original photograph remains in the private archive.",
-        "kind": "Prototype photograph · watermark-band cleanup",
-        "width": 1564,
-        "height": 1006
+        "src": "assets/projects/refresh/land-air-prototype-original.svg",
+        "thumb": "assets/projects/refresh/land-air-prototype-original.svg",
+        "width": 1440,
+        "height": 806,
+        "caption": "Original April 2026 photograph of the 2025-cohort land–air prototype. Only the bottom phone-watermark strip is outside the display viewport; the photograph pixels are unchanged.",
+        "kind": "Original prototype photograph"
       },
       {
         "src": "assets/projects/uav-055.webp",
