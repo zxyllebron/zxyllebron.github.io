@@ -49,6 +49,7 @@ dialog:has(.media-dialog){width:min(1040px,calc(100% - 32px))}.media-dialog h2{f
 .project-videos figcaption,.author-note{font-size:12px;line-height:1.8}.paper-meta{font-size:12px}.featured-projects .project-cover{margin-bottom:12px}
 
 /* Current internship case studies use the same white academic layout. */
+.projects-first{scroll-margin-top:70px}
 .internship-intro{font-size:13px;color:var(--muted);margin:0 0 6px;line-height:1.8}
 .internship-projects{scroll-margin-top:85px}.internship-project{padding:26px 0 28px}
 .internship-project .project-layout.has-media{grid-template-columns:220px minmax(0,1fr);gap:30px}
