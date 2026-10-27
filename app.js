@@ -453,6 +453,14 @@ Object.assign(projects.find(p=>p.id==='biomechanics'),{
 });
 projectMedia.aloha.unshift({src:'assets/projects/aloha-hardware-clear.webp',thumb:'assets/projects/aloha-hardware-clear-thumb.webp',caption:'Bimanual teleoperation hardware during the summer robotics practice.',kind:'Original practice photograph · hardware detail',width:1440,height:700});
 
+const internshipProjectIds = window.INTERNSHIP_PROJECTS.projects.map(p=>p.id);
+window.INTERNSHIP_PROJECTS.projects.forEach(p=>{
+ const existing=projects.find(item=>item.id===p.id);
+ if(existing) Object.assign(existing,p);
+ else projects.push(p);
+});
+Object.assign(projectMedia,window.INTERNSHIP_MEDIA);
+
 let activeMedia = null;
 
 function heading(text,link=''){
@@ -462,11 +470,27 @@ function selectedPaperHTML(p){
  return `<article class="selected-paper" id="selected-${p.id}"><a class="paper-figure" href="${p.pdf}" target="_blank" rel="noopener" aria-label="Read PDF: ${escapeHTML(p.title)}"><img src="assets/${p.id}-figure.png" alt="Figure from ${escapeHTML(p.title)}" width="640" height="320" loading="lazy" decoding="async"></a><div class="paper-description"><h3><button class="title-button" data-paper="${p.id}">${escapeHTML(p.title)}</button></h3><p class="paper-meta">Unpublished manuscript · ${p.year}</p><p class="paper-summary">${escapeHTML(p.display_summary)}</p><div class="paper-links"><a href="${p.pdf}" target="_blank" rel="noopener">[PDF]</a><button data-paper="${p.id}">[Research note]</button><a href="#project-${p.project}">[Project connection]</a></div></div></article>`;
 }
 
+function caseStudyHTML(p){
+ return p.caseStudy.map(section=>`<section class="case-study-section"><h4>${escapeHTML(section.heading)}</h4>${(section.paragraphs||[]).map(text=>`<p>${escapeHTML(text)}</p>`).join('')}${section.bullets?`<ul>${section.bullets.map(text=>`<li>${escapeHTML(text)}</li>`).join('')}</ul>`:''}</section>`).join('');
+}
+
 function projectHTML(p){
  const media=projectMedia[p.id]||[], cover=media[0];
  const videos=projectVideos[p.id]||[];
  const coverHTML=cover?`<figure class="project-cover"><button class="project-image-button" data-project-media="${p.id}" data-media-index="0" aria-label="View photographs and figures: ${escapeHTML(t(p.name))}" aria-haspopup="dialog"><img src="${cover.thumb}" alt="${escapeHTML(cover.caption)}" width="540" height="360" loading="lazy" decoding="async"></button></figure>`:'';
- return `<article class="project-item" id="project-${p.id}"><div class="project-layout ${cover?'has-media':''}">${coverHTML}<div class="project-copy"><div class="project-heading"><h3>${t(p.name)}</h3><span class="date">${t(p.date)}</span></div><p class="project-affiliation">${t(p.org)} · ${t(p.context)}</p><p class="project-summary">${t(p.summary)}</p>${p.contribution?`<p class="project-contribution"><strong>My work:</strong> ${escapeHTML(p.contribution)}</p>`:''}<details><summary>${media.length?`Details & gallery (${media.length} images${videos.length?`, ${videos.length} ${videos.length===1?'video':'videos'}`:''})`:t(['Details & related research','项目细节与关联研究'])}</summary><div class="project-details"><p>${t(p.detail)}</p><p class="methods">${p.steps.join(' · ')}</p>${p.links.length?`<div class="paper-links">${p.links.map(([id,name])=>`<button data-paper="${id}">[${t(name)}]</button>`).join('')}</div>`:''}</div>${media.length?`<div class="project-gallery" aria-label="${escapeHTML(t(p.name))} image gallery">${media.map((m,i)=>`<figure><button class="project-image-button" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="540" height="360" loading="lazy" decoding="async"></button></figure>`).join('')}</div>`:''}${videos.length?`<div class="project-videos">${videos.map(v=>`<figure><video controls playsinline preload="none" poster="${v.poster}" aria-label="${v.title}"><source src="${v.src}" type="video/mp4">Your browser does not support embedded video. <a href="${v.src}">Download the demonstration</a>.</video><figcaption>${v.title}</figcaption></figure>`).join('')}</div>`:''}</details></div></div></article>`;
+ const metrics=p.metrics?`<dl class="project-metrics">${p.metrics.map(m=>`<div><dt>${escapeHTML(m.value)}</dt><dd>${escapeHTML(m.label)}</dd></div>`).join('')}</dl>`:'';
+ const detail=p.caseStudy?caseStudyHTML(p):`<p>${t(p.detail)}</p>`;
+ const summary=p.caseStudy?'My contributions, results & images':media.length?`Details & gallery (${media.length} images${videos.length?`, ${videos.length} ${videos.length===1?'video':'videos'}`:''})`:t(['Details & related research','项目细节与关联研究']);
+ return `<article class="project-item${p.caseStudy?' internship-project':''}" id="project-${p.id}">
+ <div class="project-layout ${cover?'has-media':''}">${coverHTML}<div class="project-copy">
+ <div class="project-heading"><h3>${t(p.name)}</h3><span class="date">${t(p.date)}</span></div>
+ <p class="project-affiliation">${t(p.org)} · ${t(p.context)}</p><p class="project-summary">${t(p.summary)}</p>
+ ${p.contribution?`<p class="project-contribution"><strong>My work:</strong> ${escapeHTML(p.contribution)}</p>`:''}${metrics}
+ <details><summary>${summary}</summary><div class="project-details">${detail}<p class="methods">${p.steps.join(' · ')}</p>
+ ${p.links.length?`<div class="paper-links">${p.links.map(([id,name])=>`<button data-paper="${id}">[${t(name)}]</button>`).join('')}</div>`:''}</div>
+ ${media.length?`<div class="project-gallery" aria-label="${escapeHTML(t(p.name))} image gallery">${media.map((m,i)=>`<figure><button class="project-image-button" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="540" height="360" loading="lazy" decoding="async"></button></figure>`).join('')}</div>`:''}
+ ${videos.length?`<div class="project-videos">${videos.map(v=>`<figure><video controls playsinline preload="none" poster="${v.poster}" aria-label="${v.title}"><source src="${v.src}" type="video/mp4">Your browser does not support embedded video. <a href="${v.src}">Download the demonstration</a>.</video><figcaption>${v.title}</figcaption></figure>`).join('')}</div>`:''}
+ </details></div></div></article>`;
 }
 function openProjectMedia(id,index=0){
  const media=projectMedia[id], project=projects.find(p=>p.id===id);
@@ -483,17 +507,18 @@ function render(){
  document.documentElement.lang='en';
  document.title='Xiongyule Zhou | Robotics & Learning';
  const primary=primaryProjectIds.map(id=>projects.find(p=>p.id===id));
- const supporting=projects.filter(p=>!primaryProjectIds.includes(p.id)&&p.id!=='deployment').sort((a,b)=>projectRecency[b.id]-projectRecency[a.id]);
+ const supporting=projects.filter(p=>!primaryProjectIds.includes(p.id)&&!internshipProjectIds.includes(p.id)).sort((a,b)=>projectRecency[b.id]-projectRecency[a.id]);
  document.getElementById('site').innerHTML=`
  <header class="header"><div class="page-width header-inner"><a class="brand" href="#about">Xiongyule Zhou</a><nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#selected">Research</a><a href="#experience">Experience</a><a href="#awards">Honors</a></nav></div></header>
  <main id="main" class="page-width">
  <section id="about" class="profile">
  <div class="profile-copy"><h1>Xiongyule Zhou</h1><p class="profile-role">Mechatronics Engineering · Beijing Jiaotong University<br>B.Eng., expected 2027 <span class="profile-credentials">GPA 3.67/4.0 · IELTS 7.5</span></p>
- <p class="profile-intro">I work on <strong>robot learning, visual manipulation and reliable robot systems</strong>. Currently, I am an embodied AI software engineering intern at <a href="#project-deployment">Anyverse Technology</a>, working on robot motion control, policy inference and humanoid control SDKs.</p>
+ <p class="profile-intro">I work on <strong>robot learning, visual manipulation and reliable robot systems</strong>. Currently, I am an embodied AI software engineering intern at <a href="#internship-projects">Anyverse Technology</a>, working on robot motion control, policy inference and humanoid control SDKs.</p>
  <div class="profile-links"><a href="assets/Xiongyule_Zhou_CV.pdf" target="_blank" rel="noopener">Curriculum vitae</a><span>/</span><a href="mailto:jensenzhou47@gmail.com">Email</a><span>/</span><a href="#selected">Selected research</a></div></div>
  <figure class="profile-photo" data-photo-slot><img src="${escapeHTML(profile.photo||'assets/portrait-placeholder.svg')}" alt="Portrait of Xiongyule Zhou" width="240" height="300" fetchpriority="high" decoding="async"></figure></section>
- <section id="projects" class="academic-section projects-first">${heading('Selected engineering projects')}<div class="current-engineering">${projectHTML(projects.find(p=>p.id==='deployment'))}</div>
- <div class="featured-projects">${primary.map(projectHTML).join('')}</div>
+ <section id="projects" class="academic-section projects-first">${heading('Selected engineering projects')}<p class="internship-intro">My current work at Anyverse connects robot-policy inference, visual–proprioceptive data and real-arm execution.</p>
+ <div id="internship-projects" class="internship-projects">${internshipProjectIds.map(id=>projectHTML(projects.find(p=>p.id===id))).join('')}</div>
+ <h3 class="earlier-projects-title">Earlier projects</h3><div class="featured-projects">${primary.map(projectHTML).join('')}</div>
  <details class="supporting-projects"><summary>More projects & coursework</summary><div class="projects-list">${supporting.map(projectHTML).join('')}</div></details></section>
  <section id="selected" class="academic-section"><span id="library" class="anchor-target" aria-hidden="true"></span>${heading('Selected research manuscripts')}<div class="selected-list">${papers.map(selectedPaperHTML).join('')}</div><details class="manuscript-status"><summary>Manuscript status</summary><p>These are draft retrospective studies. Original PDFs are unchanged; author metadata remains pending final confirmation. Project connections are thematic.</p></details></section>
  <section id="experience" class="academic-section">${heading('Education & experience')}<div class="timeline">${experienceHTML()}</div></section>

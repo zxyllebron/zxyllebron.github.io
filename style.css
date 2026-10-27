@@ -47,3 +47,25 @@ dialog:has(.media-dialog){width:min(1040px,calc(100% - 32px))}.media-dialog h2{f
 @media(max-width:650px){.current-engineering{margin-bottom:22px}.project-affiliation,.project-heading .date,.paper-meta{font-size:11px}.featured-projects .project-heading .date,.featured-projects .project-affiliation{font-size:10px}.featured-projects .project-contribution,.featured-projects summary{font-size:11px}}
 
 .project-videos figcaption,.author-note{font-size:12px;line-height:1.8}.paper-meta{font-size:12px}.featured-projects .project-cover{margin-bottom:12px}
+
+/* Current internship case studies use the same white academic layout. */
+.internship-intro{font-size:13px;color:var(--muted);margin:0 0 6px;line-height:1.8}
+.internship-projects{scroll-margin-top:85px}.internship-project{padding:26px 0 28px}
+.internship-project .project-layout.has-media{grid-template-columns:220px minmax(0,1fr);gap:30px}
+.internship-project .project-cover{margin-top:4px}.internship-project .project-cover img{height:160px}
+.internship-project .project-heading{display:block}.internship-project .project-heading h3{font-size:19px;font-weight:500;line-height:1.45;margin-bottom:5px}
+.internship-project .project-heading .date{display:block;text-align:left;max-width:none;font-size:10px;margin-bottom:6px}
+.internship-project .project-affiliation{font-size:11px;color:var(--muted);margin-bottom:12px}
+.internship-project .project-summary{font-size:13px;line-height:1.85}.internship-project .project-contribution{font-size:12px;line-height:1.8}
+.project-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:17px 0 18px;padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.project-metrics dt{font-size:19px;color:#285b7b;font-weight:500;line-height:1.4;letter-spacing:-.3px}
+.project-metrics dd{font-size:10px;color:var(--muted);line-height:1.65;margin:5px 0 0;max-width:165px}
+.internship-project summary{font-size:12px;color:var(--link);cursor:pointer}.case-study-section{margin:22px 0}
+.case-study-section h4{font-size:14px;font-weight:600;color:var(--ink);margin:0 0 10px;line-height:1.6}
+.case-study-section p,.case-study-section li{font-size:13px;line-height:1.9;color:#5d6973}
+.case-study-section p{margin:0 0 13px}.case-study-section ul{padding-left:19px;margin:0}.case-study-section li{padding-left:2px;margin-bottom:13px}
+.internship-project .project-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.internship-project .project-gallery img{height:115px}
+.earlier-projects-title{font-size:16px;font-weight:500;margin:29px 0 20px;color:var(--ink)}
+@media(max-width:860px){.internship-project .project-layout.has-media{grid-template-columns:170px minmax(0,1fr);gap:23px}.internship-project .project-cover img{height:125px}.project-metrics{gap:11px}.project-metrics dt{font-size:17px}}
+@media(max-width:650px){.internship-project{padding:22px 0}.internship-project .project-layout.has-media{display:block}.internship-project .project-cover{max-width:340px;margin:0 0 17px}.internship-project .project-cover img{height:160px}.internship-project .project-heading h3{font-size:18px}.internship-project .project-heading .date{font-size:10px}.internship-project .project-summary{font-size:13px}.project-metrics{gap:10px;margin:15px 0}.project-metrics dt{font-size:17px}.project-metrics dd{font-size:10px}.internship-project .project-copy details[open]{margin-left:0}.internship-project .project-copy details[open]>summary{margin-left:0}.internship-project .project-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.internship-project .project-gallery img{height:105px}.case-study-section p,.case-study-section li{font-size:13px}}
+@media print{.internship-project .project-layout.has-media{grid-template-columns:135px minmax(0,1fr)}.internship-project .project-cover img{height:100px}.project-metrics{break-inside:avoid}}

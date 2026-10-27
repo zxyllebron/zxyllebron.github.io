@@ -41,7 +41,7 @@ window.PORTFOLIO = {
         "systems"
       ],
       "featured": true,
-      "project": "deployment",
+      "project": "policy-inference",
       "summary": [
         "Compares saved policy outputs, historical timing records and resource counters to examine the costs of mixed-precision deployment.",
         "结合策略输出、历史计时和资源记录，分析混合精度部署中的速度、数值一致性与资源代价。"
