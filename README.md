@@ -35,3 +35,7 @@ The thermoelectric-vehicle competition project now displays seven original desig
 Preserve the existing static architecture, public hosting, restrained white palette, small portrait and CV-aligned responsibilities. Sort dates newest first within their section; do not invent months for year-only records. Keep the three selected research PDFs marked as unpublished manuscripts.
 
 Original project reports, source code, original media, provenance and cross-computer continuation instructions are archived in the account owner's private `portfolio-workspace` repository. Only reviewed public website files belong in this public repository.
+
+## Image presentation
+
+All project covers, previews and gallery tiles share a 4:3 frame, consistent spacing and neutral white/light-grey surfaces. Photo thumbnails receive a restrained CSS saturation/contrast adjustment; plots, CAD, source image files and full-size images retain their original data and pixels. Low-clarity duplicate ALOHA frames and redundant mobile-robot screenshots are kept in the archive rather than repeated in the displayed gallery. The butterfly cover shows the assembled prototype.

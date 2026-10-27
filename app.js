@@ -12,8 +12,15 @@ function selectedPaperHTML(p){
 function caseStudyHTML(p){
  return p.caseStudy.map(s=>`<section class="case-study-section"><h4>${escapeHTML(s.heading)}</h4>${(s.paragraphs||[]).map(text=>`<p>${escapeHTML(text)}</p>`).join('')}${s.bullets?`<ul>${s.bullets.map(text=>`<li>${escapeHTML(text)}</li>`).join('')}</ul>`:''}</section>`).join('');
 }
+function mediaType(m){
+ const kind=(m.kind||'').toLowerCase();
+ if(/photograph|documentary frame|practice.*frame/.test(kind))return 'photo';
+ if(/solidworks|cad/.test(kind))return 'cad';
+ if(/screenshot|implementation/.test(kind))return 'screen';
+ return 'figure';
+}
 function mediaButton(p,m,i){
- return `<button class="project-image-button" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="${m.width}" height="${m.height}" loading="lazy" decoding="async"></button>`;
+ return `<button class="project-image-button" data-media-type="${mediaType(m)}" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="${m.width}" height="${m.height}" loading="lazy" decoding="async"></button>`;
 }
 function projectHTML(p){
  const media=projectMedia[p.id]||[], cover=media[0], videos=projectVideos[p.id]||[];

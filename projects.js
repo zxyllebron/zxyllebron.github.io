@@ -655,28 +655,12 @@ window.PROJECT_CATALOGUE = {
         "height": 700
       },
       {
-        "src": "assets/projects/aloha-xiongyule-confirmed.webp",
-        "thumb": "assets/projects/aloha-xiongyule-confirmed-thumb.webp",
-        "caption": "Xiongyule practising with the bimanual teleoperation setup.",
-        "kind": "Personal practice · video frame",
-        "width": 384,
-        "height": 306
-      },
-      {
         "src": "assets/projects/aloha-xiongyule-practice.webp",
         "thumb": "assets/projects/aloha-xiongyule-practice-thumb.webp",
         "caption": "Hands-on practice at the bimanual robot workstation.",
         "kind": "Practice documentary frame",
         "width": 720,
         "height": 408
-      },
-      {
-        "src": "assets/projects/aloha-doc-01-04.webp",
-        "thumb": "assets/projects/aloha-doc-01-04-thumb.webp",
-        "caption": "The robot workspace and laboratory setup.",
-        "kind": "Field photograph",
-        "width": 354,
-        "height": 473
       }
     ],
     "navigation": [
@@ -687,14 +671,6 @@ window.PROJECT_CATALOGUE = {
         "kind": "Prototype photograph",
         "width": 1085,
         "height": 813
-      },
-      {
-        "src": "assets/projects/car-060.webp",
-        "thumb": "assets/projects/car-060-thumb.webp",
-        "caption": "Vehicle testing on the course track.",
-        "kind": "Track test photograph",
-        "width": 691,
-        "height": 1085
       },
       {
         "src": "assets/projects/car-061.webp",
@@ -727,14 +703,6 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original team-project circuit diagram",
         "width": 937,
         "height": 833
-      },
-      {
-        "src": "assets/projects/car-037.webp",
-        "thumb": "assets/projects/car-037-thumb.webp",
-        "caption": "Program and implementation screenshot from the STM32 vehicle project presentation.",
-        "kind": "Original project implementation screenshot",
-        "width": 1290,
-        "height": 759
       }
     ],
     "uav": [
@@ -833,6 +801,14 @@ window.PROJECT_CATALOGUE = {
     ],
     "butterfly": [
       {
+        "src": "assets/projects/butterfly-026.webp",
+        "thumb": "assets/projects/butterfly-026-thumb.webp",
+        "caption": "Assembled wing and drive mechanism of the butterfly prototype.",
+        "kind": "Prototype photograph",
+        "width": 955,
+        "height": 716
+      },
+      {
         "src": "assets/projects/butterfly-004.webp",
         "thumb": "assets/projects/butterfly-004-thumb.webp",
         "caption": "Miniature drive component used in the prototype.",
@@ -855,14 +831,6 @@ window.PROJECT_CATALOGUE = {
         "kind": "Component photograph",
         "width": 849,
         "height": 637
-      },
-      {
-        "src": "assets/projects/butterfly-026.webp",
-        "thumb": "assets/projects/butterfly-026-thumb.webp",
-        "caption": "Assembled wing and drive mechanism of the butterfly prototype.",
-        "kind": "Prototype photograph",
-        "width": 955,
-        "height": 716
       },
       {
         "src": "assets/projects/butterfly-011.webp",

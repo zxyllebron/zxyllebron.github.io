@@ -12,3 +12,23 @@ dialog{width:min(780px,calc(100% - 32px));padding:0;border:1px solid #d9dfe3;bor
 @media(max-width:650px){html{scroll-padding-top:70px}.page-width{width:calc(100% - 38px)}.header-inner{min-height:54px;justify-content:center}.header .brand{display:none}.header nav{gap:10px;justify-content:space-between;width:100%;font-size:11px}.profile{grid-template-columns:minmax(0,1fr) 105px;gap:0 17px;padding-top:29px;padding-bottom:20px}.profile-copy{display:contents}.profile h1{grid-column:1;grid-row:1;font-size:27px;margin-bottom:11px}.profile-role{grid-column:1;grid-row:2;font-size:11px;line-height:1.75;margin-bottom:20px!important}.profile-credentials{font-size:10px;margin-top:6px}.profile-photo{grid-column:2;grid-row:1 / span 2;width:105px;margin:0 0 20px}.profile-intro,.profile-links{grid-column:1 / -1}.profile-intro{font-size:13px;line-height:1.85}.profile-links{font-size:12px}.academic-section{padding-top:34px}.projects-first{padding-top:16px}.section-heading h2{font-size:21px}.section-intro{font-size:12px}.project-item{padding:24px 0}.project-layout{display:block}.project-cover{max-width:340px;margin:0 0 19px}.project-image-button img{height:170px}.project-preview-strip img{height:54px}.project-heading h3{font-size:18px}.project-affiliation{font-size:11px}.project-summary{font-size:13px}.project-contribution,.project-result{font-size:12px}.project-metrics{gap:10px}.project-metrics dt{font-size:17px}.project-metrics dd{font-size:10px}.project-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.project-gallery img{height:115px}.project-videos{grid-template-columns:1fr}.selected-paper{grid-template-columns:85px minmax(0,1fr);gap:15px;padding:20px 0}.paper-figure img{height:85px}.paper-description h3{font-size:13px}.paper-summary{font-size:12px}.paper-links{font-size:11px}.paper-meta{font-size:10px}.experience-item,.award-row{grid-template-columns:89px minmax(0,1fr);gap:14px;padding:16px 0}.date{font-size:10px}.experience-item h3{font-size:13px}.role{font-size:12px}.experience-item p,.award-row p{font-size:11px}.award-row h3{font-size:12px}.supplementary{grid-template-columns:1fr;gap:25px}footer{display:block;margin-top:35px;font-size:10px}footer p+p{margin-top:7px}.dialog-body{padding:27px 20px}.dialog-body h2{font-size:21px}.media-dialog h2{font-size:18px}.media-navigation{gap:8px;font-size:10px}.button{font-size:11px;padding:8px 10px}.media-figure figcaption{font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 @media print{.header,.profile-links,dialog,#toast{display:none!important}.page-width{width:100%;max-width:none}.profile{padding-top:10px}.academic-section{padding-top:25px}.project-item,.selected-paper,.experience-item,.award-row{break-inside:avoid}.project-layout{grid-template-columns:135px minmax(0,1fr)}.project-image-button img{height:100px}.project-preview-strip img{height:32px}.project-metrics{break-inside:avoid}footer{margin-top:25px}}
+
+/* One restrained presentation system for original photos, CAD and research figures.
+   Tonal treatment applies to photo thumbnails only; the viewer keeps original pixels. */
+.project-cover{padding:10px;background:#f3f4f5;border:1px solid #e1e5e8;border-radius:3px}
+.project-cover>.project-image-button{aspect-ratio:4/3;border:0;background:#fff}
+.project-cover>.project-image-button img{width:100%;height:100%;object-fit:contain;background:#fff}
+.project-image-button[data-media-type="photo"] img{filter:saturate(.78) contrast(1.025)}
+.project-cover>.project-image-button:not([data-media-type="photo"]) img{padding:7px}
+.project-preview-strip{gap:7px;margin-top:9px}
+.project-preview-strip .project-image-button{aspect-ratio:4/3;border:1px solid #e2e6e9;background:#fff}
+.project-preview-strip .project-image-button img{width:100%;height:100%;object-fit:contain;background:#fff}
+.project-gallery{gap:12px}
+.project-gallery .project-image-button{aspect-ratio:4/3;background:#f3f4f5;padding:7px;border-color:#e1e5e8;border-radius:3px}
+.project-gallery .project-image-button img{width:100%;height:100%;object-fit:contain;background:#fff}
+.project-image-button:hover{outline:1px solid #a8b7c1;outline-offset:1px}
+.media-figure{background:#f3f4f5;padding:12px;border:1px solid #e1e5e8;border-radius:3px}
+.media-figure img{background:#fff}
+.media-figure figcaption{margin:12px 2px 0}
+@media(max-width:650px){.project-cover{max-width:340px;padding:9px}.project-preview-strip{margin-top:8px}.project-gallery .project-image-button{padding:5px}.media-figure{padding:8px}}
+@media print{.project-cover{padding:5px}.project-preview-strip{display:none}.project-gallery .project-image-button img{height:auto}}
