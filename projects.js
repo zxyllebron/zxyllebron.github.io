@@ -901,22 +901,6 @@ window.PROJECT_CATALOGUE = {
         "height": 827
       },
       {
-        "src": "assets/projects/refresh/ppo-training.webp",
-        "thumb": "assets/projects/refresh/ppo-training-thumb.webp",
-        "caption": "Reward scalars from the archived PPO baseline training log. The curve describes training behaviour; the separate evaluation batches are reported in the results figure.",
-        "kind": "Figure from archived measurements",
-        "width": 1800,
-        "height": 810
-      },
-      {
-        "src": "assets/projects/refresh/ppo-pipeline.webp",
-        "thumb": "assets/projects/refresh/ppo-pipeline-thumb.webp",
-        "caption": "Original project diagram of the state-based reaching pipeline: PyBullet environment, Gymnasium observations, PPO actions and inverse-kinematics execution.",
-        "kind": "Original project architecture figure",
-        "width": 2200,
-        "height": 649
-      },
-      {
         "src": "assets/projects/robot-sim-038.webp",
         "thumb": "assets/projects/robot-sim-038-thumb.webp",
         "caption": "KR5 model and sampled workspace in MATLAB.",
@@ -955,6 +939,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "Workspace figure from original model code",
         "width": 1275,
         "height": 1224
+      },
+      {
+        "src": "assets/projects/refresh/ppo-training.webp",
+        "thumb": "assets/projects/refresh/ppo-training-thumb.webp",
+        "caption": "Reward scalars from the archived PPO baseline training log. The curve describes training behaviour; the separate evaluation batches are reported in the results figure.",
+        "kind": "Figure from archived measurements",
+        "width": 1800,
+        "height": 810
+      },
+      {
+        "src": "assets/projects/refresh/ppo-pipeline.webp",
+        "thumb": "assets/projects/refresh/ppo-pipeline-thumb.webp",
+        "caption": "Original project diagram of the state-based reaching pipeline: PyBullet environment, Gymnasium observations, PPO actions and inverse-kinematics execution.",
+        "kind": "Original project architecture figure",
+        "width": 2200,
+        "height": 649
       }
     ],
     "thermoelectric": [
