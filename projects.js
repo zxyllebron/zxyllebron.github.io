@@ -330,22 +330,25 @@ window.PROJECT_CATALOGUE = {
       "org": "Beijing Jiaotong University",
       "date": "SEP 2025 — FEB 2026",
       "title": "Learning visual manipulation in simulation",
-      "summary": "Developed learning and simulation workflows for robotic manipulation, with a preserved PPO reaching baseline and explicit training and evaluation records.",
+      "summary": "Developed robotic manipulation and simulation workflows, combining a PPO reaching baseline with MATLAB robot modelling, kinematics and trajectory planning.",
       "steps": [
         "Python · PyTorch",
         "PyBullet · Gymnasium",
         "PPO",
-        "Inverse kinematics"
+        "Inverse kinematics",
+        "MATLAB",
+        "Robot trajectory planning"
       ],
       "links": [],
       "context": "University research project · simulation",
-      "contribution": "Simulation environment, PPO training, evaluation scripts and experiment-result analysis.",
-      "result": "An archived follow-up reach-task baseline reduced mean final distance from 54.02 to 3.89 cm (92.8%); PPO succeeded in 10/10 recorded evaluation episodes.",
+      "contribution": "Simulation environment, PPO training and evaluation; MATLAB robot modelling, kinematic analysis and trajectory planning.",
+      "result": "An archived follow-up reach-task baseline reduced mean final distance from 54.02 to 3.89 cm (92.8%); PPO succeeded in 10/10 recorded evaluation episodes. Produced workspace and trajectory visualisations for Sawyer, KR5 and SCARA robot models.",
       "caseStudy": [
         {
           "heading": "Overview",
           "paragraphs": [
-            "My university research explored learning-based manipulation and simulation workflows. A preserved July 2026 follow-up baseline makes one part of that work reproducible: a KUKA iiwa reaching task in PyBullet, wrapped as a Gymnasium environment and trained with Stable-Baselines3 PPO. The measured baseline uses robot and target coordinates as its observation, and is reported separately from broader visual grasping and handoff development."
+            "My university research explored learning-based manipulation and simulation workflows. A preserved July 2026 follow-up baseline makes one part of that work reproducible: a KUKA iiwa reaching task in PyBullet, wrapped as a Gymnasium environment and trained with Stable-Baselines3 PPO. The measured baseline uses robot and target coordinates as its observation, and is reported separately from broader visual grasping and handoff development.",
+            "The project also includes MATLAB modelling and trajectory analysis for Sawyer, KR5 and SCARA robots, spanning joint kinematics, sampled workspaces and an assembly-task trajectory."
           ]
         },
         {
@@ -353,14 +356,17 @@ window.PROJECT_CATALOGUE = {
           "bullets": [
             "I implemented the environment reset, seven-dimensional state observation, Cartesian displacement action and inverse-kinematics execution path. The observation contains end-effector XYZ, target XYZ and their distance; each action commands a small three-dimensional displacement.",
             "I connected PPO training, checkpoint storage and evaluation scripts. I used a distance-based reward with a success bonus, a 5 cm success threshold and a 150-step episode limit, and retained a random-policy comparison.",
-            "I exported training scalars, episode results and a comparison table. I separated completed evaluations from longer-training and stricter-threshold configurations whose summary entries remain empty."
+            "I exported training scalars, episode results and a comparison table. I separated completed evaluations from longer-training and stricter-threshold configurations whose summary entries remain empty.",
+            "I worked with team project materials to model the robots and evaluate kinematics in MATLAB, using sampled workspaces and configurations to inspect feasible motion.",
+            "I connected task-space trajectories with joint position, velocity and acceleration profiles and contributed to the robot simulation demonstrations."
           ]
         },
         {
           "heading": "Results & validation",
           "paragraphs": [
             "The recorded random-policy batch produced 0 successes in 20 episodes, with mean final distance 0.5402 m. The 100,000-step PPO baseline produced 10 successes in 10 episodes, with mean final distance 0.0389 m. The relative reduction in mean final distance is 92.8%. The gallery plots these original table entries and the archived reward scalars.",
-            "The batches are small and have unequal episode counts. This is state-based simulated reaching; it does not measure visual grasping, object handoff, real-robot success or a matched execution-speed improvement. The follow-up baseline is retained here as a concrete experiment associated with the broader project."
+            "The batches are small and have unequal episode counts. This is state-based simulated reaching; it does not measure visual grasping, object handoff, real-robot success or a matched execution-speed improvement. The follow-up baseline is retained here as a concrete experiment associated with the broader project.",
+            "The gallery also contains the KR5 workspace, Sawyer motion visualisation, assembly configurations, joint-trajectory profiles and SCARA workspace. These model-based simulation figures complement the separately reported PPO reaching experiment."
           ]
         }
       ],
@@ -478,46 +484,6 @@ window.PROJECT_CATALOGUE = {
       ]
     },
     {
-      "id": "robotics-course",
-      "name": "Robot kinematics & trajectory planning",
-      "org": "Beijing Jiaotong University",
-      "date": "2025 COURSE PROJECTS",
-      "title": "From robot models to planned motion",
-      "summary": "Course projects explored Sawyer kinematics, a KR5 assembly task and SCARA trajectory planning, with workspace analysis, joint-motion profiles and simulation demonstrations.",
-      "steps": [
-        "MATLAB",
-        "Robot kinematics",
-        "Trajectory planning",
-        "Simulation"
-      ],
-      "links": [],
-      "context": "Robotics coursework and team projects",
-      "contribution": "Robot modelling, kinematic analysis and trajectory-planning work within course teams.",
-      "result": "Produced workspace, configuration and trajectory visualisations for Sawyer, KR5 and SCARA course tasks.",
-      "caseStudy": [
-        {
-          "heading": "Overview",
-          "paragraphs": [
-            "These university course and team projects explored the path from a robot model to planned joint and end-effector motion. The archive covers Sawyer kinematics, a KR5 assembly task and SCARA motion planning."
-          ]
-        },
-        {
-          "heading": "My contribution",
-          "bullets": [
-            "I worked on MATLAB robot models and kinematic calculations, using sampled workspaces and configuration views to inspect feasible motion.",
-            "I connected task-space trajectories with joint position, velocity and acceleration profiles, and contributed to the course simulation demonstrations."
-          ]
-        },
-        {
-          "heading": "Results & validation",
-          "paragraphs": [
-            "The retained outputs include sampled workspace plots, robot configurations along an assembly trajectory and course simulation materials. They show the completed modelling and motion-planning exercises.",
-            "Together, the course outputs connect kinematic modelling, workspace reasoning and executable motion, with each visualisation tied to its robot model and task."
-          ]
-        }
-      ]
-    },
-    {
       "id": "butterfly",
       "name": "Biomimetic butterfly robot",
       "org": "Beijing Jiaotong University",
@@ -602,46 +568,6 @@ window.PROJECT_CATALOGUE = {
           ]
         }
       ]
-    },
-    {
-      "id": "uav",
-      "name": "Reconfigurable land–air amphibious UAV",
-      "org": "Beijing Jiaotong University",
-      "date": "MAR — AUG 2024",
-      "title": "Coordinating terrestrial motion and flight",
-      "summary": "Developed and debugged attitude stabilisation, takeoff/landing control and ground–flight mode switching for a land–air UAV.",
-      "steps": [
-        "Flight control",
-        "PID tuning",
-        "Mode switching",
-        "Motor coordination"
-      ],
-      "links": [],
-      "context": "University engineering project · flight control",
-      "contribution": "Attitude stabilisation, PID refinement, takeoff/landing and ground–flight mode-switching logic.",
-      "result": "Implemented and debugged the flight-control and actuator-coordination functions for the March–August 2024 project.",
-      "caseStudy": [
-        {
-          "heading": "Overview",
-          "paragraphs": [
-            "My 2024 university engineering work focused on the control system of a land–air amphibious UAV. It required coordinating terrestrial driving and aerial flight while maintaining clear transitions between the two operating modes."
-          ]
-        },
-        {
-          "heading": "My contribution",
-          "bullets": [
-            "I developed and debugged attitude stabilisation and takeoff/landing control, refining PID parameters through whole-platform testing.",
-            "I implemented ground–flight mode-switching logic and coordinated DC hub motors, four independently actuated servos and brushless propulsion."
-          ]
-        },
-        {
-          "heading": "Results & validation",
-          "paragraphs": [
-            "The completed contribution is the flight-control and mode-coordination implementation described in my CV. The English architecture diagram summarises those functions.",
-            "The architecture diagram reflects the sensing, stabilisation, mode-coordination and actuation functions of the March–August 2024 project."
-          ]
-        }
-      ]
     }
   ],
   "media": {
@@ -705,16 +631,6 @@ window.PROJECT_CATALOGUE = {
         "height": 833
       }
     ],
-    "uav": [
-      {
-        "src": "assets/projects/refresh/uav-2024-control.svg",
-        "thumb": "assets/projects/refresh/uav-2024-control.svg",
-        "width": 1000,
-        "height": 650,
-        "kind": "Project architecture schematic",
-        "caption": "Functional control architecture reconstructed in English from the March–August 2024 project description. This is an explanatory diagram, not a photograph or flight-test trace."
-      }
-    ],
     "biomechanics": [
       {
         "src": "assets/projects/opensim-020.webp",
@@ -755,48 +671,6 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original project analysis screenshot",
         "width": 1440,
         "height": 927
-      }
-    ],
-    "robotics-course": [
-      {
-        "src": "assets/projects/robot-sim-038.webp",
-        "thumb": "assets/projects/robot-sim-038-thumb.webp",
-        "caption": "KR5 model and sampled workspace in MATLAB.",
-        "kind": "Course simulation",
-        "width": 1234,
-        "height": 970
-      },
-      {
-        "src": "assets/projects/robot-sim-007.webp",
-        "thumb": "assets/projects/robot-sim-007-thumb.webp",
-        "caption": "Sawyer kinematics and joint-trajectory visualisation.",
-        "kind": "Course simulation",
-        "width": 1551,
-        "height": 1002
-      },
-      {
-        "src": "assets/projects/robot-sim-040.webp",
-        "thumb": "assets/projects/robot-sim-040-thumb.webp",
-        "caption": "Robot configurations along an assembly-task trajectory.",
-        "kind": "Course simulation",
-        "width": 1925,
-        "height": 949
-      },
-      {
-        "src": "assets/projects/robot-sim-073.webp",
-        "thumb": "assets/projects/robot-sim-073-thumb.webp",
-        "caption": "Joint position, velocity and acceleration profiles from the robotics coursework report.",
-        "kind": "Original coursework trajectory figure",
-        "width": 1067,
-        "height": 842
-      },
-      {
-        "src": "assets/projects/robot-sim-113.webp",
-        "thumb": "assets/projects/robot-sim-113-thumb.webp",
-        "caption": "SCARA workspace and trajectory-planning visualisation from the course project presentation.",
-        "kind": "Original coursework workspace figure",
-        "width": 568,
-        "height": 424
       }
     ],
     "butterfly": [
@@ -1041,6 +915,46 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original project architecture figure",
         "width": 2200,
         "height": 649
+      },
+      {
+        "src": "assets/projects/robot-sim-038.webp",
+        "thumb": "assets/projects/robot-sim-038-thumb.webp",
+        "caption": "KR5 model and sampled workspace in MATLAB.",
+        "kind": "Robot simulation",
+        "width": 1234,
+        "height": 970
+      },
+      {
+        "src": "assets/projects/robot-sim-007.webp",
+        "thumb": "assets/projects/robot-sim-007-thumb.webp",
+        "caption": "Sawyer kinematics and joint-trajectory visualisation.",
+        "kind": "Robot simulation",
+        "width": 1551,
+        "height": 1002
+      },
+      {
+        "src": "assets/projects/robot-sim-040.webp",
+        "thumb": "assets/projects/robot-sim-040-thumb.webp",
+        "caption": "Robot configurations along an assembly-task trajectory.",
+        "kind": "Robot simulation",
+        "width": 1925,
+        "height": 949
+      },
+      {
+        "src": "assets/projects/refresh/robot-joint-profiles-english.svg",
+        "thumb": "assets/projects/refresh/robot-joint-profiles-english.svg",
+        "caption": "Joint position, velocity and acceleration profiles from the original robotics project report. English labels are overlaid on the original image; the plotted traces are unchanged.",
+        "kind": "Original trajectory plot with English labels",
+        "width": 1067,
+        "height": 842
+      },
+      {
+        "src": "assets/projects/refresh/scara-workspace-english.png",
+        "thumb": "assets/projects/refresh/scara-workspace-english.png",
+        "caption": "SCARA workspace XY projection, replotted with English labels using the original project code and its joint ranges, sample spacing and link lengths.",
+        "kind": "Workspace figure from original model code",
+        "width": 1275,
+        "height": 1224
       }
     ],
     "thermoelectric": [

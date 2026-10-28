@@ -60,13 +60,13 @@ function render(){
 }
 function awardRows(){
  const awards=[
- {year:2026,order:1,date:'2025–26<br>2024–25',name:'Academic Excellence Scholarship',detail:'Third class · Beijing Jiaotong University'},
- {year:2026,order:2,date:'2025–26<br>2024–25',name:'Scholarship for Outstanding Social Work',detail:'Third class · Beijing Jiaotong University'},
+ {year:2026,order:1,date:'2025–26<br>2024–25',name:'Academic Excellence Scholarship',detail:'Beijing Jiaotong University'},
+ {year:2026,order:2,date:'2025–26<br>2024–25',name:'Scholarship for Outstanding Social Work',detail:'Beijing Jiaotong University'},
  {year:2026,order:3,date:'2025–26<br>2024–25<br>2023–24',name:'Outstanding Communist Youth League Member',detail:'Three academic years · Beijing Jiaotong University'},
- {year:2025,order:1,date:'2025',name:'Mechanical Innovation Competition · Third Prize',detail:'Beijing Jiaotong University'},
- {year:2025,order:2,date:'2025',name:'Vocabulary Competition · Campus First Prize',detail:'Beijing Jiaotong University'},
+ {year:2025,order:1,date:'2025',name:'Mechanical Innovation Competition · Third Prize',detail:'Provincial-level competition · Beijing Jiaotong University'},
+ {year:2025,order:2,date:'2025',name:'Campus Vocabulary Competition',detail:'Beijing Jiaotong University'},
  {year:2025,order:3,date:'MAR 2025',name:'Second Prize, Beijing College Students Engineering Practice and Innovation Competition',detail:'Thermoelectric vehicle event',certificate:'assets/engineering-award.jpg'},
- {year:2024,order:1,date:'2023–24',name:'Sports Activity Scholarship',detail:'Second class · Beijing Jiaotong University'}
+ {year:2024,order:1,date:'2023–24',name:'Sports Activity Scholarship',detail:'Beijing Jiaotong University'}
  ];
  return awards.sort((a,b)=>b.year-a.year||a.order-b.order).map(a=>`<article class="award-row"><span class="date">${a.date}</span><div><h3>${a.name}</h3><p>${a.detail}${a.certificate?` <a href="${a.certificate}" target="_blank" rel="noopener">[Certificate]</a>`:''}</p></div></article>`).join('');
 }
