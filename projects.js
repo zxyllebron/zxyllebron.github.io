@@ -7,8 +7,8 @@ window.PROJECT_CATALOGUE = {
       "org": "Anyverse Technology Co., Ltd.",
       "date": "AUG 2026 — PRESENT",
       "context": "Software Engineer Intern · Embodied AI",
-      "summary": "Built an automated execution, video review and feedback loop for household manipulation tasks, then refined grasping, placement and recovery strategies in OmniGibson.",
-      "contribution": "Task orchestration, result and video validation, failure analysis and feedback-driven strategy iteration.",
+      "summary": "Built an automated evaluation and feedback loop for household manipulation tasks, using failure analysis and paired comparisons to refine grasping, placement and recovery strategies in OmniGibson.",
+      "contribution": "Task orchestration, result and video validation, failure diagnosis, paired evaluation and feedback-driven strategy iteration.",
       "result": "On 50 repeated instances across 20 tasks, archived mean goal score rose from 0.1145 to 0.2315; 19 improved, 8 regressed and 23 were unchanged.",
       "steps": [
         "Python",
@@ -50,7 +50,7 @@ window.PROJECT_CATALOGUE = {
           "heading": "Results & validation",
           "paragraphs": [
             "Among 244 validated perception-adapter run receipts, 50 task instances across 20 tasks had repeated runs with matching instance IDs, strategy seeds, simulation seeds and native-evaluator hashes. Comparing each instance’s earliest and latest recorded runs, mean goal-satisfaction score increased from 0.1144848 to 0.2315000: an absolute gain of 0.1170152 on the 0–1 scale, or 102.2% relative to the earlier mean. Nineteen instances improved, eight regressed and twenty-three were unchanged.",
-            "For example, the repeated art-supplies instance improved from 0.2 to 1.0. The gallery contains original simulation frames from the art-supplies, modem, rose-centrepiece, honey-storage, box-moving and dish-handling rollouts, plus the aggregate comparison. A goal score is the fraction of required goal conditions satisfied; it is not a binary task-success percentage.",
+            "For example, the repeated art-supplies instance improved from 0.2 to 1.0. The gallery also presents reformatted excerpts from archived team planning and perception-analysis records, the aggregate comparison, and original simulation frames. The perception diagnostics use a separate set of episodes and should not be combined with the 50-instance score comparison. A goal score follows the evaluator’s partial-goal scoring rule; it is not a binary task-success percentage.",
             "This is a descriptive comparison of archived strategy iteration on tuned cases. Strategy commits change between runs, and the set was not a preregistered held-out experiment. The result supports progress on the recorded repeated cases; it does not establish leaderboard rank or generalisation to unseen tasks."
           ]
         }
@@ -1025,36 +1025,28 @@ window.PROJECT_CATALOGUE = {
     ],
     "b1k": [
       {
-        "src": "assets/projects/behavior/rose-grasp.webp",
-        "thumb": "assets/projects/behavior/rose-grasp-thumb.webp",
-        "caption": "Robot-camera views during the rose-centrepiece task, with flowers visible in the gripper view. Original recorded OmniGibson simulation frame.",
-        "kind": "Original OmniGibson simulation frame",
-        "width": 672,
-        "height": 448
+        "src": "assets/projects/behavior-analysis/paired-analysis.webp",
+        "thumb": "assets/projects/behavior-analysis/paired-analysis-thumb.webp",
+        "caption": "English rendering of the archived team pp6–pp7 perception review. Across 29 completed episodes, accepted pose hits changed from 222 to 230 and wrong matches on real objects from 13 to 2; off-object accepted tracks rose from 35 to 58. These are diagnostic counts, not task-success rates.",
+        "kind": "Reformatted team analysis excerpt",
+        "width": 1200,
+        "height": 700
       },
       {
-        "src": "assets/projects/refresh/b1k-organizing_art_supplies-action.webp",
-        "thumb": "assets/projects/refresh/b1k-organizing_art_supplies-action-thumb.webp",
-        "caption": "Art-supplies organisation: original simulator-video frame at 40% of the recorded rollout. This is simulation footage.",
-        "kind": "Original OmniGibson rollout frame",
-        "width": 672,
-        "height": 448
+        "src": "assets/projects/behavior-analysis/task-planning.webp",
+        "thumb": "assets/projects/behavior-analysis/task-planning-thumb.webp",
+        "caption": "English rendering of selected principles from an archived team planning document: goal decomposition, action ordering, paired evaluation and task prioritisation. This is a design record, not proof that every proposed strategy was deployed.",
+        "kind": "Reformatted team analysis excerpt",
+        "width": 1200,
+        "height": 700
       },
       {
-        "src": "assets/projects/refresh/b1k-installing_a_modem-action.webp",
-        "thumb": "assets/projects/refresh/b1k-installing_a_modem-action-thumb.webp",
-        "caption": "Modem installation: original simulator-video frame at 68% of the recorded rollout. This is simulation footage.",
-        "kind": "Original OmniGibson rollout frame",
-        "width": 672,
-        "height": 448
-      },
-      {
-        "src": "assets/projects/behavior/honey-kitchen.webp",
-        "thumb": "assets/projects/behavior/honey-kitchen-thumb.webp",
-        "caption": "Robot-camera views of the kitchen during a honey-storage task rollout. Original recorded OmniGibson simulation frame.",
-        "kind": "Original OmniGibson simulation frame",
-        "width": 672,
-        "height": 448
+        "src": "assets/projects/behavior-analysis/pose-report.webp",
+        "thumb": "assets/projects/behavior-analysis/pose-report-thumb.webp",
+        "caption": "Reformatted excerpt of the archived English pp6 per-task pose-diagnostic table, with selected rows and columns. The full report covers 15 tasks and 30 episodes; hits are accepted poses within 50 mm of the truth instance.",
+        "kind": "Reformatted team analysis excerpt",
+        "width": 1200,
+        "height": 700
       },
       {
         "src": "assets/projects/refresh/b1k-iteration.webp",
@@ -1065,50 +1057,18 @@ window.PROJECT_CATALOGUE = {
         "height": 792
       },
       {
-        "src": "assets/projects/behavior/rose-placement.webp",
-        "thumb": "assets/projects/behavior/rose-placement-thumb.webp",
-        "caption": "A later view from the rose-centrepiece task rollout. Original recorded OmniGibson simulation frame.",
-        "kind": "Original OmniGibson simulation frame",
-        "width": 672,
-        "height": 448
-      },
-      {
-        "src": "assets/projects/behavior/dish-scene.webp",
-        "thumb": "assets/projects/behavior/dish-scene-thumb.webp",
-        "caption": "Robot-camera views from a task involving dishes and a sink. Original recorded OmniGibson simulation frame.",
-        "kind": "Original OmniGibson simulation frame",
-        "width": 672,
-        "height": 448
-      },
-      {
-        "src": "assets/projects/behavior/storage-navigation.webp",
-        "thumb": "assets/projects/behavior/storage-navigation-thumb.webp",
-        "caption": "Robot-camera views from a moving-boxes-to-storage task rollout. Original recorded OmniGibson simulation frame.",
-        "kind": "Original OmniGibson simulation frame",
-        "width": 672,
-        "height": 448
-      },
-      {
-        "src": "assets/projects/behavior/honey-counter.webp",
-        "thumb": "assets/projects/behavior/honey-counter-thumb.webp",
-        "caption": "Another camera view from the honey-storage task rollout. Original recorded OmniGibson simulation frame.",
-        "kind": "Original OmniGibson simulation frame",
-        "width": 672,
-        "height": 448
-      },
-      {
-        "src": "assets/projects/refresh/b1k-organizing_art_supplies-final.webp",
-        "thumb": "assets/projects/refresh/b1k-organizing_art_supplies-final-thumb.webp",
-        "caption": "Art-supplies organisation: original simulator-video frame at 94% of the recorded rollout. This is simulation footage.",
+        "src": "assets/projects/refresh/b1k-organizing_art_supplies-action.webp",
+        "thumb": "assets/projects/refresh/b1k-organizing_art_supplies-action-thumb.webp",
+        "caption": "Art-supplies organisation: original simulator-video frame at 40% of the recorded rollout. This is simulation footage.",
         "kind": "Original OmniGibson rollout frame",
         "width": 672,
         "height": 448
       },
       {
-        "src": "assets/projects/refresh/b1k-installing_a_modem-scene.webp",
-        "thumb": "assets/projects/refresh/b1k-installing_a_modem-scene-thumb.webp",
-        "caption": "Modem installation: original simulator-video frame at 12% of the recorded rollout. This is simulation footage.",
-        "kind": "Original OmniGibson rollout frame",
+        "src": "assets/projects/behavior/honey-kitchen.webp",
+        "thumb": "assets/projects/behavior/honey-kitchen-thumb.webp",
+        "caption": "Robot-camera views of the kitchen during a honey-storage task rollout. Original recorded OmniGibson simulation frame.",
+        "kind": "Original OmniGibson simulation frame",
         "width": 672,
         "height": 448
       }
