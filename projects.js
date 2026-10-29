@@ -588,6 +588,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "Practice documentary frame",
         "width": 720,
         "height": 408
+      },
+      {
+        "src": "assets/projects/gallery-20261030/aloha-workstation.webp",
+        "thumb": "assets/projects/gallery-20261030/aloha-workstation-thumb.webp",
+        "caption": "The bimanual robot workstation in the original summer practice report.",
+        "kind": "Original practice photograph",
+        "width": 354,
+        "height": 473
+      },
+      {
+        "src": "assets/projects/gallery-20261030/aloha-workbench.webp",
+        "thumb": "assets/projects/gallery-20261030/aloha-workbench-thumb.webp",
+        "caption": "Robot hardware and a laptop at the summer practice workstation; no participant is identified from the image.",
+        "kind": "Original practice photograph",
+        "width": 594,
+        "height": 334
       }
     ],
     "navigation": [
@@ -630,6 +646,30 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original team-project circuit diagram",
         "width": 937,
         "height": 833
+      },
+      {
+        "src": "assets/projects/gallery-20261030/mobile-track.webp",
+        "thumb": "assets/projects/gallery-20261030/mobile-track-thumb.webp",
+        "caption": "The vehicle on a line-following course, from the original team project presentation.",
+        "kind": "Original track-test photograph",
+        "width": 812,
+        "height": 435
+      },
+      {
+        "src": "assets/projects/gallery-20261030/mobile-architecture.webp",
+        "thumb": "assets/projects/gallery-20261030/mobile-architecture-thumb.webp",
+        "caption": "Sensor, processing, control and actuation modules shown in the team project report.",
+        "kind": "Original team-project diagram",
+        "width": 1241,
+        "height": 557
+      },
+      {
+        "src": "assets/projects/gallery-20261030/mobile-line-test.webp",
+        "thumb": "assets/projects/gallery-20261030/mobile-line-test-thumb.webp",
+        "caption": "The autonomous vehicle on a curved line during the project track tests.",
+        "kind": "Original track-test photograph",
+        "width": 688,
+        "height": 1080
       }
     ],
     "biomechanics": [
@@ -672,6 +712,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original project analysis screenshot",
         "width": 1440,
         "height": 927
+      },
+      {
+        "src": "assets/projects/gallery-20261030/opensim-marker-view.webp",
+        "thumb": "assets/projects/gallery-20261030/opensim-marker-view-thumb.webp",
+        "caption": "A motion-capture marker pose from the original OpenSim project report.",
+        "kind": "Original motion-data screenshot",
+        "width": 607,
+        "height": 272
+      },
+      {
+        "src": "assets/projects/gallery-20261030/opensim-joint-controls.webp",
+        "thumb": "assets/projects/gallery-20261030/opensim-joint-controls-thumb.webp",
+        "caption": "Joint-coordinate controls for the posture shown in the original OpenSim project materials.",
+        "kind": "Original OpenSim screenshot",
+        "width": 577,
+        "height": 270
       }
     ],
     "butterfly": [
@@ -714,6 +770,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original team-project simulation figure",
         "width": 1116,
         "height": 399
+      },
+      {
+        "src": "assets/projects/gallery-20261030/butterfly-wing-view.webp",
+        "thumb": "assets/projects/gallery-20261030/butterfly-wing-view-thumb.webp",
+        "caption": "Another view of the lightweight wing framework and membrane from the team project materials.",
+        "kind": "Original prototype photograph",
+        "width": 828,
+        "height": 772
+      },
+      {
+        "src": "assets/projects/gallery-20261030/butterfly-drive-view.webp",
+        "thumb": "assets/projects/gallery-20261030/butterfly-drive-view-thumb.webp",
+        "caption": "Compact drive assembly documented in the butterfly robot project materials.",
+        "kind": "Original component photograph",
+        "width": 336,
+        "height": 448
       }
     ],
     "platform2025": [
@@ -748,6 +820,14 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original project simulation figure",
         "width": 651,
         "height": 606
+      },
+      {
+        "src": "assets/projects/gallery-20261030/platform-assembly-view.webp",
+        "thumb": "assets/projects/gallery-20261030/platform-assembly-view-thumb.webp",
+        "caption": "Another CAD assembly view from the 2025-cohort innovation project. The SolidWorks interface is cropped out; the model pixels are unchanged.",
+        "kind": "Original project CAD screenshot",
+        "width": 1770,
+        "height": 1165
       }
     ],
     "policy-inference": [
@@ -898,6 +978,14 @@ window.PROJECT_CATALOGUE = {
         "kind": "Figure from archived measurements",
         "width": 1980,
         "height": 1007
+      },
+      {
+        "src": "assets/projects/gallery-20261030/arm-x-fk-profile.webp",
+        "thumb": "assets/projects/gallery-20261030/arm-x-fk-profile-thumb.webp",
+        "caption": "X, Y and Z position changes reconstructed from the X-path test record using encoder readings and nominal forward kinematics. This is not external end-effector metrology.",
+        "kind": "Figure from archived encoder and FK data",
+        "width": 1500,
+        "height": 870
       }
     ],
     "learning": [
@@ -964,6 +1052,30 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original project architecture figure",
         "width": 2200,
         "height": 649
+      },
+      {
+        "src": "assets/projects/gallery-20261030/sawyer-ellipsoid.webp",
+        "thumb": "assets/projects/gallery-20261030/sawyer-ellipsoid-thumb.webp",
+        "caption": "An ellipsoid visualisation from the Sawyer robot modelling coursework.",
+        "kind": "Original robot-model figure",
+        "width": 536,
+        "height": 380
+      },
+      {
+        "src": "assets/projects/gallery-20261030/kr5-placement.webp",
+        "thumb": "assets/projects/gallery-20261030/kr5-placement-thumb.webp",
+        "caption": "KR5 configuration for a plate-placement step in the original robotics coursework.",
+        "kind": "Original robot-simulation figure",
+        "width": 1059,
+        "height": 884
+      },
+      {
+        "src": "assets/projects/gallery-20261030/kr5-side-view.webp",
+        "thumb": "assets/projects/gallery-20261030/kr5-side-view-thumb.webp",
+        "caption": "Side view of the KR5 model in a configuration from the robotics course report.",
+        "kind": "Original robot-simulation figure",
+        "width": 744,
+        "height": 430
       }
     ],
     "thermoelectric": [
@@ -1077,6 +1189,30 @@ window.PROJECT_CATALOGUE = {
         "src": "assets/projects/behavior/honey-kitchen.webp",
         "thumb": "assets/projects/behavior/honey-kitchen-thumb.webp",
         "caption": "Robot-camera views of the kitchen during a honey-storage task rollout. Original recorded OmniGibson simulation frame.",
+        "kind": "Original OmniGibson simulation frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/behavior/rose-grasp.webp",
+        "thumb": "assets/projects/behavior/rose-grasp-thumb.webp",
+        "caption": "Robot-camera views during a rose-centrepiece task rollout. Original OmniGibson simulation frame.",
+        "kind": "Original OmniGibson simulation frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/behavior/storage-navigation.webp",
+        "thumb": "assets/projects/behavior/storage-navigation-thumb.webp",
+        "caption": "Robot-camera views during a moving-boxes-to-storage task rollout. Original OmniGibson simulation frame.",
+        "kind": "Original OmniGibson simulation frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/behavior/dish-scene.webp",
+        "thumb": "assets/projects/behavior/dish-scene-thumb.webp",
+        "caption": "Robot-camera views from a dish-handling task rollout. Original OmniGibson simulation frame.",
         "kind": "Original OmniGibson simulation frame",
         "width": 672,
         "height": 448
