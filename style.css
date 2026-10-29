@@ -24,6 +24,10 @@ dialog{width:min(780px,calc(100% - 32px));padding:0;border:1px solid #d9dfe3;bor
 .project-preview-strip .project-image-button{aspect-ratio:4/3;border:1px solid #e2e6e9;background:#fff}
 .project-preview-strip .project-image-button img{width:100%;height:100%;object-fit:contain;background:#fff}
 .project-gallery{gap:12px}
+.project-gallery-groups{margin-top:18px}
+.gallery-section+.gallery-section{margin-top:24px}
+.gallery-section h4{margin:0 0 9px;font-size:13px;font-weight:600;line-height:1.5;color:#55636d}
+.gallery-section .project-gallery{margin-top:0}
 .project-gallery .project-image-button{aspect-ratio:4/3;background:#f3f4f5;padding:7px;border-color:#e1e5e8;border-radius:3px}
 .project-gallery .project-image-button img{width:100%;height:100%;object-fit:contain;background:#fff}
 .project-image-button:hover{outline:1px solid #a8b7c1;outline-offset:1px}

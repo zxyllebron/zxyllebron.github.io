@@ -30,7 +30,7 @@ Clone this repository, run `python -m http.server 8765` in its root, and open ht
 
 The current site displays eleven projects, including the merged robot learning, modelling and trajectory-planning work. Experience follows the supplied CV, with the published PDF an exact copy of the 26 October 2026 updated source. The 2025–2026 land–air innovation project remains in the portfolio. Keep supplementary projects and coursework labelled with their actual context.
 
-The thermoelectric-vehicle competition project now displays seven original design records: whole-vehicle CAD assembly, steering cam, cam-design worksheet, micrometer adjustment component, steering fork, thermoelectric cooling-kit assembly and transmission gear, alongside the original March 2025 competition award certificate. The CAD images are extracted embedded views, not prototype photographs. Eight additional original figures support the land–air, mobile-robot, biomechanics, robot-learning and butterfly projects. Original model files and detailed provenance are retained privately.
+The thermoelectric-vehicle competition project displays six design records covering the vehicle assembly, cam-steering design, heat-source assembly and transmission. The CAD images are extracted embedded views, not prototype photographs. Original model files and detailed provenance are retained privately.
 
 Preserve the existing static architecture, public hosting, restrained white palette, small portrait and CV-aligned responsibilities. Sort dates newest first within their section; do not invent months for year-only records. Keep the three selected research PDFs marked as unpublished manuscripts.
 
@@ -44,6 +44,6 @@ A recursive review of the available research-materials folder did not establish 
 
 ## Expanded project details · 30 October 2026
 
-Each homepage project retains its four existing preview images. Expanding its details or opening the image viewer exposes the complete gallery: 119 images across eleven projects, with 41 additional records selected from the existing archive. The expanded galleries include 17 BEHAVIOR images, 19 robot-learning/coursework images, 15 thermoelectric design/evidence images, 11 each for the land–air platform, mobile robot and biomechanics, 10 butterfly images and 6 bimanual-practice images. Policy-inference, observation-alignment and arm-control galleries retain their existing reviewed records.
+Each homepage project retains its existing preview images. Expanding its details or opening the image viewer exposes 110 selected images across eleven projects, arranged in clear groups such as prototype photographs, CAD design, simulation and analysis. The thermoelectric gallery is curated to six images; the award certificate is no longer displayed or linked. Image-viewer navigation follows the same group order.
 
 Additional pictures cover documented assembly details, circuit examples, control flow, model settings and simulation trajectories. Original report and model pixels are preserved in the working archive; delivery uses WebP and proportional thumbnails. Captions distinguish team practice, coursework, simulation, diagnostic excerpts and standard component models. Project roles, dates, results and the existing homepage previews are unchanged. Detailed source-entry and checksum records are held in the private maintenance archive.

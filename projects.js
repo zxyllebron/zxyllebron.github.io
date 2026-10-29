@@ -464,7 +464,7 @@ window.PROJECT_CATALOGUE = {
           "heading": "Overview",
           "paragraphs": [
             "This project was the thermoelectric-vehicle entry in the Beijing engineering-practice and innovation competition. Ethanol heating and thermoelectric conversion powered the vehicle, while a profiled cam mechanically encoded the steering motion.",
-            "The retained materials include the SolidWorks vehicle assembly, individual steering and transmission parts, a cam-design worksheet, the project defence document and the competition certificate."
+            "The retained materials include the SolidWorks vehicle assembly, individual steering and transmission parts, a cam-design worksheet and the project defence document."
           ]
         },
         {
@@ -478,7 +478,7 @@ window.PROJECT_CATALOGUE = {
         {
           "heading": "Results & project images",
           "paragraphs": [
-            "The project received a second prize in the thermoelectric-vehicle event of the Beijing College Students Engineering Practice and Innovation Competition in March 2025. The certificate remains linked under Honors & awards.",
+            "The project received a second prize in the thermoelectric-vehicle event of the Beijing College Students Engineering Practice and Innovation Competition in March 2025.",
             "The gallery shows original embedded CAD views and the cam-design worksheet from the competition archive. These are design records, not prototype photographs; standard component views are included to explain the vehicle integration."
           ]
         }
@@ -1320,14 +1320,6 @@ window.PROJECT_CATALOGUE = {
         "height": 480
       },
       {
-        "src": "assets/projects/thermoelectric/steering-fork.webp",
-        "thumb": "assets/projects/thermoelectric/steering-fork-thumb.webp",
-        "caption": "Front-fork component from the competition vehicle model archive, illustrating the mechanical steering interface.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
         "src": "assets/projects/thermoelectric/thermoelectric-module.webp",
         "thumb": "assets/projects/thermoelectric/thermoelectric-module-thumb.webp",
         "caption": "Heat-source and thermoelectric cooling-kit assembly from the vehicle archive, with its paired heat sinks. This is an embedded CAD view.",
@@ -1339,70 +1331,6 @@ window.PROJECT_CATALOGUE = {
         "src": "assets/projects/thermoelectric/transmission-gear.webp",
         "thumb": "assets/projects/thermoelectric/transmission-gear-thumb.webp",
         "caption": "Module-0.5 transmission gear from the competition assembly archive. This is the original part preview.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "src": "assets/engineering-award.jpg",
-        "thumb": "assets/engineering-award.jpg",
-        "caption": "Original award certificate naming the team, the thermoelectric-vehicle event and Second Prize. Issued in March 2025 by the Beijing Municipal Education Commission.",
-        "kind": "Competition award certificate",
-        "width": 1664,
-        "height": 1152
-      },
-      {
-        "src": "assets/projects/details-20261030/thermal-chassis-base.webp",
-        "thumb": "assets/projects/details-20261030/thermal-chassis-base-thumb.webp",
-        "caption": "Chassis base-plate view from the original thermoelectric-vehicle model archive.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/details-20261030/thermal-drive-wheel.webp",
-        "thumb": "assets/projects/details-20261030/thermal-drive-wheel-thumb.webp",
-        "caption": "Drive-wheel component retained in the thermoelectric-vehicle assembly archive.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/details-20261030/thermal-camshaft.webp",
-        "thumb": "assets/projects/details-20261030/thermal-camshaft-thumb.webp",
-        "caption": "Camshaft component from the original cam-steering model archive.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/details-20261030/thermal-steering-pushrod.webp",
-        "thumb": "assets/projects/details-20261030/thermal-steering-pushrod-thumb.webp",
-        "caption": "Steering pushrod from the original vehicle model archive.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/details-20261030/thermal-adjustment-pivot.webp",
-        "thumb": "assets/projects/details-20261030/thermal-adjustment-pivot-thumb.webp",
-        "caption": "Pivoting end of the steering fine-adjustment mechanism, from the original model archive.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/details-20261030/thermal-generator-module.webp",
-        "thumb": "assets/projects/details-20261030/thermal-generator-module-thumb.webp",
-        "caption": "Thermoelectric-element reference model retained in the vehicle assembly archive; a component model, not a prototype photograph.",
-        "kind": "Original SolidWorks component view",
-        "width": 640,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/details-20261030/thermal-heatsink.webp",
-        "thumb": "assets/projects/details-20261030/thermal-heatsink-thumb.webp",
-        "caption": "Heat-sink reference model retained in the thermoelectric-vehicle assembly archive.",
         "kind": "Original SolidWorks component view",
         "width": 640,
         "height": 480
