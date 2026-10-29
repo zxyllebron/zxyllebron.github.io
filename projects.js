@@ -604,6 +604,22 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original practice photograph",
         "width": 594,
         "height": 334
+      },
+      {
+        "src": "assets/projects/details-20261030/bimanual-team-workstation.webp",
+        "thumb": "assets/projects/details-20261030/bimanual-team-workstation-thumb.webp",
+        "caption": "Bimanual robot practice at the workstation, from the summer-practice supporting report.",
+        "kind": "Practice photograph",
+        "width": 1706,
+        "height": 1279
+      },
+      {
+        "src": "assets/projects/details-20261030/bimanual-setup-session.webp",
+        "thumb": "assets/projects/details-20261030/bimanual-setup-session-thumb.webp",
+        "caption": "A second view of the bimanual setup during the team practice session, from the supporting report.",
+        "kind": "Practice photograph",
+        "width": 1706,
+        "height": 1279
       }
     ],
     "navigation": [
@@ -670,6 +686,30 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original track-test photograph",
         "width": 688,
         "height": 1080
+      },
+      {
+        "src": "assets/projects/details-20261030/vehicle-line-sensor-circuit.webp",
+        "thumb": "assets/projects/details-20261030/vehicle-line-sensor-circuit-thumb.webp",
+        "caption": "Three-channel line-following circuit example included in the team presentation.",
+        "kind": "Project presentation circuit example",
+        "width": 992,
+        "height": 733
+      },
+      {
+        "src": "assets/projects/details-20261030/vehicle-obstacle-sensor-circuit.webp",
+        "thumb": "assets/projects/details-20261030/vehicle-obstacle-sensor-circuit-thumb.webp",
+        "caption": "Infrared obstacle-avoidance circuit example included in the team presentation.",
+        "kind": "Project presentation circuit example",
+        "width": 1338,
+        "height": 825
+      },
+      {
+        "src": "assets/projects/details-20261030/vehicle-control-flow.webp",
+        "thumb": "assets/projects/details-20261030/vehicle-control-flow-thumb.webp",
+        "caption": "Vehicle control flow from the final team report.",
+        "kind": "Project control-flow diagram",
+        "width": 513,
+        "height": 1022
       }
     ],
     "biomechanics": [
@@ -728,6 +768,38 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original OpenSim screenshot",
         "width": 577,
         "height": 270
+      },
+      {
+        "src": "assets/projects/details-20261030/biomechanics-height-association.webp",
+        "thumb": "assets/projects/details-20261030/biomechanics-height-association-thumb.webp",
+        "caption": "Athlete height versus recorded performance time, as plotted in the archived biomechanics report.",
+        "kind": "Archived exploratory analysis figure",
+        "width": 1023,
+        "height": 708
+      },
+      {
+        "src": "assets/projects/details-20261030/biomechanics-free-leg-association.webp",
+        "thumb": "assets/projects/details-20261030/biomechanics-free-leg-association-thumb.webp",
+        "caption": "Free-leg height versus performance time, as plotted in the archived biomechanics report.",
+        "kind": "Archived exploratory analysis figure",
+        "width": 522,
+        "height": 347
+      },
+      {
+        "src": "assets/projects/details-20261030/biomechanics-angular-velocity.webp",
+        "thumb": "assets/projects/details-20261030/biomechanics-angular-velocity-thumb.webp",
+        "caption": "Angular velocity versus performance time from the archived biomechanics analysis.",
+        "kind": "Archived exploratory analysis figure",
+        "width": 539,
+        "height": 346
+      },
+      {
+        "src": "assets/projects/details-20261030/opensim-scale-tool-settings.webp",
+        "thumb": "assets/projects/details-20261030/opensim-scale-tool-settings-thumb.webp",
+        "caption": "OpenSim Scale Tool settings documented in the biomechanics report, including subject mass and static-pose marker input.",
+        "kind": "Original OpenSim screenshot",
+        "width": 1614,
+        "height": 1108
       }
     ],
     "butterfly": [
@@ -786,6 +858,30 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original component photograph",
         "width": 336,
         "height": 448
+      },
+      {
+        "src": "assets/projects/details-20261030/butterfly-battery-pack.webp",
+        "thumb": "assets/projects/details-20261030/butterfly-battery-pack-thumb.webp",
+        "caption": "Battery pack assembled for the butterfly robot, as documented in the team design presentation.",
+        "kind": "Prototype component photograph",
+        "width": 564,
+        "height": 518
+      },
+      {
+        "src": "assets/projects/details-20261030/butterfly-charger-schematic.webp",
+        "thumb": "assets/projects/details-20261030/butterfly-charger-schematic-thumb.webp",
+        "caption": "Charging-board circuit drawing included in the team design presentation.",
+        "kind": "Project circuit schematic",
+        "width": 1289,
+        "height": 912
+      },
+      {
+        "src": "assets/projects/details-20261030/butterfly-servo-signals.webp",
+        "thumb": "assets/projects/details-20261030/butterfly-servo-signals-thumb.webp",
+        "caption": "Servo pulse-width control illustration included in the team mechanism-design presentation.",
+        "kind": "Project design illustration",
+        "width": 992,
+        "height": 476
       }
     ],
     "platform2025": [
@@ -828,6 +924,54 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original project CAD screenshot",
         "width": 1770,
         "height": 1165
+      },
+      {
+        "src": "assets/projects/details-20261030/platform-rear-connector.webp",
+        "thumb": "assets/projects/details-20261030/platform-rear-connector-thumb.webp",
+        "caption": "Rear connector CAD view from the land–air platform design presentation.",
+        "kind": "Project CAD component view",
+        "width": 1144,
+        "height": 950
+      },
+      {
+        "src": "assets/projects/details-20261030/platform-frame-plate.webp",
+        "thumb": "assets/projects/details-20261030/platform-frame-plate-thumb.webp",
+        "caption": "Frame-plate design from the land–air platform presentation.",
+        "kind": "Project CAD component view",
+        "width": 1102,
+        "height": 832
+      },
+      {
+        "src": "assets/projects/details-20261030/platform-wheel-rim.webp",
+        "thumb": "assets/projects/details-20261030/platform-wheel-rim-thumb.webp",
+        "caption": "Wheel-rim geometry from the platform design archive.",
+        "kind": "Project CAD component view",
+        "width": 877,
+        "height": 631
+      },
+      {
+        "src": "assets/projects/details-20261030/platform-exploded-mechanism.webp",
+        "thumb": "assets/projects/details-20261030/platform-exploded-mechanism-thumb.webp",
+        "caption": "Exploded subassembly view from the platform design presentation.",
+        "kind": "Project CAD subassembly view",
+        "width": 1114,
+        "height": 806
+      },
+      {
+        "src": "assets/projects/details-20261030/platform-integrated-model.webp",
+        "thumb": "assets/projects/details-20261030/platform-integrated-model-thumb.webp",
+        "caption": "Integrated ring-wheel platform model from the 2025-cohort project presentation.",
+        "kind": "Project CAD assembly view",
+        "width": 2294,
+        "height": 1274
+      },
+      {
+        "src": "assets/projects/details-20261030/platform-control-architecture.webp",
+        "thumb": "assets/projects/details-20261030/platform-control-architecture-thumb.webp",
+        "caption": "Control-system architecture reproduced from the land–air platform completion report.",
+        "kind": "Project architecture diagram",
+        "width": 1719,
+        "height": 770
       }
     ],
     "policy-inference": [
@@ -1076,6 +1220,70 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original robot-simulation figure",
         "width": 744,
         "height": 430
+      },
+      {
+        "src": "assets/projects/details-20261030/sawyer-kinematic-chain.webp",
+        "thumb": "assets/projects/details-20261030/sawyer-kinematic-chain-thumb.webp",
+        "caption": "Sawyer kinematic-chain model from the archived robotics coursework presentation.",
+        "kind": "Original coursework model figure",
+        "width": 599,
+        "height": 363
+      },
+      {
+        "src": "assets/projects/details-20261030/robot-end-effector-path.webp",
+        "thumb": "assets/projects/details-20261030/robot-end-effector-path-thumb.webp",
+        "caption": "End-effector path for the screw pick-and-place coursework task, from the team presentation.",
+        "kind": "Original coursework trajectory figure",
+        "width": 1299,
+        "height": 901
+      },
+      {
+        "src": "assets/projects/details-20261030/robot-placement-joint-profiles.webp",
+        "thumb": "assets/projects/details-20261030/robot-placement-joint-profiles-thumb.webp",
+        "caption": "Joint-position, velocity and acceleration profiles for the placement sequence documented in the robotics report.",
+        "kind": "Original coursework trajectory figure",
+        "width": 1067,
+        "height": 842
+      },
+      {
+        "src": "assets/projects/details-20261030/scara-workspace-volume.webp",
+        "thumb": "assets/projects/details-20261030/scara-workspace-volume-thumb.webp",
+        "caption": "SCARA workspace volume from the original trajectory-planning coursework presentation.",
+        "kind": "Original coursework workspace figure",
+        "width": 552,
+        "height": 483
+      },
+      {
+        "src": "assets/projects/details-20261030/scara-grasper-path.webp",
+        "thumb": "assets/projects/details-20261030/scara-grasper-path-thumb.webp",
+        "caption": "SCARA grasper trajectory through the planned task waypoints, from the original coursework presentation.",
+        "kind": "Original coursework trajectory figure",
+        "width": 1391,
+        "height": 905
+      },
+      {
+        "src": "assets/projects/details-20261030/scara-velocity-comparison.webp",
+        "thumb": "assets/projects/details-20261030/scara-velocity-comparison-thumb.webp",
+        "caption": "Joint-velocity comparison for the original and constrained SCARA plans, from the archived coursework presentation.",
+        "kind": "Original coursework trajectory comparison",
+        "width": 696,
+        "height": 649
+      },
+      {
+        "src": "assets/projects/details-20261030/scara-simulink-model.webp",
+        "thumb": "assets/projects/details-20261030/scara-simulink-model-thumb.webp",
+        "caption": "Simulink implementation documented in the SCARA trajectory-planning coursework report.",
+        "kind": "Original coursework simulation diagram",
+        "width": 1550,
+        "height": 1292
+      },
+      {
+        "src": "assets/projects/details-20261030/coordinated-arm-course-simulation.webp",
+        "thumb": "assets/projects/details-20261030/coordinated-arm-course-simulation-thumb.webp",
+        "caption": "Coordinated object-placement simulation from the robotics coursework report. This is a course simulation, separate from the PPO reaching baseline.",
+        "kind": "Original coursework simulation screenshot",
+        "width": 1268,
+        "height": 766
       }
     ],
     "thermoelectric": [
@@ -1142,6 +1350,62 @@ window.PROJECT_CATALOGUE = {
         "kind": "Competition award certificate",
         "width": 1664,
         "height": 1152
+      },
+      {
+        "src": "assets/projects/details-20261030/thermal-chassis-base.webp",
+        "thumb": "assets/projects/details-20261030/thermal-chassis-base-thumb.webp",
+        "caption": "Chassis base-plate view from the original thermoelectric-vehicle model archive.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/details-20261030/thermal-drive-wheel.webp",
+        "thumb": "assets/projects/details-20261030/thermal-drive-wheel-thumb.webp",
+        "caption": "Drive-wheel component retained in the thermoelectric-vehicle assembly archive.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/details-20261030/thermal-camshaft.webp",
+        "thumb": "assets/projects/details-20261030/thermal-camshaft-thumb.webp",
+        "caption": "Camshaft component from the original cam-steering model archive.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/details-20261030/thermal-steering-pushrod.webp",
+        "thumb": "assets/projects/details-20261030/thermal-steering-pushrod-thumb.webp",
+        "caption": "Steering pushrod from the original vehicle model archive.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/details-20261030/thermal-adjustment-pivot.webp",
+        "thumb": "assets/projects/details-20261030/thermal-adjustment-pivot-thumb.webp",
+        "caption": "Pivoting end of the steering fine-adjustment mechanism, from the original model archive.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/details-20261030/thermal-generator-module.webp",
+        "thumb": "assets/projects/details-20261030/thermal-generator-module-thumb.webp",
+        "caption": "Thermoelectric-element reference model retained in the vehicle assembly archive; a component model, not a prototype photograph.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/details-20261030/thermal-heatsink.webp",
+        "thumb": "assets/projects/details-20261030/thermal-heatsink-thumb.webp",
+        "caption": "Heat-sink reference model retained in the thermoelectric-vehicle assembly archive.",
+        "kind": "Original SolidWorks component view",
+        "width": 640,
+        "height": 480
       }
     ],
     "b1k": [
@@ -1214,6 +1478,70 @@ window.PROJECT_CATALOGUE = {
         "thumb": "assets/projects/behavior/dish-scene-thumb.webp",
         "caption": "Robot-camera views from a dish-handling task rollout. Original OmniGibson simulation frame.",
         "kind": "Original OmniGibson simulation frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/behavior-analysis/paired-analysis.webp",
+        "thumb": "assets/projects/behavior-analysis/paired-analysis-thumb.webp",
+        "caption": "English rendering of the archived team pp6–pp7 perception review. Across 29 completed episodes, accepted pose hits changed from 222 to 230 and wrong matches on real objects from 13 to 2; off-object accepted tracks rose from 35 to 58. These are diagnostic counts, not task-success rates.",
+        "kind": "Reformatted team analysis excerpt",
+        "width": 1200,
+        "height": 700
+      },
+      {
+        "src": "assets/projects/behavior-analysis/task-planning.webp",
+        "thumb": "assets/projects/behavior-analysis/task-planning-thumb.webp",
+        "caption": "English rendering of selected principles from an archived team planning document: goal decomposition, action ordering, paired evaluation and task prioritisation. This is a design record, not proof that every proposed strategy was deployed.",
+        "kind": "Reformatted team analysis excerpt",
+        "width": 1200,
+        "height": 700
+      },
+      {
+        "src": "assets/projects/behavior-analysis/pose-report.webp",
+        "thumb": "assets/projects/behavior-analysis/pose-report-thumb.webp",
+        "caption": "Reformatted excerpt of the archived English pp6 per-task pose-diagnostic table, with selected rows and columns. The full report covers 15 tasks and 30 episodes; hits are accepted poses within 50 mm of the truth instance.",
+        "kind": "Reformatted team analysis excerpt",
+        "width": 1200,
+        "height": 700
+      },
+      {
+        "src": "assets/projects/refresh/b1k-installing_a_modem-action.webp",
+        "thumb": "assets/projects/refresh/b1k-installing_a_modem-action-thumb.webp",
+        "caption": "Modem installation: original simulator-video frame at 68% of the recorded rollout. This is simulation footage.",
+        "kind": "Original OmniGibson rollout frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/behavior/rose-placement.webp",
+        "thumb": "assets/projects/behavior/rose-placement-thumb.webp",
+        "caption": "A later view from the rose-centrepiece task rollout. Original recorded OmniGibson simulation frame.",
+        "kind": "Original OmniGibson simulation frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/behavior/honey-counter.webp",
+        "thumb": "assets/projects/behavior/honey-counter-thumb.webp",
+        "caption": "Another camera view from the honey-storage task rollout. Original recorded OmniGibson simulation frame.",
+        "kind": "Original OmniGibson simulation frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/refresh/b1k-organizing_art_supplies-final.webp",
+        "thumb": "assets/projects/refresh/b1k-organizing_art_supplies-final-thumb.webp",
+        "caption": "Art-supplies organisation: original simulator-video frame at 94% of the recorded rollout. This is simulation footage.",
+        "kind": "Original OmniGibson rollout frame",
+        "width": 672,
+        "height": 448
+      },
+      {
+        "src": "assets/projects/refresh/b1k-installing_a_modem-scene.webp",
+        "thumb": "assets/projects/refresh/b1k-installing_a_modem-scene-thumb.webp",
+        "caption": "Modem installation: original simulator-video frame at 12% of the recorded rollout. This is simulation footage.",
+        "kind": "Original OmniGibson rollout frame",
         "width": 672,
         "height": 448
       }
