@@ -50,7 +50,7 @@ window.PROJECT_CATALOGUE = {
           "heading": "Results & validation",
           "paragraphs": [
             "Among 244 validated perception-adapter run receipts, 50 task instances across 20 tasks had repeated runs with matching instance IDs, strategy seeds, simulation seeds and native-evaluator hashes. Comparing each instance’s earliest and latest recorded runs, mean goal-satisfaction score increased from 0.1144848 to 0.2315000: an absolute gain of 0.1170152 on the 0–1 scale, or 102.2% relative to the earlier mean. Nineteen instances improved, eight regressed and twenty-three were unchanged.",
-            "For example, the repeated art-supplies instance improved from 0.2 to 1.0. The gallery also presents reformatted excerpts from archived team planning and perception-analysis records, the aggregate comparison, and original simulation frames. The perception diagnostics use a separate set of episodes and should not be combined with the 50-instance score comparison. A goal score follows the evaluator’s partial-goal scoring rule; it is not a binary task-success percentage.",
+            "For example, the repeated art-supplies instance improved from 0.2 to 1.0. The gallery combines simulation depth and point-cloud diagnostics, a static scene map, the full matched-case comparison, an archived detector training plot and original simulation frames. These images represent distinct records; the perception and detector diagnostics are not the same 50-instance score comparison. A goal score follows the evaluator’s partial-goal scoring rule; it is not a binary task-success percentage.",
             "This is a descriptive comparison of archived strategy iteration on tuned cases. Strategy commits change between runs, and the set was not a preregistered held-out experiment. The result supports progress on the recorded repeated cases; it does not establish leaderboard rank or generalisation to unseen tasks."
           ]
         }
@@ -220,7 +220,8 @@ window.PROJECT_CATALOGUE = {
         {
           "heading": "Overview",
           "paragraphs": [
-            "A robot experiment needs more than an action vector: it needs consistent coordinates, an executable trajectory, reliable feedback and a clear definition of completion. I developed the motion and teaching interfaces for an in-house seven-degree-of-freedom arm, with planning and execution in the C++ controller and Python / HTTP access for higher-level workflows. This work formed part of my broader extension of the humanoid robot control SDK."
+            "A robot experiment needs more than an action vector: it needs consistent coordinates, an executable trajectory, reliable feedback and a clear definition of completion. I developed the motion and teaching interfaces for an in-house seven-degree-of-freedom arm, with planning and execution in the C++ controller and Python / HTTP access for higher-level workflows. This work formed part of my broader extension of the humanoid robot control SDK.",
+            "The archived hardware documentation describes a bench-mounted seven-axis arm with five rotary joints and a two-actuator parallel wrist. The accompanying bench photograph documents the physical setup; it is separate from the finite path-test measurements."
           ]
         },
         {
@@ -859,6 +860,14 @@ window.PROJECT_CATALOGUE = {
     ],
     "deployment": [
       {
+        "src": "assets/projects/evidence-20261030/arm-bench.webp",
+        "thumb": "assets/projects/evidence-20261030/arm-bench-thumb.webp",
+        "width": 1350,
+        "height": 1800,
+        "caption": "Original photograph of the in-house arm bench from the structure and dynamics documentation. The image documents the hardware setup and is not identified as a frame from the five path trials.",
+        "kind": "Original bench photograph"
+      },
+      {
         "src": "assets/projects/anyverse/arm-paths.webp",
         "thumb": "assets/projects/anyverse/arm-paths-thumb.webp",
         "caption": "Five finite paths reconstructed from real encoder feedback with SDK forward kinematics. These are nominal FK paths; external end-effector metrology was not performed.",
@@ -1025,36 +1034,36 @@ window.PROJECT_CATALOGUE = {
     ],
     "b1k": [
       {
-        "src": "assets/projects/behavior-analysis/paired-analysis.webp",
-        "thumb": "assets/projects/behavior-analysis/paired-analysis-thumb.webp",
-        "caption": "English rendering of the archived team pp6–pp7 perception review. Across 29 completed episodes, accepted pose hits changed from 222 to 230 and wrong matches on real objects from 13 to 2; off-object accepted tracks rose from 35 to 58. These are diagnostic counts, not task-success rates.",
-        "kind": "Reformatted team analysis excerpt",
-        "width": 1200,
-        "height": 700
+        "src": "assets/projects/evidence-20261030/behavior-perception.webp",
+        "thumb": "assets/projects/evidence-20261030/behavior-perception-thumb.webp",
+        "width": 1800,
+        "height": 877,
+        "caption": "Recorded head-camera depth and 2,835-point tote cloud from one archived organizing-art-supplies simulation pose record. The point cloud is plotted relative to the recorded pose origin; the data are simulated, and the two panels are not an image overlay.",
+        "kind": "Figure from archived simulation data"
       },
       {
-        "src": "assets/projects/behavior-analysis/task-planning.webp",
-        "thumb": "assets/projects/behavior-analysis/task-planning-thumb.webp",
-        "caption": "English rendering of selected principles from an archived team planning document: goal decomposition, action ordering, paired evaluation and task prioritisation. This is a design record, not proof that every proposed strategy was deployed.",
-        "kind": "Reformatted team analysis excerpt",
-        "width": 1200,
-        "height": 700
+        "src": "assets/projects/evidence-20261030/behavior-matched.webp",
+        "thumb": "assets/projects/evidence-20261030/behavior-matched-thumb.webp",
+        "width": 1800,
+        "height": 812,
+        "caption": "All 50 matched task-instance score changes, with five example instances including regressions. Comparison uses matching instance, strategy and simulation seeds, and evaluator hash; strategy commits vary. These are tuned cases rather than held-out performance.",
+        "kind": "Figure from archived evaluator results"
       },
       {
-        "src": "assets/projects/behavior-analysis/pose-report.webp",
-        "thumb": "assets/projects/behavior-analysis/pose-report-thumb.webp",
-        "caption": "Reformatted excerpt of the archived English pp6 per-task pose-diagnostic table, with selected rows and columns. The full report covers 15 tasks and 30 episodes; hits are accepted poses within 50 mm of the truth instance.",
-        "kind": "Reformatted team analysis excerpt",
-        "width": 1200,
-        "height": 700
+        "src": "assets/projects/evidence-20261030/behavior-map.webp",
+        "thumb": "assets/projects/evidence-20261030/behavior-map-thumb.webp",
+        "width": 983,
+        "height": 1067,
+        "caption": "Archived house-single-floor static occupancy grid from the team simulation environment, shown at 0.05 m resolution. The static raster omits movable objects and does not depict an executed path.",
+        "kind": "Figure from archived simulation map"
       },
       {
-        "src": "assets/projects/refresh/b1k-iteration.webp",
-        "thumb": "assets/projects/refresh/b1k-iteration-thumb.webp",
-        "caption": "Earliest versus latest archived perception-adapter runs on 50 repeated instances across 20 tasks. Instance, strategy seed, simulation seed and native-evaluator hash match; strategy commits vary. These are tuned cases, not held-out performance.",
-        "kind": "Figure from archived measurements",
-        "width": 1980,
-        "height": 792
+        "src": "assets/projects/evidence-20261030/behavior-training.webp",
+        "thumb": "assets/projects/evidence-20261030/behavior-training-thumb.webp",
+        "width": 1800,
+        "height": 1200,
+        "caption": "Original archived detector training plot showing training and validation loss, average precision and recall over three recorded epochs. This is a model diagnostic, not a household task success rate.",
+        "kind": "Original archived evaluation plot"
       },
       {
         "src": "assets/projects/refresh/b1k-organizing_art_supplies-action.webp",
