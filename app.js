@@ -19,20 +19,22 @@ function mediaType(m){
  if(/screenshot|implementation/.test(kind))return 'screen';
  return 'figure';
 }
-function mediaButton(p,m,i){
- return `<button class="project-image-button" data-media-type="${mediaType(m)}" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${m.thumb}" alt="${escapeHTML(m.caption)}" width="${m.width}" height="${m.height}" loading="lazy" decoding="async"></button>`;
+function mediaButton(p,m,i,priority=false){
+ return `<button class="project-image-button" data-image-state="loading" data-media-type="${mediaType(m)}" data-project-media="${p.id}" data-media-index="${i}" aria-label="View image ${i+1}: ${escapeHTML(m.caption)}" aria-haspopup="dialog"><img src="${escapeHTML(m.thumb)}" data-thumbnail="${escapeHTML(m.thumb)}" data-full-image="${escapeHTML(m.src)}" alt="${escapeHTML(m.caption)}" width="${m.width}" height="${m.height}" loading="${priority?'eager':'lazy'}"${priority?' fetchpriority="high"':''} decoding="async"></button>`;
 }
 function projectHTML(p){
  const media=projectMedia[p.id]||[], cover=media[0], videos=projectVideos[p.id]||[];
  const preview=media.length>1?`<div class="project-preview-strip" aria-label="Project image previews">${media.slice(1,4).map((m,i)=>mediaButton(p,m,i+1)).join('')}</div>`:'';
  const metrics=p.metrics?`<dl class="project-metrics">${p.metrics.map(m=>`<div><dt>${escapeHTML(m.value)}</dt><dd>${escapeHTML(m.label)}</dd></div>`).join('')}</dl>`:'';
- return `<article class="project-item" id="project-${p.id}"><div class="project-layout"><figure class="project-cover">${mediaButton(p,cover,0)}${preview}</figure><div class="project-copy"><div class="project-heading"><h3>${escapeHTML(p.name)}</h3><span class="date">${escapeHTML(p.date)}</span></div><p class="project-affiliation">${escapeHTML(p.org)} · ${escapeHTML(p.context)}</p><p class="project-summary">${escapeHTML(p.summary)}</p><p class="project-contribution"><strong>My work:</strong> ${escapeHTML(p.contribution)}</p><p class="project-result"><strong>Result:</strong> ${escapeHTML(p.result)}</p><details><summary>Contributions, results & images (${media.length})</summary><div class="project-details">${metrics}${caseStudyHTML(p)}<p class="methods">${p.steps.map(escapeHTML).join(' · ')}</p>${p.id==='b1k'?'<p class="source-link"><a href="https://behavior.stanford.edu/challenge/evaluation.html" target="_blank" rel="noopener">BEHAVIOR evaluation and score definition ↗</a></p>':''}${p.links.length?`<div class="paper-links">${p.links.map(([id,name])=>`<button data-paper="${id}">[${escapeHTML(name)}]</button>`).join('')}</div>`:''}</div><div class="project-gallery" aria-label="${escapeHTML(p.name)} image gallery">${media.map((m,i)=>`<figure>${mediaButton(p,m,i)}</figure>`).join('')}</div>${videos.length?`<div class="project-videos">${videos.map(v=>`<figure><video controls playsinline preload="none" poster="${v.poster}" aria-label="${v.title}"><source src="${v.src}" type="video/mp4">Your browser does not support embedded video.</video><figcaption>${v.title}</figcaption></figure>`).join('')}</div>`:''}</details></div></div></article>`;
+ return `<article class="project-item" id="project-${p.id}"><div class="project-layout"><figure class="project-cover">${mediaButton(p,cover,0,p===projects[0])}${preview}</figure><div class="project-copy"><div class="project-heading"><h3>${escapeHTML(p.name)}</h3><span class="date">${escapeHTML(p.date)}</span></div><p class="project-affiliation">${escapeHTML(p.org)} · ${escapeHTML(p.context)}</p><p class="project-summary">${escapeHTML(p.summary)}</p><p class="project-contribution"><strong>My work:</strong> ${escapeHTML(p.contribution)}</p><p class="project-result"><strong>Result:</strong> ${escapeHTML(p.result)}</p><details><summary>Contributions, results & images (${media.length})</summary><div class="project-details">${metrics}${caseStudyHTML(p)}<p class="methods">${p.steps.map(escapeHTML).join(' · ')}</p>${p.id==='b1k'?'<p class="source-link"><a href="https://behavior.stanford.edu/challenge/evaluation.html" target="_blank" rel="noopener">BEHAVIOR evaluation and score definition ↗</a></p>':''}${p.links.length?`<div class="paper-links">${p.links.map(([id,name])=>`<button data-paper="${id}">[${escapeHTML(name)}]</button>`).join('')}</div>`:''}</div><div class="project-gallery" aria-label="${escapeHTML(p.name)} image gallery">${media.map((m,i)=>`<figure>${mediaButton(p,m,i)}</figure>`).join('')}</div>${videos.length?`<div class="project-videos">${videos.map(v=>`<figure><video controls playsinline preload="none" poster="${v.poster}" aria-label="${v.title}"><source src="${v.src}" type="video/mp4">Your browser does not support embedded video.</video><figcaption>${v.title}</figcaption></figure>`).join('')}</div>`:''}</details></div></div></article>`;
 }
-function openProjectMedia(id,index=0){
+function openProjectMedia(id,index=0,previewSrc=null){
  const media=projectMedia[id], project=projects.find(p=>p.id===id);if(!media||!project)return;
  index=(Number(index)+media.length)%media.length;activeMedia={id,index};
  const item=media[index],dialog=document.getElementById('paper-dialog');
- dialog.innerHTML=`<div class="dialog-body media-dialog"><button class="close-dialog" data-close aria-label="Close project image">×</button><p class="eyebrow">${escapeHTML(item.kind)} · ${index+1} / ${media.length}</p><h2 id="dialog-title">${escapeHTML(project.name)}</h2><figure class="media-figure"><img src="${item.src}" alt="${escapeHTML(item.caption)}" width="${item.width}" height="${item.height}"><figcaption>${escapeHTML(item.caption)}</figcaption></figure><div class="media-navigation"><button class="button outline" data-media-step="-1" aria-label="Previous project image">← Previous</button><a href="${item.src}" target="_blank" rel="noopener">Open image ↗</a><button class="button outline" data-media-step="1" aria-label="Next project image">Next →</button></div></div>`;
+ dialog.innerHTML=`<div class="dialog-body media-dialog"><button class="close-dialog" data-close aria-label="Close project image">×</button><p class="eyebrow">${escapeHTML(item.kind)} · ${index+1} / ${media.length}</p><h2 id="dialog-title">${escapeHTML(project.name)}</h2><figure class="media-figure"><img src="${escapeHTML(previewSrc||item.thumb)}" alt="${escapeHTML(item.caption)}" width="${item.width}" height="${item.height}"><figcaption>${escapeHTML(item.caption)}</figcaption></figure><div class="media-navigation"><button class="button outline" data-media-step="-1" aria-label="Previous project image">← Previous</button><a href="${escapeHTML(item.src)}" target="_blank" rel="noopener">Open image ↗</a><button class="button outline" data-media-step="1" aria-label="Next project image">Next →</button></div></div>`;
+ const displayed=dialog.querySelector('.media-figure img');
+ if(item.src!==item.thumb){const full=new Image();full.onload=()=>{if(displayed.isConnected&&activeMedia?.id===id&&activeMedia?.index===index)displayed.src=item.src};full.src=item.src}
  if(!dialog.open){dialog.showModal();document.body.style.overflow='hidden'}else dialog.querySelector('[data-media-step="1"]').focus({preventScroll:true});
 }
 function educationHTML(){
@@ -82,9 +84,26 @@ async function copyReference(id){
  const p=papers.find(x=>x.id===id),reference=`${p.title}. (2026). Unpublished research manuscript. ${new URL(p.pdf,location.href).href}`;
  try{await navigator.clipboard.writeText(reference);toast('Reference copied')}catch{const input=document.createElement('textarea');input.value=reference;input.style.position='fixed';input.style.opacity='0';document.getElementById('paper-dialog').append(input);input.select();const ok=document.execCommand('copy');input.remove();toast(ok?'Reference copied':'Copy is unavailable in this browser')}
 }
+function retryProjectImage(img,manual=false){
+ const button=img.closest('.project-image-button');if(!button)return;
+ const previous=manual?0:Number(img.dataset.attempts||0);
+ if(previous>=2){button.dataset.imageState='error';return}
+ const attempt=previous+1;img.dataset.attempts=String(attempt);button.dataset.imageState='loading';
+ const source=attempt===2?img.dataset.fullImage:img.dataset.thumbnail;
+ const url=new URL(source,document.baseURI);url.searchParams.set('image_retry',String(attempt));
+ setTimeout(()=>{if(img.isConnected&&img.dataset.attempts===String(attempt))img.src=url.href},attempt*400);
+}
+document.addEventListener('load',e=>{
+ const img=e.target;if(!(img instanceof HTMLImageElement))return;
+ const button=img.closest('.project-image-button');if(button){button.dataset.imageState='ready';delete img.dataset.attempts}
+},true);
+document.addEventListener('error',e=>{
+ const img=e.target;if(img instanceof HTMLImageElement&&img.matches('.project-image-button img'))retryProjectImage(img);
+},true);
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-paper],[data-close],[data-reference],[data-project-media],[data-media-step]');if(!b)return;
- if(b.dataset.projectMedia)openProjectMedia(b.dataset.projectMedia,b.dataset.mediaIndex);
+ if(b.dataset.projectMedia&&b.dataset.imageState==='error'){retryProjectImage(b.querySelector('img'),true);return}
+ if(b.dataset.projectMedia)openProjectMedia(b.dataset.projectMedia,b.dataset.mediaIndex,b.querySelector('img')?.currentSrc||null);
  if(b.dataset.mediaStep&&activeMedia)openProjectMedia(activeMedia.id,activeMedia.index+Number(b.dataset.mediaStep));
  if(b.dataset.paper)openPaper(b.dataset.paper);
  if(b.hasAttribute('data-close'))document.getElementById('paper-dialog').close();
@@ -94,5 +113,11 @@ const dialog=document.getElementById('paper-dialog');
 dialog.addEventListener('close',()=>{document.body.style.overflow='';activeMedia=null});
 dialog.addEventListener('keydown',e=>{if(activeMedia&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){e.preventDefault();openProjectMedia(activeMedia.id,activeMedia.index+(e.key==='ArrowRight'?1:-1))}});
 dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
-document.addEventListener('toggle',e=>{if(e.target.matches?.('details')&&!e.target.open)e.target.querySelectorAll('video').forEach(v=>v.pause())},true);
+document.addEventListener('toggle',e=>{if(!e.target.matches?.('details'))return;if(e.target.open)e.target.querySelectorAll('.project-gallery img').forEach(img=>{img.loading='eager'});else e.target.querySelectorAll('video').forEach(v=>v.pause())},true);
 render();
+const coverImages=document.querySelectorAll('.project-cover img');
+if('IntersectionObserver' in window){
+ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.loading='eager';observer.unobserve(entry.target)}}),{rootMargin:'1800px 0px'});
+ coverImages.forEach(img=>observer.observe(img));
+}else coverImages.forEach(img=>{img.loading='eager'});
+document.querySelectorAll('.project-image-button img').forEach(img=>{if(img.complete&&img.naturalWidth>0)img.closest('.project-image-button').dataset.imageState='ready'});

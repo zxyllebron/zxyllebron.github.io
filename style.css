@@ -32,3 +32,10 @@ dialog{width:min(780px,calc(100% - 32px));padding:0;border:1px solid #d9dfe3;bor
 .media-figure figcaption{margin:12px 2px 0}
 @media(max-width:650px){.project-cover{max-width:340px;padding:9px}.project-preview-strip{margin-top:8px}.project-gallery .project-image-button{padding:5px}.media-figure{padding:8px}}
 @media print{.project-cover{padding:5px}.project-preview-strip{display:none}.project-gallery .project-image-button img{height:auto}}
+
+/* Give slow connections a clear loading state and allow manual retry. */
+.project-image-button{position:relative}
+.project-image-button[data-image-state="loading"]::after,.project-image-button[data-image-state="error"]::after{position:absolute;inset:0;display:grid;place-items:center;padding:4px;background:#ffffffde;color:#71808a;font-size:11px;line-height:1.3;text-align:center;pointer-events:none}
+.project-image-button[data-image-state="loading"]::after{content:'Loading image…'}
+.project-image-button[data-image-state="error"]::after{content:'Retry image';color:var(--link)}
+.project-preview-strip .project-image-button::after{font-size:9px}
