@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="#183543"/><path d="m15 17 17 30m0-30L15 47m23-30h12L38 47h12" stroke="#f5f4ef" fill="none" stroke-width="3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .arm { stroke: #42667b; }
+    .joint { fill: #fff; }
+    @media (prefers-color-scheme: dark) {
+      .arm { stroke: #d1dce2; }
+      .joint { fill: #263741; }
+    }
+  </style>
+  <g class="arm" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 25h13M10 23v-4l7-10 7 4"/>
+    <circle class="joint" cx="10" cy="18" r="2.2"/>
+    <circle class="joint" cx="17" cy="9" r="2.2"/>
+    <circle class="joint" cx="25" cy="13" r="2.2"/>
+  </g>
+</svg>
