@@ -1,63 +1,49 @@
 window.PORTFOLIO = {
   "papers": [
     {
-      "id": "r09",
-      "source": "1-09",
-      "title": "Action semantics and timing provenance in robot imitation learning data",
+      "id": "r05",
+      "title": "Field-Specific Evidence Contracts for Dual-Arm Robot Feedback under Explicit Error Budgets",
       "type": "research",
-      "topics": [
-        "learning",
-        "systems"
-      ],
-      "featured": true,
-      "project": "aloha",
-      "summary": "Audits whether robot demonstration exports preserve the evidence needed to interpret action arrays, source timing and controller meaning.",
-      "finding": "The retrospective source/context corpus contains 1,298 episodes and 664,369 rows, alongside a paired 697-episode export.",
-      "limit": "Bitwise preservation of arrays does not prove acquisition semantics or downstream policy quality; this is an archival audit.",
-      "pdf": "papers/r09.pdf",
-      "pages": 21,
       "year": 2026,
-      "display_summary": "Auditing demonstration exports for action meaning, controller context and timing provenance.",
-      "connection": "Bimanual demonstrations"
+      "pages": 15,
+      "author": "Xiongyule Zhou",
+      "journal": "Journal of Intelligent & Robotic Systems",
+      "status": "Under review",
+      "summary": "Developed a field-specific feedback validation method with explicit error budgets and evaluated it using dual-arm robot measurements.",
+      "display_summary": "Developed a field-specific feedback validation method with explicit error budgets and evaluated it using dual-arm robot measurements.",
+      "finding": "The analysis compares execution feedback with direct sampling and uses explicit position, velocity, timing and model-discrepancy allowances to bound consistency.",
+      "limit": "The sustained inconsistency is a single observed case, and the illustrative error budgets are not physically calibrated; fault-detection accuracy is not established.",
+      "pdf": "papers/a05-feedback-error-budgets.pdf"
     },
     {
       "id": "r02",
-      "source": "1-02",
-      "title": "Mixed-Precision Robot Policy Inference: A Retrospective Evaluation of Numerical Fidelity, Latency, and Resource Costs",
+      "title": "Latency, Numerical Fidelity, and Resource Tradeoffs in Mixed-Precision Robot Policy Inference",
       "type": "research",
-      "topics": [
-        "learning",
-        "systems"
-      ],
-      "featured": true,
-      "project": "policy-inference",
-      "summary": "Compares saved policy outputs, historical timing records and resource counters to examine the costs of mixed-precision deployment.",
-      "finding": "One four-camera replay retained aggregate cosine 0.999999645, yet its maximum nominal left-flange discrepancy reached 4.867 mm.",
-      "limit": "Recorded call latency is not a complete control-loop deadline; nominal kinematics do not establish physical task success or safety.",
-      "pdf": "papers/r02.pdf",
-      "pages": 13,
       "year": 2026,
-      "display_summary": "Evaluating numerical fidelity, recorded latency and resource costs in mixed-precision robot-policy inference.",
-      "connection": "Policy deployment"
+      "pages": 13,
+      "author": "Xiongyule Zhou",
+      "journal": "IEEE Access",
+      "status": "Under review",
+      "summary": "Compared mixed-precision and inference backends for robot policies, analysing latency, action fidelity and nominal end-effector deviation.",
+      "display_summary": "Compared mixed-precision and inference backends for robot policies, analysing latency, action fidelity and nominal end-effector deviation.",
+      "finding": "Matched-input offline experiments compare inference latency, action-output differences, nominal flange discrepancies and memory use across configurations.",
+      "limit": "Timing and discrepancy results are specific to the tested configurations and inputs; closed-loop task equivalence and energy savings were not established.",
+      "pdf": "papers/a02-mixed-precision-inference.pdf"
     },
     {
-      "id": "r05",
-      "source": "1-05",
-      "title": "Field-Specific Evidence Contracts for Robot Feedback Monitoring: A Retrospective Multi-Schema Study",
+      "id": "r01",
+      "title": "Pose coverage and held-out image validation for multi-camera robot calibration",
       "type": "research",
-      "topics": [
-        "systems"
-      ],
-      "featured": true,
-      "project": "deployment",
-      "summary": "An executable contract declares required joints, fields, flags, units and clock continuity, returning property-specific results with explicit abstention.",
-      "finding": "One validator spans four schema families. Field-specific checks retain finite arm inputs in 54,897 messages rejected by a message-wide check.",
-      "limit": "The records lack physical fault labels; diagnostic accuracy, physical acquisition freshness and root cause remain unverified.",
-      "pdf": "papers/r05.pdf",
-      "pages": 19,
       "year": 2026,
-      "display_summary": "A reusable field-specific validator for feedback messages across four robot-data schemas.",
-      "connection": "Robot control & diagnostics"
+      "pages": 14,
+      "author": "Xiongyule Zhou",
+      "journal": "Industrial Robot",
+      "status": "Under review",
+      "summary": "Evaluated pose-selection strategies and calibration solvers using held-out images from multi-camera robot experiments.",
+      "display_summary": "Evaluated pose-selection strategies and calibration solvers using held-out images from multi-camera robot experiments.",
+      "finding": "Matched pose budgets compare selection policies, solvers and pixel refinement using held-out image measurements.",
+      "limit": "The study did not include external metrology or task-level accuracy tests.",
+      "pdf": "papers/a01-multicamera-calibration.pdf"
     }
   ]
 };
