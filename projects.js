@@ -132,12 +132,7 @@ window.PROJECT_CATALOGUE = {
         "Python · NumPy",
         "Temporal analysis"
       ],
-      "links": [
-        [
-          "r09",
-          "Related data-semantics manuscript"
-        ]
-      ],
+      "links": [],
       "metrics": [
         {
           "value": "88.2–98.6%",
@@ -537,12 +532,7 @@ window.PROJECT_CATALOGUE = {
         "Calibration",
         "Teleoperation"
       ],
-      "links": [
-        [
-          "r09",
-          "Imitation data semantics"
-        ]
-      ],
+      "links": [],
       "context": "Robot Learning and Manipulation Intern",
       "contribution": "ROS/Ubuntu integration, teleoperation, calibration, joint feedback and demonstration execution.",
       "result": "Integrated a bimanual demonstration workflow and debugged hardware–software synchronisation during hands-on robot practice.",

@@ -52,7 +52,7 @@ window.INTERNSHIP_PROJECTS = {
       contribution: 'Experiment design, multi-camera recording, timestamp-pairing analysis and observation-quality evaluation.',
       detail: 'Constructing traceable visual and joint-state observations for robot-learning and manipulation workflows.',
       steps: ['Multi-camera acquisition', 'Joint-state recording', 'Python · NumPy', 'Temporal analysis'],
-      links: [['r09', 'Related data-semantics manuscript']],
+      links: [],
       metrics: [
         {value: '49 runs', label: '673.10 camera-stream hours'},
         {value: '78,825', label: 'eligible image–joint pairs'},
