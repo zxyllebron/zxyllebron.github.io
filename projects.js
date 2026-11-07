@@ -9,7 +9,7 @@ window.PROJECT_CATALOGUE = {
       "context": "Software Engineer Intern · Embodied AI",
       "summary": "Developed and evaluated a robot brush-writing workflow for bird-and-worm seal script, combining stroke trajectories, camera-based observation and iterative analysis of water traces.",
       "contribution": "Stroke planning, robot and camera workflow integration, experiment review, wet-trace evaluation and flexible-brush simulation research.",
-      "result": "A documented 19-stroke bird-character trial took 584 seconds; its per-stroke image reconstruction reported 90.7% target coverage.",
+      "result": "Across 65 matched-glyph development trials, the mean of four median cycle times fell from 572.1 to 438.5 seconds (23.3%); results describe sequential cohorts.",
       "steps": [
         "Robot manipulation",
         "Stroke trajectory planning",
@@ -20,16 +20,16 @@ window.PROJECT_CATALOGUE = {
       "links": [],
       "metrics": [
         {
-          "value": "19 strokes",
-          "label": "bird-character trial"
+          "value": "333 trials",
+          "label": "complete real-robot executions in the audited archive"
         },
         {
-          "value": "584 s",
-          "label": "recorded trial duration"
+          "value": "51 glyphs",
+          "label": "distinct glyphs with completed executions"
         },
         {
-          "value": "90.7%",
-          "label": "reconstructed-trace target coverage · one trial"
+          "value": "23.3%",
+          "label": "lower mean of glyph-median cycle times · 65 trials"
         }
       ],
       "caseStudy": [
@@ -43,15 +43,16 @@ window.PROJECT_CATALOGUE = {
           "heading": "My contribution",
           "bullets": [
             "I worked on translating a reference character into ordered brush strokes and executable trajectories, and on organising trial parameters and observations for iterative review.",
-            "I worked with camera-based wet-trace observation and stroke-level evidence to inspect coverage, line width, gaps and missing or unclear strokes, supporting feedback on subsequent trials.",
+            "I worked with camera-based wet-trace observation and stroke-level evidence to inspect coverage, line width, gaps and missing or unclear strokes. I also evaluated a lightweight U-Net8 wet-trace model against a classical baseline using held-out recordings and projected pseudo-labels.",
             "I investigated a complementary photo-constrained Newton brush model and an offline 19-stroke replay. A 127-bundle, 1,016-segment model candidate represents the brush geometry; those bundles are modelling elements rather than individually measured hairs."
           ]
         },
         {
           "heading": "Results & validation",
           "paragraphs": [
-            "In one archived bird-character trial (round 151), all 19 stroke frames were retained and the recorded duration was 584 seconds. The per-stroke reconstruction report estimated 90.7% target coverage. A separate full-page frame-composite analysis estimated 26.3% target coverage for that same trial: the reconstruction and scoring pipelines differ, and the frame composite is susceptible to registration error. These values describe one recorded example, not a success rate or a controlled improvement.",
-            "The 6 November daily summary recorded 82 completed water-writing runs out of 87 attempts across the session. This is a log-derived activity count; writing quality varied across trials. The gallery distinguishes original camera frames from reconstructed composites and includes a separate simulation image. Brush material and ink-transfer parameters in the simulation remain uncalibrated, so simulation results are not real-brush validation."
+            "The archived dataset contains 333 complete real-robot executions across 51 distinct glyphs and 5,463 planned source strokes. Complete execution describes the recorded motion sequence; it does not mean every character met a handwriting-quality threshold.",
+            "For four matching glyphs, 30 earlier and 35 later trials had mean glyph-median full-trial durations of 572.1 and 438.5 seconds, a 23.3% reduction. The cohorts come from successive development stages, so the change cannot be attributed to one intervention. Writing-quality metrics were not consistently maintained across all matched glyphs.",
+            "Four held-out recordings were used to compare wet-trace segmentation within the target-stroke corridor against SAM2-projected pseudo-labels. These are segmentation metrics rather than independently annotated handwriting quality or robot task success. In a separate 19-stroke bird trial, the displayed wet traces were reconstructed from per-stroke observations because water marks fade. Brush material and ink-transfer parameters in the complementary simulation remain uncalibrated."
           ]
         }
       ]
@@ -1522,36 +1523,44 @@ window.PROJECT_CATALOGUE = {
     ],
     "brush-calligraphy": [
       {
-        "src": "assets/projects/brush-calligraphy-20261107/robot-writing.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/robot-writing-thumb.webp",
-        "caption": "Robot arm holding a brush during a real water-writing trial on reusable practice cloth.",
-        "kind": "Real experiment photograph",
-        "width": 848,
-        "height": 480
+        "src": "assets/projects/brush-calligraphy-20261107/technical-overview.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/technical-overview-thumb.webp",
+        "caption": "Left: a flexible-brush simulation frame. Right: reconstruction from 19 real wet-trace frames of the bird-character trial; it is not a single photograph. Simulation materials remain uncalibrated.",
+        "kind": "Simulation and experimental reconstruction",
+        "width": 1600,
+        "height": 877
       },
       {
-        "src": "assets/projects/brush-calligraphy-20261107/bird-stroke-05.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/bird-stroke-05-thumb.webp",
-        "caption": "The fifth recorded stroke in the bird character trial; wet marks fade over time.",
-        "kind": "Real experiment photograph",
-        "width": 848,
-        "height": 480
+        "src": "assets/projects/brush-calligraphy-20261107/matched-duration.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/matched-duration-thumb.webp",
+        "caption": "Median complete-trial duration for four matched glyphs: 30 earlier and 35 later runs. Mean of the four glyph medians decreased from 572.1 to 438.5 seconds (23.3%); sequential cohorts do not isolate a single cause or establish equal writing quality.",
+        "kind": "Recorded real-robot data analysis",
+        "width": 1600,
+        "height": 908
       },
       {
-        "src": "assets/projects/brush-calligraphy-20261107/bird-stroke-11.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/bird-stroke-11-thumb.webp",
-        "caption": "A later stroke of the same bird character trial, recorded by the overhead camera.",
-        "kind": "Real experiment photograph",
-        "width": 848,
-        "height": 480
+        "src": "assets/projects/brush-calligraphy-20261107/wet-trace-evaluation.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/wet-trace-evaluation-thumb.webp",
+        "caption": "Held-out wet-trace segmentation on four recordings: U-Net8 and a classical baseline evaluated against SAM2-projected pseudo-labels within the target-stroke corridor. These mask IoUs are not task-success or handwriting-quality scores.",
+        "kind": "Recorded perception evaluation",
+        "width": 1600,
+        "height": 908
       },
       {
-        "src": "assets/projects/brush-calligraphy-20261107/bird-final-frame.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/bird-final-frame-thumb.webp",
-        "caption": "The final camera frame from the bird trial. Earlier water marks have faded, so this is not a permanent complete character.",
-        "kind": "Real experiment photograph",
-        "width": 848,
-        "height": 480
+        "src": "assets/projects/brush-calligraphy-20261107/brush-contact-simulation.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/brush-contact-simulation-thumb.webp",
+        "caption": "Recorded Newton simulation rendering of representative brush bundles in contact during a stroke. Material and ink-transfer parameters were not physically calibrated.",
+        "kind": "Brush simulation rendering",
+        "width": 1474,
+        "height": 974
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/real-writing-contact-sheet.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/real-writing-contact-sheet-thumb.webp",
+        "caption": "Four separately sampled head-camera frames from real robot water-writing trials on 6 November 2026. The panels show different moments and may show different glyphs.",
+        "kind": "Real experiment photo montage",
+        "width": 1600,
+        "height": 941
       },
       {
         "src": "assets/projects/brush-calligraphy-20261107/bird-reconstruction.webp",
@@ -1562,44 +1571,12 @@ window.PROJECT_CATALOGUE = {
         "height": 1051
       },
       {
-        "src": "assets/projects/brush-calligraphy-20261107/bird-coverage.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/bird-coverage-thumb.webp",
-        "caption": "Round 151: 90.7% target coverage in the per-stroke reconstructed report and 26.3% in a separate full-page frame-composite score. These use different reconstruction and scoring pipelines, not an improvement comparison.",
-        "kind": "Recorded analysis figure",
-        "width": 1424,
-        "height": 772
-      },
-      {
-        "src": "assets/projects/brush-calligraphy-20261107/water-character-frame.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/water-character-frame-thumb.webp",
-        "caption": "A real final camera frame from a separate water-writing character trial.",
+        "src": "assets/projects/brush-calligraphy-20261107/bird-final-frame.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/bird-final-frame-thumb.webp",
+        "caption": "The final camera frame from the bird trial. Earlier water marks have faded, so this is not a permanent complete character.",
         "kind": "Real experiment photograph",
         "width": 848,
         "height": 480
-      },
-      {
-        "src": "assets/projects/brush-calligraphy-20261107/water-character-fu.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/water-character-fu-thumb.webp",
-        "caption": "A real final camera frame from a later water-writing trial of a seal-script character.",
-        "kind": "Real experiment photograph",
-        "width": 848,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/brush-calligraphy-20261107/water-fu-reconstruction.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/water-fu-reconstruction-thumb.webp",
-        "caption": "A multi-frame composite of the same later trial. It preserves earlier wet strokes that faded before the final photograph.",
-        "kind": "Per-stroke image reconstruction",
-        "width": 848,
-        "height": 480
-      },
-      {
-        "src": "assets/projects/brush-calligraphy-20261107/brush-model.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/brush-model-thumb.webp",
-        "caption": "Photo-constrained Newton brush geometry candidate using 127 representative bundles and 1,016 rod segments. Simulation materials and ink transfer were not physically calibrated.",
-        "kind": "Brush simulation screenshot",
-        "width": 1280,
-        "height": 831
       }
     ]
   },
