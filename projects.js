@@ -293,7 +293,7 @@ window.PROJECT_CATALOGUE = {
           "heading": "Overview",
           "paragraphs": [
             "A robot experiment needs more than an action vector: it needs consistent coordinates, an executable trajectory, reliable feedback and a clear definition of completion. I developed the motion and teaching interfaces for an in-house seven-degree-of-freedom arm, with planning and execution in the C++ controller and Python / HTTP access for higher-level workflows. This work formed part of my broader extension of the humanoid robot control SDK.",
-            "The archived hardware documentation describes a bench-mounted seven-axis arm with five rotary joints and a two-actuator parallel wrist. The accompanying bench photograph documents the physical setup; it is separate from the finite path-test measurements."
+            "The archived hardware documentation describes a bench-mounted seven-axis arm with five rotary joints and a two-actuator parallel wrist. The gallery presents complete CAD models, illustrative joint configurations and wrist views alongside the recorded path and feedback measurements."
           ]
         },
         {
@@ -590,7 +590,7 @@ window.PROJECT_CATALOGUE = {
         {
           "heading": "Results & validation",
           "paragraphs": [
-            "Original photographs document fabricated wings, the drive unit, electronics and the assembled wing-and-drive structure. The gallery uses clear build photographs without slide captions or phone-watermark strips.",
+            "The preserved project materials connect the flapping-wing geometry with original wing stress and displacement plots, a servo pulse-width design illustration and photographs of the assembled prototype. The simulation figures and control schematic are design records; they are separate from physical performance measurements.",
             "The assembled wing-and-drive structure provided a concrete platform for checking fabrication choices and mechanical integration within the team project."
           ]
         }
@@ -671,22 +671,6 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original practice photograph",
         "width": 594,
         "height": 334
-      },
-      {
-        "src": "assets/projects/details-20261030/bimanual-team-workstation.webp",
-        "thumb": "assets/projects/details-20261030/bimanual-team-workstation-thumb.webp",
-        "caption": "Bimanual robot practice at the workstation, from the summer-practice supporting report.",
-        "kind": "Practice photograph",
-        "width": 1706,
-        "height": 1279
-      },
-      {
-        "src": "assets/projects/details-20261030/bimanual-setup-session.webp",
-        "thumb": "assets/projects/details-20261030/bimanual-setup-session-thumb.webp",
-        "caption": "A second view of the bimanual setup during the team practice session, from the supporting report.",
-        "kind": "Practice photograph",
-        "width": 1706,
-        "height": 1279
       }
     ],
     "navigation": [
@@ -871,12 +855,36 @@ window.PROJECT_CATALOGUE = {
     ],
     "butterfly": [
       {
+        "src": "assets/projects/butterfly-20261107/wing-structural-analysis.webp",
+        "thumb": "assets/projects/butterfly-20261107/wing-structural-analysis-thumb.webp",
+        "caption": "Original wing displacement and stress plots from the team project report, arranged side by side with their original colour legends. These are design-analysis figures, not new flight-test measurements.",
+        "kind": "Original structural simulation figures",
+        "width": 1250,
+        "height": 650
+      },
+      {
+        "src": "assets/projects/butterfly-20261107/flapping-wing-structure.webp",
+        "thumb": "assets/projects/butterfly-20261107/flapping-wing-structure-thumb.webp",
+        "caption": "Original flapping-wing schematic from the team project materials, illustrating the symmetric flapping-angle geometry.",
+        "kind": "Project structural schematic",
+        "width": 1200,
+        "height": 640
+      },
+      {
         "src": "assets/projects/butterfly-026.webp",
         "thumb": "assets/projects/butterfly-026-thumb.webp",
         "caption": "Assembled wing and drive mechanism of the butterfly prototype.",
         "kind": "Prototype photograph",
         "width": 955,
         "height": 716
+      },
+      {
+        "src": "assets/projects/butterfly-20261107/servo-pulse-control.webp",
+        "thumb": "assets/projects/butterfly-20261107/servo-pulse-control-thumb.webp",
+        "caption": "English re-rendering of the original servo control illustration: 1, 1.5 and 2 ms pulses correspond to 0°, 90° and 180°. Pulse spacing is schematic; this is a design illustration, not a measured waveform.",
+        "kind": "Project control design illustration",
+        "width": 1600,
+        "height": 960
       },
       {
         "src": "assets/projects/butterfly-004.webp",
@@ -941,14 +949,6 @@ window.PROJECT_CATALOGUE = {
         "kind": "Project circuit schematic",
         "width": 1289,
         "height": 912
-      },
-      {
-        "src": "assets/projects/details-20261030/butterfly-servo-signals.webp",
-        "thumb": "assets/projects/details-20261030/butterfly-servo-signals-thumb.webp",
-        "caption": "Servo pulse-width control illustration included in the team mechanism-design presentation.",
-        "kind": "Project design illustration",
-        "width": 992,
-        "height": 476
       }
     ],
     "platform2025": [
@@ -1151,12 +1151,12 @@ window.PROJECT_CATALOGUE = {
     ],
     "deployment": [
       {
-        "src": "assets/projects/evidence-20261030/arm-bench.webp",
-        "thumb": "assets/projects/evidence-20261030/arm-bench-thumb.webp",
-        "width": 1350,
-        "height": 1800,
-        "caption": "Original photograph of the in-house arm bench from the structure and dynamics documentation. The image documents the hardware setup and is not identified as a frame from the five path trials.",
-        "kind": "Original bench photograph"
+        "src": "assets/projects/selfarm-20261107/arm-cad-overview.webp",
+        "thumb": "assets/projects/selfarm-20261107/arm-cad-overview-thumb.webp",
+        "caption": "Complete arm views rendered from the archived CAD meshes and joint model, showing the mounting flange, arm, wrist and hand. Configurations are offline illustrations, not physical executions.",
+        "kind": "CAD model render",
+        "width": 1400,
+        "height": 900
       },
       {
         "src": "assets/projects/anyverse/arm-paths.webp",
@@ -1173,6 +1173,30 @@ window.PROJECT_CATALOGUE = {
         "kind": "Figure from recorded finite hardware tests",
         "width": 1620,
         "height": 774
+      },
+      {
+        "src": "assets/projects/selfarm-20261107/arm-parallel-wrist.webp",
+        "thumb": "assets/projects/selfarm-20261107/arm-parallel-wrist-thumb.webp",
+        "caption": "Neutral, pitch and yaw configurations of the wrist and hand, rendered from the archived equivalent joint model. The views illustrate the wrist degrees of freedom, rather than simulating the two-actuator linkage.",
+        "kind": "CAD wrist configurations",
+        "width": 1680,
+        "height": 680
+      },
+      {
+        "src": "assets/projects/selfarm-20261107/arm-cad-full.webp",
+        "thumb": "assets/projects/selfarm-20261107/arm-cad-full-thumb.webp",
+        "caption": "The full archived arm model in a neutral configuration. Display materials distinguish adjacent links; the original mesh geometry is retained.",
+        "kind": "CAD model render",
+        "width": 1600,
+        "height": 620
+      },
+      {
+        "src": "assets/projects/selfarm-20261107/arm-cad-configurations.webp",
+        "thumb": "assets/projects/selfarm-20261107/arm-cad-configurations-thumb.webp",
+        "caption": "Four offline forward-kinematic configurations within the archived URDF joint limits. These illustrate the model; they are not a collision-clearance or real-robot acceptance test.",
+        "kind": "CAD kinematic configurations",
+        "width": 1600,
+        "height": 1140
       },
       {
         "src": "assets/projects/refresh/arm-motion-english.webp",
