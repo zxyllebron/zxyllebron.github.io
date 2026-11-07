@@ -2,7 +2,7 @@ window.PROJECT_CATALOGUE = {
   "projects": [
     {
       "id": "brush-calligraphy",
-      "name": "A2R: Robotic brush calligraphy",
+      "name": "Robotic Brush Calligraphy with Visual Feedback",
       "title": "Flexible-tool modelling, visual feedback and real-robot evaluation",
       "org": "Anyverse Technology Co., Ltd.",
       "date": "OCT 2026 — PRESENT",
@@ -37,7 +37,7 @@ window.PROJECT_CATALOGUE = {
           "heading": "Research problem",
           "paragraphs": [
             "Writing with a soft brush couples tool deformation, contact, ink or water loading, trajectory timing and visual observation. Bird-and-worm seal script makes these interactions especially visible through curved strokes, small internal gaps, dots and variable line width. My goal was to build a system that could execute, observe and revise a writing trial while preserving enough evidence to understand its failures.",
-            "I developed this work within my embodied AI internship at Anyverse. The project connects a flexible-brush simulation study with a separate real-robot water-writing workflow. The physical experiments use a brush and reusable practice cloth; water marks fade, so a final photograph alone cannot preserve all earlier strokes."
+            "The project is also known as A2R. I developed this work within my embodied AI internship at Anyverse. The project connects a flexible-brush simulation study with a separate real-robot water-writing workflow. The physical experiments use a brush and reusable practice cloth; water marks fade, so a final photograph alone cannot preserve all earlier strokes."
           ]
         },
         {
