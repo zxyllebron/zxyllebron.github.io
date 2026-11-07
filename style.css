@@ -43,3 +43,41 @@ dialog{width:min(780px,calc(100% - 32px));padding:0;border:1px solid #d9dfe3;bor
 .project-image-button[data-image-state="loading"]::after{content:'Loading image…'}
 .project-image-button[data-image-state="error"]::after{content:'Retry image';color:var(--link)}
 .project-preview-strip .project-image-button::after{font-size:9px}
+
+/* Clear project boundaries and a consistent reading hierarchy. */
+.projects-list{border-top:0;padding-top:5px}
+.project-item{padding:25px;margin:0 0 24px;border:1px solid #dbe3e9;border-radius:6px;background:#fff;scroll-margin-top:82px}
+.project-heading{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:7px}
+.project-heading h3{font-size:20px;font-weight:700;line-height:1.4;color:#263b49;margin:0;letter-spacing:-.15px}
+.project-heading .date{flex-shrink:0;margin:0;color:#607480;font-size:11px;line-height:1.6;letter-spacing:.025em}
+.project-affiliation{margin:0 0 19px;font-size:12px;color:#697d89;line-height:1.7}
+.project-layout{grid-template-columns:220px minmax(0,1fr);gap:26px}
+.project-copy{min-width:0}
+.project-summary{font-size:14px;line-height:1.85;color:#384c59;margin:0 0 13px}
+.project-contribution,.project-result{font-size:13px;line-height:1.8;margin:10px 0;color:#5b6e7a}
+.project-contribution strong,.project-result strong{font-weight:700;color:#354f61}
+.project-cover{margin:0;background:#f7f9fa;border-color:#e2e8ec;padding:8px}
+.project-expand{margin-top:20px;border-top:1px solid #e7edf1;padding-top:14px}
+.project-item .project-expand>summary{font-size:13px;font-weight:600;line-height:1.7}
+.project-expand[open]>summary{margin-bottom:18px}
+.project-details{max-width:76ch;padding-top:0}
+.case-study-section{margin:20px 0 27px}
+.case-study-section h4{font-size:16px;font-weight:700;line-height:1.5;color:#304c5e;margin-bottom:11px}
+.case-study-section p,.case-study-section li{font-size:14px;line-height:1.9;color:#536773}
+.project-gallery figure{min-width:0}
+.project-gallery figcaption{font-size:11px;line-height:1.6;color:#687e8c;margin:8px 2px 0}
+.gallery-section+.gallery-section{margin-top:28px}
+.gallery-section h4{font-size:14px;font-weight:700;color:#3d5d71;margin-bottom:12px}
+.project-featured{border-top:3px solid #356783;padding-top:20px}
+.featured-label{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#356783;margin:0 0 10px}
+.project-featured .project-layout{grid-template-columns:330px minmax(0,1fr);gap:28px}
+.project-featured .project-heading h3{font-size:22px}
+.project-featured .project-metrics{margin:17px 0 0;padding:13px 0;border-bottom:0;gap:12px}
+.project-featured .project-metrics dt{font-size:21px;font-weight:700}
+.project-featured .project-metrics dd{font-size:10px;line-height:1.6}
+.project-featured .project-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.project-featured .project-gallery .project-image-button{aspect-ratio:3/2;background:#f7f9fa;padding:8px}
+@media(max-width:860px){.project-item{padding:22px}.project-heading{align-items:flex-start}.project-heading h3{font-size:19px}.project-layout{grid-template-columns:180px minmax(0,1fr);gap:22px}.project-featured .project-layout{grid-template-columns:260px minmax(0,1fr);gap:23px}.project-featured .project-heading h3{font-size:21px}}
+@media(max-width:700px){.project-layout,.project-featured .project-layout{display:block}.project-cover{width:100%;max-width:400px;margin:0 0 18px}.project-featured .project-cover{max-width:440px}.project-heading{display:block}.project-heading .date{display:block;margin-top:6px}.project-affiliation{margin-bottom:16px}.project-featured .project-gallery{grid-template-columns:1fr}.project-heading h3,.project-featured .project-heading h3{font-size:20px}}
+@media(max-width:430px){.project-item{padding:18px;margin-bottom:22px}.project-summary{font-size:13px}.project-contribution,.project-result{font-size:12px}.case-study-section p,.case-study-section li{font-size:13px}.project-featured .project-metrics dt{font-size:19px}}
+@media print{.project-item{padding:15px;margin-bottom:18px;break-inside:auto}.project-expand{border-top:0}.project-heading h3{font-size:17px}.project-layout,.project-featured .project-layout{grid-template-columns:160px minmax(0,1fr)}.featured-label{font-size:9px}}

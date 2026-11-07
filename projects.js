@@ -2,60 +2,80 @@ window.PROJECT_CATALOGUE = {
   "projects": [
     {
       "id": "brush-calligraphy",
-      "name": "Robot brush calligraphy & bird-and-worm seal script",
-      "title": "Vision-guided brush manipulation and water-writing evaluation",
+      "name": "A2R: Robotic brush calligraphy",
+      "title": "Flexible-tool modelling, visual feedback and real-robot evaluation",
       "org": "Anyverse Technology Co., Ltd.",
-      "date": "NOV 2026",
+      "date": "OCT 2026 — PRESENT",
       "context": "Software Engineer Intern · Embodied AI",
-      "summary": "Developed and evaluated a robot brush-writing workflow for bird-and-worm seal script, combining stroke trajectories, camera-based observation and iterative analysis of water traces.",
-      "contribution": "Stroke planning, robot and camera workflow integration, experiment review, wet-trace evaluation and flexible-brush simulation research.",
-      "result": "Across 65 matched-glyph development trials, the mean of four median cycle times fell from 572.1 to 438.5 seconds (23.3%); results describe sequential cohorts.",
+      "summary": "A robotic brush-writing system for bird-and-worm seal script, combining a Newton flexible-brush simulator, C++ motion execution, learned wet-trace perception and iterative real-robot evaluation.",
+      "contribution": "Flexible-brush and contact modelling; FK/IK and stroke planning; visual feedback and recovery; reproducible experiment analysis.",
+      "result": "In 65 matched-glyph development trials, mean glyph-median cycle time decreased from 572.1 to 438.5 s. Four held-out recordings yielded wet-trace mask IoU of 0.76–0.96.",
       "steps": [
-        "Robot manipulation",
-        "Stroke trajectory planning",
-        "Visual feedback",
-        "Wet-trace analysis",
-        "Newton brush simulation"
+        "C++ / Python",
+        "ROS 2 · FK / IK",
+        "Newton · flexible tools",
+        "PyTorch · ONNX",
+        "Visual feedback · experiment analysis"
       ],
       "links": [],
       "metrics": [
         {
-          "value": "333 trials",
-          "label": "complete real-robot executions in the audited archive"
+          "value": "333",
+          "label": "complete real-robot executions"
         },
         {
-          "value": "51 glyphs",
-          "label": "distinct glyphs with completed executions"
+          "value": "51",
+          "label": "distinct executed glyphs"
         },
         {
           "value": "23.3%",
-          "label": "lower mean of glyph-median cycle times · 65 trials"
+          "label": "lower mean glyph-median cycle time · 65 trials"
         }
       ],
       "caseStudy": [
         {
-          "heading": "Overview",
+          "heading": "Research problem",
           "paragraphs": [
-            "Bird-and-worm seal script requires a robot to control a soft brush across curved, variable-width strokes. At Anyverse, I worked on a water-writing workflow that brings together a real robot arm, a brush, reusable practice cloth, an overhead camera and stroke-level records. Water marks fade, making the timing and interpretation of visual evidence central to the task."
+            "Writing with a soft brush couples tool deformation, contact, ink or water loading, trajectory timing and visual observation. Bird-and-worm seal script makes these interactions especially visible through curved strokes, small internal gaps, dots and variable line width. My goal was to build a system that could execute, observe and revise a writing trial while preserving enough evidence to understand its failures.",
+            "I developed this work within my embodied AI internship at Anyverse. The project connects a flexible-brush simulation study with a separate real-robot water-writing workflow. The physical experiments use a brush and reusable practice cloth; water marks fade, so a final photograph alone cannot preserve all earlier strokes."
           ]
         },
         {
-          "heading": "My contribution",
+          "heading": "My contributions",
           "bullets": [
-            "I worked on translating a reference character into ordered brush strokes and executable trajectories, and on organising trial parameters and observations for iterative review.",
-            "I worked with camera-based wet-trace observation and stroke-level evidence to inspect coverage, line width, gaps and missing or unclear strokes. I also evaluated a lightweight U-Net8 wet-trace model against a classical baseline using held-out recordings and projected pseudo-labels.",
-            "I investigated a complementary photo-constrained Newton brush model and an offline 19-stroke replay. A 127-bundle, 1,016-segment model candidate represents the brush geometry; those bundles are modelling elements rather than individually measured hairs."
+            "I developed the flexible-brush simulation workflow around representative rod bundles, brush–surface contact and finite ink transfer, and inspected continuous multi-stroke replay and resource accounting.",
+            "I implemented and integrated C++ motion-planning and execution components, including FK/IK, Cartesian stroke trajectories, tool offsets, paper-frame registration and planned dipping or recovery motions.",
+            "I connected camera observations to stroke-level evaluation: wet-trace masks, width and lateral-offset estimates, gaps, missing strokes and explicit unknown states when visibility was insufficient.",
+            "I trained and evaluated a lightweight U-Net8 wet-trace model using SAM2-derived supervision, exported ONNX models and connected the learned segmentation path to the C++ perception workflow.",
+            "I worked on bounded visual-feedback corrections, stroke-end checks and cross-trial parameter updates. I kept model-only perception and hybrid classical/learned modes separately evaluated because false dry detections can produce inappropriate corrections.",
+            "I organised versioned trial records, source glyphs, image evidence and matched-glyph comparisons so that efficiency, execution completion and writing quality could be assessed separately."
           ]
         },
         {
-          "heading": "Results & validation",
+          "heading": "Simulation and motion planning",
           "paragraphs": [
-            "The archived dataset contains 333 complete real-robot executions across 51 distinct glyphs and 5,463 planned source strokes. Complete execution describes the recorded motion sequence; it does not mean every character met a handwriting-quality threshold.",
-            "For four matching glyphs, 30 earlier and 35 later trials had mean glyph-median full-trial durations of 572.1 and 438.5 seconds, a 23.3% reduction. The cohorts come from successive development stages, so the change cannot be attributed to one intervention. Writing-quality metrics were not consistently maintained across all matched glyphs.",
-            "Four held-out recordings were used to compare wet-trace segmentation within the target-stroke corridor against SAM2-projected pseudo-labels. These are segmentation metrics rather than independently annotated handwriting quality or robot task success. In a separate 19-stroke bird trial, the displayed wet traces were reconstructed from per-stroke observations because water marks fade. Brush material and ink-transfer parameters in the complementary simulation remain uncalibrated."
+            "The archived brush model uses 127 representative bundles with eight rod segments per bundle. These are equivalent modelling elements. The simulation includes an initial immersion in a finite reservoir, remaining liquid in the brush and contact-dependent transfer to the surface. The gallery shows the original input geometry, reference paths, scene views, contact deformation and per-stroke ink accounting.",
+            "One archived continuous simulation computed all 19 source strokes after one initial immersion, without resetting ink between strokes. Its material, uptake and transfer parameters were engineering priors, and the resulting character did not pass the archived shape-acceptance criteria. I use this evidence to inspect model behaviour and numerical assumptions; physical material correspondence remains an open calibration problem.",
+            "On the robot side, glyph paths and width profiles feed geometric planning and C++ execution. The workflow distinguishes in-stroke corrections, checks after lifting the brush and parameter updates between complete trials. The separate dipping-keyframe figure is an offline kinematic preview with an estimated well position."
+          ]
+        },
+        {
+          "heading": "Learned perception and feedback",
+          "paragraphs": [
+            "The perception study uses a 118,609-parameter U-Net8 model and projected SAM2 masks as supervision. Two folds hold out complete recordings, rather than randomly mixing adjacent frames across training and evaluation. Across four held-out recordings, corridor-mask IoU ranges from 0.7601 to 0.9592, compared with 0.5183 to 0.7801 for the classical baseline. These measurements concern valid labelled cells near the intended stroke centreline; they are not handwriting-quality or task-success scores.",
+            "A higher mask IoU did not make model-only control reliable. The development records show false dry detections and a width bias in replacement mode. A hybrid mode retained classical evidence where useful, required agreement before declaring a dry trace and preserved unknown states. In a small held-out comparison over two recordings, false dry frames fell from six to one, while the confident-frame fraction decreased from 0.618 to 0.604. This is a limited replay comparison, not a general reliability guarantee."
+          ]
+        },
+        {
+          "heading": "Real-robot results and evaluation",
+          "paragraphs": [
+            "The audited archive contains 333 complete real-robot executions across 51 distinct glyphs and 5,463 planned source strokes. Every counted execution has a final camera image; 331 also have a stored evaluation report. Completion describes the recorded sequence and does not imply that every character met a visual-quality threshold.",
+            "For four matched glyphs, I compared 30 earlier and 35 later development trials. Taking the median complete-trial duration for each glyph, then averaging the four medians, gives 572.1 s and 438.5 s: a reduction of 23.3%. Duration includes preparation, dipping, writing, observation and recovery within the trial. The cohorts were sequential, not randomised, and the available shape metrics were not consistently maintained across all four glyphs.",
+            "The physical gallery retains one compact montage of real camera frames and one reconstruction of a 19-stroke bird trial. The reconstructed figure combines observations from different times to retain fading wet traces, and is labelled accordingly. Together, the simulation, planning, perception and trial records show an integrated engineering workflow and the remaining gap between completing motions and producing consistently accepted calligraphy."
           ]
         }
-      ]
+      ],
+      "featured": true
     },
     {
       "id": "b1k",
@@ -1523,12 +1543,22 @@ window.PROJECT_CATALOGUE = {
     ],
     "brush-calligraphy": [
       {
-        "src": "assets/projects/brush-calligraphy-20261107/technical-overview.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/technical-overview-thumb.webp",
-        "caption": "Left: a flexible-brush simulation frame. Right: reconstruction from 19 real wet-trace frames of the bird-character trial; it is not a single photograph. Simulation materials remain uncalibrated.",
-        "kind": "Simulation and experimental reconstruction",
-        "width": 1600,
-        "height": 877
+        "src": "assets/projects/brush-featured-20261107/simulation-teaser.webp",
+        "thumb": "assets/projects/brush-featured-20261107/simulation-teaser-thumb.webp",
+        "caption": "Archived simulation inputs and renderings: a 127-bundle brush model, the intended 19-stroke reference path, the continuous simulated scene and brush–surface contact. The reference path is a command, not the deposited result. Material and ink-transfer parameters remain uncalibrated.",
+        "kind": "Simulation and planning overview",
+        "shortCaption": "Brush model, reference path and simulated contact",
+        "width": 1699,
+        "height": 1248
+      },
+      {
+        "src": "assets/projects/brush-featured-20261107/simulation-scene-sequence.webp",
+        "thumb": "assets/projects/brush-featured-20261107/simulation-scene-sequence-thumb.webp",
+        "caption": "Scene and brush-camera views at 0.5, 37.5 and 231.7 seconds in the archived continuous 19-stroke simulation. All panels come from the same recorded run. Replay completion does not establish physical calibration or acceptance of the character shape.",
+        "kind": "Original simulation frame montage",
+        "shortCaption": "One continuous simulation: approach, writing and final state",
+        "width": 1289,
+        "height": 1400
       },
       {
         "src": "assets/projects/brush-calligraphy-20261107/matched-duration.webp",
@@ -1536,7 +1566,8 @@ window.PROJECT_CATALOGUE = {
         "caption": "Median complete-trial duration for four matched glyphs: 30 earlier and 35 later runs. Mean of the four glyph medians decreased from 572.1 to 438.5 seconds (23.3%); sequential cohorts do not isolate a single cause or establish equal writing quality.",
         "kind": "Recorded real-robot data analysis",
         "width": 1600,
-        "height": 908
+        "height": 908,
+        "shortCaption": "65 matched-glyph trials: complete-trial duration"
       },
       {
         "src": "assets/projects/brush-calligraphy-20261107/wet-trace-evaluation.webp",
@@ -1544,15 +1575,62 @@ window.PROJECT_CATALOGUE = {
         "caption": "Held-out wet-trace segmentation on four recordings: U-Net8 and a classical baseline evaluated against SAM2-projected pseudo-labels within the target-stroke corridor. These mask IoUs are not task-success or handwriting-quality scores.",
         "kind": "Recorded perception evaluation",
         "width": 1600,
-        "height": 908
+        "height": 908,
+        "shortCaption": "Wet-trace segmentation on held-out recordings"
       },
       {
-        "src": "assets/projects/brush-calligraphy-20261107/brush-contact-simulation.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/brush-contact-simulation-thumb.webp",
-        "caption": "Recorded Newton simulation rendering of representative brush bundles in contact during a stroke. Material and ink-transfer parameters were not physically calibrated.",
-        "kind": "Brush simulation rendering",
-        "width": 1474,
-        "height": 974
+        "src": "assets/projects/brush-featured-20261107/contact-deformation-sequence.webp",
+        "thumb": "assets/projects/brush-featured-20261107/contact-deformation-sequence-thumb.webp",
+        "caption": "Four brush-view frames show deformation during different strokes in the archived simulation. They illustrate the model response rather than measurements of a physical brush.",
+        "kind": "Original simulation contact montage",
+        "shortCaption": "Representative-bundle deformation at four simulated times",
+        "width": 1800,
+        "height": 1352
+      },
+      {
+        "src": "assets/projects/brush-featured-20261107/brush-model-views.webp",
+        "thumb": "assets/projects/brush-featured-20261107/brush-model-views-thumb.webp",
+        "caption": "Three projections of the archived simulation input geometry: 127 representative bundles and eight rod segments per bundle. These are equivalent modelling elements, not individually measured hairs; material properties are engineering assumptions.",
+        "kind": "Simulation geometry analysis",
+        "shortCaption": "Front, side and top views of the archived brush model",
+        "width": 1791,
+        "height": 924
+      },
+      {
+        "src": "assets/projects/brush-featured-20261107/dip-trajectory-keyframes.webp",
+        "thumb": "assets/projects/brush-featured-20261107/dip-trajectory-keyframes-thumb.webp",
+        "caption": "Archived offline kinematic preview of the 49-machine right-arm dipping sequence, including reaching, immersion, lifting and brush conditioning. The well location is estimated in this preview; these poses do not prove physical execution or ink-removal performance.",
+        "kind": "Offline kinematic planning montage",
+        "shortCaption": "Dipping and conditioning: archived kinematic keyframes",
+        "width": 1491,
+        "height": 1400
+      },
+      {
+        "src": "assets/projects/brush-featured-20261107/simulated-ink-accounting.webp",
+        "thumb": "assets/projects/brush-featured-20261107/simulated-ink-accounting-thumb.webp",
+        "caption": "Internal ink accounting in the archived continuous simulation: one initial immersion, 19 computed strokes and no ink reset. Model uptake was 1,581.1 µL, deposition 1,134.0 µL and retained liquid 447.1 µL. These are simulated quantities under unmeasured engineering priors.",
+        "kind": "Recorded simulation data analysis",
+        "shortCaption": "Per-stroke deposition and the finite-ink budget",
+        "width": 1800,
+        "height": 809
+      },
+      {
+        "src": "assets/projects/brush-featured-20261107/system-workflow.webp",
+        "thumb": "assets/projects/brush-featured-20261107/system-workflow-thumb.webp",
+        "caption": "Documented project workflow: simulation supports model inspection and trajectory development; the physical writing loop connects geometric registration, C++ execution, visual observation and bounded feedback. The diagram does not claim a learned end-to-end sim-to-real policy.",
+        "kind": "Project system diagram",
+        "shortCaption": "Simulation development and the visual-feedback writing workflow",
+        "width": 1612,
+        "height": 742
+      },
+      {
+        "src": "assets/projects/brush-featured-20261107/perception-overlay-comparison.webp",
+        "thumb": "assets/projects/brush-featured-20261107/perception-overlay-comparison-thumb.webp",
+        "caption": "Two selected examples from held-out recording r10. The original diagnostic overlays compare the classical mask in red, U-Net8 in green and the SAM2-derived outline in yellow. SAM2 provides projected pseudo-labels, not independent handwriting-quality ground truth.",
+        "kind": "Original perception-analysis montage",
+        "shortCaption": "Held-out image examples: reference, camera frame and segmentation masks",
+        "width": 1800,
+        "height": 1239
       },
       {
         "src": "assets/projects/brush-calligraphy-20261107/real-writing-contact-sheet.webp",
@@ -1560,7 +1638,8 @@ window.PROJECT_CATALOGUE = {
         "caption": "Four separately sampled head-camera frames from real robot water-writing trials on 6 November 2026. The panels show different moments and may show different glyphs.",
         "kind": "Real experiment photo montage",
         "width": 1600,
-        "height": 941
+        "height": 941,
+        "shortCaption": "Real water-writing: four recorded moments"
       },
       {
         "src": "assets/projects/brush-calligraphy-20261107/bird-reconstruction.webp",
@@ -1568,15 +1647,8 @@ window.PROJECT_CATALOGUE = {
         "caption": "A reconstruction of the bird character from 19 per-stroke wet-trace frames, compared with the reference glyph. This is a multi-frame reconstruction, not a single photograph.",
         "kind": "Per-stroke image reconstruction",
         "width": 1432,
-        "height": 1051
-      },
-      {
-        "src": "assets/projects/brush-calligraphy-20261107/bird-final-frame.webp",
-        "thumb": "assets/projects/brush-calligraphy-20261107/bird-final-frame-thumb.webp",
-        "caption": "The final camera frame from the bird trial. Earlier water marks have faded, so this is not a permanent complete character.",
-        "kind": "Real experiment photograph",
-        "width": 848,
-        "height": 480
+        "height": 1051,
+        "shortCaption": "Reconstructed wet traces and the reference glyph"
       }
     ]
   },
