@@ -1,6 +1,62 @@
 window.PROJECT_CATALOGUE = {
   "projects": [
     {
+      "id": "brush-calligraphy",
+      "name": "Robot brush calligraphy & bird-and-worm seal script",
+      "title": "Vision-guided brush manipulation and water-writing evaluation",
+      "org": "Anyverse Technology Co., Ltd.",
+      "date": "NOV 2026",
+      "context": "Software Engineer Intern · Embodied AI",
+      "summary": "Developed and evaluated a robot brush-writing workflow for bird-and-worm seal script, combining stroke trajectories, camera-based observation and iterative analysis of water traces.",
+      "contribution": "Stroke planning, robot and camera workflow integration, experiment review, wet-trace evaluation and flexible-brush simulation research.",
+      "result": "A documented 19-stroke bird-character trial took 584 seconds; its per-stroke image reconstruction reported 90.7% target coverage.",
+      "steps": [
+        "Robot manipulation",
+        "Stroke trajectory planning",
+        "Visual feedback",
+        "Wet-trace analysis",
+        "Newton brush simulation"
+      ],
+      "links": [],
+      "metrics": [
+        {
+          "value": "19 strokes",
+          "label": "bird-character trial"
+        },
+        {
+          "value": "584 s",
+          "label": "recorded trial duration"
+        },
+        {
+          "value": "90.7%",
+          "label": "reconstructed-trace target coverage · one trial"
+        }
+      ],
+      "caseStudy": [
+        {
+          "heading": "Overview",
+          "paragraphs": [
+            "Bird-and-worm seal script requires a robot to control a soft brush across curved, variable-width strokes. At Anyverse, I worked on a water-writing workflow that brings together a real robot arm, a brush, reusable practice cloth, an overhead camera and stroke-level records. Water marks fade, making the timing and interpretation of visual evidence central to the task."
+          ]
+        },
+        {
+          "heading": "My contribution",
+          "bullets": [
+            "I worked on translating a reference character into ordered brush strokes and executable trajectories, and on organising trial parameters and observations for iterative review.",
+            "I worked with camera-based wet-trace observation and stroke-level evidence to inspect coverage, line width, gaps and missing or unclear strokes, supporting feedback on subsequent trials.",
+            "I investigated a complementary photo-constrained Newton brush model and an offline 19-stroke replay. A 127-bundle, 1,016-segment model candidate represents the brush geometry; those bundles are modelling elements rather than individually measured hairs."
+          ]
+        },
+        {
+          "heading": "Results & validation",
+          "paragraphs": [
+            "In one archived bird-character trial (round 151), all 19 stroke frames were retained and the recorded duration was 584 seconds. The per-stroke reconstruction report estimated 90.7% target coverage. A separate full-page frame-composite analysis estimated 26.3% target coverage for that same trial: the reconstruction and scoring pipelines differ, and the frame composite is susceptible to registration error. These values describe one recorded example, not a success rate or a controlled improvement.",
+            "The 6 November daily summary recorded 82 completed water-writing runs out of 87 attempts across the session. This is a log-derived activity count; writing quality varied across trials. The gallery distinguishes original camera frames from reconstructed composites and includes a separate simulation image. Brush material and ink-transfer parameters in the simulation remain uncalibrated, so simulation results are not real-brush validation."
+          ]
+        }
+      ]
+    },
+    {
       "id": "b1k",
       "name": "BEHAVIOR Challenge",
       "title": "Automated simulation runs, failure diagnosis and task-strategy refinement",
@@ -1462,6 +1518,88 @@ window.PROJECT_CATALOGUE = {
         "kind": "Original OmniGibson rollout frame",
         "width": 672,
         "height": 448
+      }
+    ],
+    "brush-calligraphy": [
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/robot-writing.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/robot-writing-thumb.webp",
+        "caption": "Robot arm holding a brush during a real water-writing trial on reusable practice cloth.",
+        "kind": "Real experiment photograph",
+        "width": 848,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/bird-stroke-05.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/bird-stroke-05-thumb.webp",
+        "caption": "The fifth recorded stroke in the bird character trial; wet marks fade over time.",
+        "kind": "Real experiment photograph",
+        "width": 848,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/bird-stroke-11.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/bird-stroke-11-thumb.webp",
+        "caption": "A later stroke of the same bird character trial, recorded by the overhead camera.",
+        "kind": "Real experiment photograph",
+        "width": 848,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/bird-final-frame.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/bird-final-frame-thumb.webp",
+        "caption": "The final camera frame from the bird trial. Earlier water marks have faded, so this is not a permanent complete character.",
+        "kind": "Real experiment photograph",
+        "width": 848,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/bird-reconstruction.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/bird-reconstruction-thumb.webp",
+        "caption": "A reconstruction of the bird character from 19 per-stroke wet-trace frames, compared with the reference glyph. This is a multi-frame reconstruction, not a single photograph.",
+        "kind": "Per-stroke image reconstruction",
+        "width": 1432,
+        "height": 1051
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/bird-coverage.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/bird-coverage-thumb.webp",
+        "caption": "Round 151: 90.7% target coverage in the per-stroke reconstructed report and 26.3% in a separate full-page frame-composite score. These use different reconstruction and scoring pipelines, not an improvement comparison.",
+        "kind": "Recorded analysis figure",
+        "width": 1424,
+        "height": 772
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/water-character-frame.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/water-character-frame-thumb.webp",
+        "caption": "A real final camera frame from a separate water-writing character trial.",
+        "kind": "Real experiment photograph",
+        "width": 848,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/water-character-fu.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/water-character-fu-thumb.webp",
+        "caption": "A real final camera frame from a later water-writing trial of a seal-script character.",
+        "kind": "Real experiment photograph",
+        "width": 848,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/water-fu-reconstruction.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/water-fu-reconstruction-thumb.webp",
+        "caption": "A multi-frame composite of the same later trial. It preserves earlier wet strokes that faded before the final photograph.",
+        "kind": "Per-stroke image reconstruction",
+        "width": 848,
+        "height": 480
+      },
+      {
+        "src": "assets/projects/brush-calligraphy-20261107/brush-model.webp",
+        "thumb": "assets/projects/brush-calligraphy-20261107/brush-model-thumb.webp",
+        "caption": "Photo-constrained Newton brush geometry candidate using 127 representative bundles and 1,016 rod segments. Simulation materials and ink transfer were not physically calibrated.",
+        "kind": "Brush simulation screenshot",
+        "width": 1280,
+        "height": 831
       }
     ]
   },
