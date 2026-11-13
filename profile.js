@@ -1,2 +1,2 @@
 // Robotics lab portrait, cropped and compressed for the homepage.
-window.PROFILE = { photo: "assets/xiongyule-zhou-lab-portrait-clean.webp" };
+window.PROFILE = { photo: "assets/xiongyule-zhou-lab-wide.webp" };
